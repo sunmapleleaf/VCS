@@ -1,0 +1,9 @@
+(a) title: A Customized Real-time Compilation for Motion Control in Embedded PLCs
+
+
+
+(b) authors: Huifeng Wu, Yi Yan, Danfeng Sun, Rene Simon
+
+
+(c) abstract: 
+General PLCs are difficult to adapt to changeable applications, especially for special motion controll ones, which has seriously affected the development efficiency. This paper presents the concept of embedded PLC(ePLC) whose hardware structure can be customized according to actual requirement. An three-layer architecture is proposed and its application customizd layer could be compiled in real time. Correspondingly, the program of PLC is divided into engine program, control program and customizing program. The description and compilation method of customizing program is elaborated. This paper puts forward the CWML(Customized Winding Machine Language) which is based on the proposed software structure on ePLC. It is implemented in an automatic winding machine which is easier to use compared with some widely used languages(e.g. G-Code). 

@@ -1,0 +1,36 @@
+﻿(a) Document ID: No. TII-18-0024
+
+
+
+(b) Document title: A Customized Real-time Compilation for Motion Control in Embedded PLCs
+
+
+
+(c) Document subject: Robotics & Control Systems
+
+
+
+(d) Keywords: motion control, customizing program, embedded PLC
+
+
+
+(e) Corresponding author:
+ 
+       Yi Yan
+ 
+       the Institute of Intelligent and Software Technology, Hangzhou Dianzi University, Hangzhou, 310018, China    
+       yybjyyj@163.com
+       
+       +86 13905813379
+       +86 0571-86919004     
+
+(f) Authors names and  IEEE and IES memberships
+:
+       Huifeng Wu
+       Yi Yan
+       Danfeng Sun
+       Rene Simon
+
+
+(g) Do you want to print some of your figures in color? (you will be asked to pay for this extra service)
+       No need to print in color.

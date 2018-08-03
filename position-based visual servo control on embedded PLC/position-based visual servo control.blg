@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: position-based visual servo control.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: reference.bib
+Repeated entry---line 607 of file reference.bib
+ : @article{WuA
+ :             ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty year in PaceAn
+Warning--empty year in Wua
+Warning--empty journal in 3S2017Logic
+
+Done.
+You've used 33 entries,
+            4087 wiz_defined-function locations,
+            1032 strings with 14343 characters,
+and the built_in function-call counts, 28861 in all, are:
+= -- 2406
+> -- 719
+< -- 289
++ -- 412
+- -- 123
+* -- 1446
+:= -- 4303
+add.period$ -- 67
+call.type$ -- 33
+change.case$ -- 33
+chr.to.int$ -- 594
+cite$ -- 36
+duplicate$ -- 2035
+empty$ -- 2065
+format.name$ -- 152
+if$ -- 6772
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 350
+newline$ -- 122
+num.names$ -- 33
+pop$ -- 688
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 2243
+stack$ -- 0
+substring$ -- 1421
+swap$ -- 1814
+text.length$ -- 91
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 33
+warning$ -- 3
+while$ -- 128
+width$ -- 35
+write$ -- 374
+(There was 1 error message)
