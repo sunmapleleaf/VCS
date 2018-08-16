@@ -4,31 +4,30 @@
 \citation{Colombo2006An,Vaccaro2010An,Dean2017Integration}
 \citation{Feng2002Integrating,Chang2006Motion,Feng2005Practical}
 \citation{Hu2017Fog,Hou2018Green,PaceAn}
+\citation{Chen2014A}
 \citation{Xing2014Intersection}
 \citation{Nian2005An}
 \citation{Chen2014A}
 \citation{Wang2008Visual,Xiao2014Visual}
 \citation{Wu2013Cloud,Tsai2017A}
 \citation{Guenard2010A,Serra2016Landing}
-\citation{Hossain2014Advanced}
-\citation{Obermeier2015A,Adiego2015Applying}
-\citation{Gerk2006Advanced,Hajduk2015Architecture}
-\citation{Wua}
 \citation{Wu2013Cloud,Tsai2017A}
 \citation{Guenard2010A,Serra2016Landing}
 \citation{Nian2005An}
-\citation{Chen2014A}
-\citation{Ioannides2004Design,Shi2016The,Fang2017Design}
+\citation{Ioannides2004Design,Shi2016The,Fang2017Design,syaichu2011model}
 \citation{Ioannides2004Design,syaichu2011model}
+\citation{Peng2011Linear,Qian2014A,OMRON2006CS1W}
+\citation{PLCopen2005Function}
 \citation{S2006Advanced}
 \citation{3S2017Logic}
-\citation{Wua}
+\citation{wu2018customized}
 \citation{Chen2014A}
+\providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}Motivations}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Related Works}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-C}}Our Contributions}{1}}
-\citation{Wua}
+\citation{wu2018customized}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces ePLC 和视觉系统融合的硬件架构，ePLC采用双处理器的主从结构并和视觉系统通过CAN总线通信。}}{2}}
 \newlabel{fig:Hardware}{{1}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}系统结构}{2}}
@@ -37,44 +36,61 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}软件结构}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The three-layer architecture of ePLC}}{2}}
 \newlabel{fig:Software}{{2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  The process of the three type threads}}{2}}
-\newlabel{fig:Threads}{{3}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}线程结构}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}内存设计}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}视觉控制系统融合}{3}}
-\newlabel{Integration}{{III}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}VCA Protocol}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  The process of the three type threads}}{3}}
+\newlabel{fig:Threads}{{3}{3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  The process of the three type threads}}{3}}
 \newlabel{fig:RAM}{{4}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  VCA Protocol.}}{3}}
-\newlabel{fig:Protocol}{{5}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}PLC Interface}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}视觉控制系统融合}{3}}
+\newlabel{Integration}{{III}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}VCA Protocol Template}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  VCA Protocol.}}{4}}
+\newlabel{fig:Protocol}{{5}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}VCA Protocol Frame}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}PLC Interface}{4}}
+\newlabel{alg1}{{1}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VLFraming$}}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Vision Interface}{4}}
+\newlabel{alg2}{{2}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces $CLFraming$}}{5}}
+\newlabel{alg3}{{3}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces $ALFraming$}}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}系统运行原理}{5}}
+\newlabel{Execution}{{IV}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}视觉层的执行}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Data Interaction Based on VP Protocol.}}{5}}
+\newlabel{fig:FlexibleLayer}{{6}{5}}
+\newlabel{al4}{{4}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces $VLDeframing$}}{5}}
+\newlabel{al5}{{5}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $CLDeframing$}}{5}}
+\newlabel{al6}{{6}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $ALDeframing$}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  The execution OF flexible program}}{6}}
+\newlabel{fig:execution}{{7}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}逻辑层执行}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}算法层执行}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}线程运行机制}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Case Analysis}{6}}
+\newlabel{Case}{{V}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Case 1 双目抛球机器人}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}1}协议设计}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}程序设计}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}3}运行效果}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Case 2 带视觉的绕线机}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}1}协议设计}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}2}程序设计}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}3}运行效果}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  Visual servo control system}}{6}}
+\newlabel{fig:VIsualServoControlSystem}{{8}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  The execution OF flexible program}}{6}}
+\newlabel{fig:settingexecutionbitinACPTD}{{9}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  Winding machine Based on Visual System}}{6}}
+\newlabel{fig:Winding}{{10}{6}}
 \bibstyle{IEEEtran}
 \bibdata{reference}
 \bibcite{Kazmierkowski2007Integration}{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Data Interaction Based on VP Protocol.}}{4}}
-\newlabel{fig:FlexibleLayer}{{6}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Vision Interface}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}系统运行原理}{4}}
-\newlabel{Execution}{{IV}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}视觉层的执行}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}逻辑层执行}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}算法层执行}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  The execution OF flexible program}}{4}}
-\newlabel{fig:execution}{{7}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  Visual servo control system}}{4}}
-\newlabel{fig:VIsualServoControlSystem}{{8}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}线程运行机制}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Case Analysis}{4}}
-\newlabel{Case}{{V}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Case 1 双目抛球机器人}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}1}协议设计}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}运行效果}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Case 2 带视觉的绕线机}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{4}}
-\newlabel{conclusion}{{VI}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  The execution OF flexible program}}{4}}
-\newlabel{fig:settingexecutionbitinACPTD}{{9}{4}}
 \bibcite{Wan2018An}{2}
 \bibcite{Chekired2018Industrial}{3}
 \bibcite{Colombo2006An}{4}
@@ -86,27 +102,26 @@
 \bibcite{Hu2017Fog}{10}
 \bibcite{Hou2018Green}{11}
 \bibcite{PaceAn}{12}
-\bibcite{Xing2014Intersection}{13}
-\bibcite{Nian2005An}{14}
-\bibcite{Chen2014A}{15}
+\bibcite{Chen2014A}{13}
+\bibcite{Xing2014Intersection}{14}
+\bibcite{Nian2005An}{15}
 \bibcite{Wang2008Visual}{16}
 \bibcite{Xiao2014Visual}{17}
 \bibcite{Wu2013Cloud}{18}
 \bibcite{Tsai2017A}{19}
 \bibcite{Guenard2010A}{20}
 \bibcite{Serra2016Landing}{21}
-\bibcite{Hossain2014Advanced}{22}
-\bibcite{Obermeier2015A}{23}
-\bibcite{Adiego2015Applying}{24}
-\bibcite{Gerk2006Advanced}{25}
-\bibcite{Hajduk2015Architecture}{26}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  Winding machine Based on Visual System}}{5}}
-\newlabel{fig:Winding}{{10}{5}}
-\@writefile{toc}{\contentsline {section}{参考文献}{5}}
-\bibcite{Wua}{27}
-\bibcite{Ioannides2004Design}{28}
-\bibcite{Shi2016The}{29}
-\bibcite{Fang2017Design}{30}
-\bibcite{syaichu2011model}{31}
-\bibcite{S2006Advanced}{32}
-\bibcite{3S2017Logic}{33}
+\bibcite{Ioannides2004Design}{22}
+\bibcite{Shi2016The}{23}
+\bibcite{Fang2017Design}{24}
+\bibcite{syaichu2011model}{25}
+\bibcite{Peng2011Linear}{26}
+\bibcite{Qian2014A}{27}
+\bibcite{OMRON2006CS1W}{28}
+\bibcite{PLCopen2005Function}{29}
+\bibcite{S2006Advanced}{30}
+\bibcite{3S2017Logic}{31}
+\bibcite{wu2018customized}{32}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{7}}
+\newlabel{conclusion}{{VI}{7}}
+\@writefile{toc}{\contentsline {section}{参考文献}{7}}

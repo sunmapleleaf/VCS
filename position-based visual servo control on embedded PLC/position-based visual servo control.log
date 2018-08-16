@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.13)  3 AUG 2018 17:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.13)  16 AUG 2018 22:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,28 +805,70 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(c:/texlive/2018/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+(c:/texlive/2018/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count275
 
 (c:/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@ALC@unique=\count275
-\c@ALC@line=\count276
-\c@ALC@rem=\count277
-\c@ALC@depth=\count278
-\ALC@tlm=\skip57
-\algorithmicindent=\skip58
+\algocf@hangindent=\skip57
+
+(c:/texlive/2018/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count276
+)
+(c:/texlive/2018/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(c:/texlive/2018/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip58
+\skiplinenumber=\skip59
+\skiprule=\skip60
+\skiphlne=\skip61
+\skiptext=\skip62
+\skiplength=\skip63
+\algomargin=\skip64
+\skipalgocfslide=\skip65
+\algowidth=\dimen178
+\inoutsize=\dimen179
+\inoutindent=\dimen180
+\interspacetitleruled=\dimen181
+\interspacealgoruled=\dimen182
+\interspacetitleboxruled=\dimen183
+\algocf@ruledwidth=\skip66
+\algocf@inoutbox=\box52
+\algocf@inputbox=\box53
+\AlCapSkip=\skip67
+\AlCapHSkip=\skip68
+\algoskipindent=\skip69
+\algocf@nlbox=\box54
+\algocf@hangingbox=\box55
+\algocf@untilbox=\box56
+\algocf@skipuntil=\skip70
+\algocf@capbox=\box57
+\algocf@lcaptionbox=\skip71
+\algoheightruledefault=\skip72
+\algoheightrule=\skip73
+\algotitleheightruledefault=\skip74
+\algotitleheightrule=\skip75
+\c@algocfline=\count277
+\c@algocfproc=\count278
+\c@algocf=\count279
+\algocf@algoframe=\box58
+\algocf@algobox=\box59
 )
 (c:/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
-\col@sep=\dimen178
-\ar@mcellbox=\box52
-\extrarowheight=\dimen179
+\col@sep=\dimen184
+\ar@mcellbox=\box60
+\extrarowheight=\dimen185
 \NC@list=\toks24
-\extratabsurround=\skip59
-\backup@length=\skip60
-\ar@cellbox=\box53
+\extratabsurround=\skip76
+\backup@length=\skip77
+\ar@cellbox=\box61
 )
 (c:/texlive/2018/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
@@ -834,29 +876,29 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 (c:/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen180
-\captionmargin@=\dimen181
-\captionwidth=\dimen182
-\caption@tempdima=\dimen183
-\caption@indent=\dimen184
-\caption@parindent=\dimen185
-\caption@hangindent=\dimen186
+\captionmargin=\dimen186
+\captionmargin@=\dimen187
+\captionwidth=\dimen188
+\caption@tempdima=\dimen189
+\caption@indent=\dimen190
+\caption@parindent=\dimen191
+\caption@hangindent=\dimen192
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 )
-\c@KVtest=\count279
-\sf@farskip=\skip61
-\sf@captopadj=\dimen187
-\sf@capskip=\skip62
-\sf@nearskip=\skip63
-\c@subfigure=\count280
-\c@subfigure@save=\count281
-\c@lofdepth=\count282
-\c@subtable=\count283
-\c@subtable@save=\count284
-\c@lotdepth=\count285
-\sf@top=\skip64
-\sf@bottom=\skip65
+\c@KVtest=\count280
+\sf@farskip=\skip78
+\sf@captopadj=\dimen193
+\sf@capskip=\skip79
+\sf@nearskip=\skip80
+\c@subfigure=\count281
+\c@subfigure@save=\count282
+\c@lofdepth=\count283
+\c@subtable=\count284
+\c@subtable@save=\count285
+\c@lotdepth=\count286
+\sf@top=\skip81
+\sf@bottom=\skip82
 )
 (c:/texlive/2018/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg
 File: UTF8.bdg 2015/04/18 4.8.4
@@ -995,16 +1037,16 @@ LaTeX Info: Redefining \selectfont on input line 44.
 
 (c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count286
-\scratchdimen=\dimen188
-\scratchbox=\box54
-\nofMPsegments=\count287
-\nofMParguments=\count288
+\scratchcounter=\count287
+\scratchdimen=\dimen194
+\scratchbox=\box62
+\nofMPsegments=\count288
+\nofMParguments=\count289
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count289
-\MPscratchDim=\dimen189
-\MPnumerator=\count290
-\makeMPintoPDFobject=\count291
+\MPscratchCnt=\count290
+\MPscratchDim=\dimen195
+\MPnumerator=\count291
+\makeMPintoPDFobject=\count292
 \everyMPtoPDFconversion=\toks26
 ) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1076,67 +1118,47 @@ File: c70rm.fd 2018/05/01 v2.4.14 Chinese font definition (CTEX)
 )
 Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
 quanjiao) on input line 77.
-
-Underfull \hbox (badness 1609) in paragraph at lines 85--86
-[]\C70/rm/m/n/10.53937/59 ‚ \C70/rm/m/n/10.53937/4f U \C70/rm/m/n/10.53937/5c ^
-^F \C70/rm/m/n/10.53937/4e $ \C70/rm/m/n/10.53937/79 Í \C70/rm/m/n/10.53937/5d 
-å \C70/rm/m/n/10.53937/4e ^^Z \C70/rm/m/n/10.53937/81 ê \C70/rm/m/n/10.53937/52
- ¨ \C70/rm/m/n/10.53937/53 ^^V \C70/rm/m/n/10.53937/98 † \C70/rm/m/n/10.53937/5
-7 ß \C70/rm/m/n/10.53937/5e ^^? \C70/rm/m/n/10.53937/6c Û \C70/rm/m/n/10.53937/
-4f ^^? \C70/rm/m/n/10.53937/75 ( \C70/rm/m/n/10.53937/76 „ \C70/rm/m/n/10.53937
-/7c û
- []
-
-[1
+ [1
 
 
 ]
 
 LaTeX Font Warning: Font shape `C70/rm/m/sc' undefined
-(Font)              using `C70/rm/m/n' instead on input line 102.
+(Font)              using `C70/rm/m/n' instead on input line 107.
 
-<fig/Hardware.pdf, id=139, 368.50674pt x 277.41643pt>
+<fig/Hardware.pdf, id=127, 368.50674pt x 277.41643pt>
 File: fig/Hardware.pdf Graphic file (type pdf)
 <use fig/Hardware.pdf>
-Package pdftex.def Info: fig/Hardware.pdf  used on input line 109.
+Package pdftex.def Info: fig/Hardware.pdf  used on input line 114.
 (pdftex.def)             Requested size: 252.94499pt x 190.42276pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 109--110
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 114--115
  [][] 
  []
 
-<fig/Software.pdf, id=141, 444.15938pt x 202.88799pt>
+<fig/Software.pdf, id=129, 444.15938pt x 202.88799pt>
 File: fig/Software.pdf Graphic file (type pdf)
 <use fig/Software.pdf>
-Package pdftex.def Info: fig/Software.pdf  used on input line 119.
+Package pdftex.def Info: fig/Software.pdf  used on input line 124.
 (pdftex.def)             Requested size: 252.94499pt x 115.54208pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 119--120
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 124--125
  [][] 
  []
 
-<fig/Threads.pdf, id=142, 130.618pt x 145.67424pt>
+<fig/Threads.pdf, id=131, 130.618pt x 145.67424pt>
 File: fig/Threads.pdf Graphic file (type pdf)
 <use fig/Threads.pdf>
-Package pdftex.def Info: fig/Threads.pdf  used on input line 139.
+Package pdftex.def Info: fig/Threads.pdf  used on input line 144.
 (pdftex.def)             Requested size: 216.81pt x 241.81471pt.
-[2 <./fig/Hardware.pdf> <./fig/Software.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig/Software.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./fig/Threads.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig/Threads.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
->]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53937> on input line 146.
+(Font)              <10.53937> on input line 151.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 146.
+(Font)              <7> on input line 151.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 146.
+(Font)              <5> on input line 151.
 
-Underfull \hbox (badness 1675) in paragraph at lines 146--147
+Underfull \hbox (badness 1675) in paragraph at lines 151--152
 []\OT1/ptm/b/n/10.53937 Definition 1 \C70/rm/m/n/10.53937/96 Æ \C70/rm/m/n/10.5
 3937/54 ^^H $\OML/cmm/m/it/10.53937 S$ \C70/rm/m/n/10.53937/51 w \C70/rm/m/sc/1
 0.53937/67 	 $\OMS/cmsy/m/n/10.53937 B$ \C70/rm/m/n/10.53937/5c ^ \C70/rm/m/n/1
@@ -1145,7 +1167,7 @@ Underfull \hbox (badness 1675) in paragraph at lines 146--147
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 148--149
+Underfull \hbox (badness 1540) in paragraph at lines 153--154
 []\OT1/ptm/b/n/10.53937 Definition 2 \C70/rm/m/n/10.53937/96 Æ \C70/rm/m/n/10.5
 3937/54 ^^H $\OML/cmm/m/it/10.53937 S$ \C70/rm/m/n/10.53937/51 w \C70/rm/m/sc/1
 0.53937/67 	 $\OMS/cmsy/m/n/10.53937 D$ \C70/rm/m/n/10.53937/5c ^ \C70/rm/m/n/1
@@ -1153,106 +1175,99 @@ Underfull \hbox (badness 1540) in paragraph at lines 148--149
 /10.53937 (\OML/cmm/m/it/10.53937 S \OT1/cmr/m/n/10.53937 =
  []
 
-<fig/RAM.pdf, id=212, 324.0908pt x 196.11269pt>
-File: fig/RAM.pdf Graphic file (type pdf)
-<use fig/RAM.pdf>
-Package pdftex.def Info: fig/RAM.pdf  used on input line 178.
-(pdftex.def)             Requested size: 216.81pt x 131.19731pt.
+[2 <./fig/Hardware.pdf> <./fig/Software.pdf
 
-Underfull \hbox (badness 2088) in paragraph at lines 190--191
-[]\C70/rm/m/sc/10.53937/89 Æ É \C70/rm/m/n/10.53937/5c B \C70/rm/m/n/10.53937/5
-3 O \C70/rm/m/n/10.53937/8b ® \C70/rm/m/n/10.53937/5e '|\C70/rm/m/n/10.53937/30
- ^^B| \C70/rm/m/n/10.53937/8b å \C70/rm/m/n/10.53937/5c B \C70/rm/m/n/10.53937/
-65 p \C70/rm/m/sc/10.53937/63 n \C70/rm/m/n/10.53937/5e ' \C70/rm/m/n/10.53937/
-75 1\OT1/ptm/m/n/10.53937 MID(\C70/rm/m/n/10.53937/6a ! \C70/rm/m/n/10.53937/57
- W \C70/rm/m/n/10.53937/55 /
- []
-
-
-Underfull \hbox (badness 2856) in paragraph at lines 190--191
-\C70/rm/m/n/10.53937/4e ^^@ \C70/rm/m/n/10.53937/68 ^^G \C70/rm/m/n/10.53937/8b
- Æ \C70/rm/m/n/10.53937/7b &\OT1/ptm/m/n/10.53937 )|\C70/rm/m/n/10.53937/ff ^^L
-| \OT1/ptm/m/n/10.53937 MPN(\C70/rm/m/n/10.53937/6a ! \C70/rm/m/n/10.53937/57 W
- \C70/rm/m/n/10.53937/53 Â \C70/rm/m/n/10.53937/65 p p \C70/rm/m/n/10.53937/91 
-Ï\OT1/ptm/m/n/10.53937 ),MSF(\C70/rm/m/n/10.53937/6a ! \C70/rm/m/n/10.53937/57 
-W
- []
-
-<fig/Protocol.pdf, id=214, 393.72093pt x 147.55125pt>
-File: fig/Protocol.pdf Graphic file (type pdf)
-<use fig/Protocol.pdf>
-Package pdftex.def Info: fig/Protocol.pdf  used on input line 197.
-(pdftex.def)             Requested size: 216.81pt x 81.25023pt.
-[3 <./fig/RAM.pdf> <./fig/Protocol.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig/Protocol.pdf): PDF inclusion: multiple
+pdfTeX warning: pdflatex.exe (file ./fig/Software.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-<fig/FlexibleLayer.pdf, id=269, 248.42813pt x 158.47206pt>
+<fig/RAM.pdf, id=189, 324.0908pt x 196.11269pt>
+File: fig/RAM.pdf Graphic file (type pdf)
+<use fig/RAM.pdf>
+Package pdftex.def Info: fig/RAM.pdf  used on input line 183.
+(pdftex.def)             Requested size: 216.81pt x 131.19731pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (13.8593pt too wide) detected at line 206
+[]
+ []
+
+[3 <./fig/Threads.pdf> <./fig/RAM.pdf
+
+pdfTeX warning: pdflatex.exe (file ./fig/RAM.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
+>]
+<fig/Protocol.pdf, id=219, 393.72093pt x 147.55125pt>
+File: fig/Protocol.pdf Graphic file (type pdf)
+<use fig/Protocol.pdf>
+Package pdftex.def Info: fig/Protocol.pdf  used on input line 226.
+(pdftex.def)             Requested size: 216.81pt x 81.25023pt.
+ [4 <./fig/Protocol.pdf>]
+<fig/FlexibleLayer.pdf, id=256, 248.42813pt x 158.47206pt>
 File: fig/FlexibleLayer.pdf Graphic file (type pdf)
 <use fig/FlexibleLayer.pdf>
-Package pdftex.def Info: fig/FlexibleLayer.pdf  used on input line 217.
+Package pdftex.def Info: fig/FlexibleLayer.pdf  used on input line 311.
 (pdftex.def)             Requested size: 216.81pt x 138.30482pt.
-<fig/execution.png, id=270, 578.16pt x 306.4248pt>
+ [5 <./fig/FlexibleLayer.pdf>]
+<fig/execution.png, id=339, 578.16pt x 306.4248pt>
 File: fig/execution.png Graphic file (type png)
 <use fig/execution.png>
-Package pdftex.def Info: fig/execution.png  used on input line 272.
+Package pdftex.def Info: fig/execution.png  used on input line 408.
 (pdftex.def)             Requested size: 216.81pt x 114.90901pt.
-<fig/visual_control_system.png, id=271, 884.5848pt x 524.6802pt>
+<fig/visual_control_system.png, id=340, 884.5848pt x 524.6802pt>
 File: fig/visual_control_system.png Graphic file (type png)
 <use fig/visual_control_system.png>
-Package pdftex.def Info: fig/visual_control_system.png  used on input line 288.
+Package pdftex.def Info: fig/visual_control_system.png  used on input line 424.
 
 (pdftex.def)             Requested size: 216.81pt x 128.5918pt.
-<fig/trajectory.png, id=273, 597.432pt x 243.309pt>
+<fig/trajectory.png, id=342, 597.432pt x 243.309pt>
 File: fig/trajectory.png Graphic file (type png)
 <use fig/trajectory.png>
-Package pdftex.def Info: fig/trajectory.png  used on input line 301.
+Package pdftex.def Info: fig/trajectory.png  used on input line 438.
 (pdftex.def)             Requested size: 216.81pt x 88.29655pt.
-<fig/Winding.pdf, id=274, 464.11394pt x 675.65424pt>
+<fig/Winding.pdf, id=343, 464.11394pt x 675.65424pt>
 File: fig/Winding.pdf Graphic file (type pdf)
 <use fig/Winding.pdf>
-Package pdftex.def Info: fig/Winding.pdf  used on input line 310.
+Package pdftex.def Info: fig/Winding.pdf  used on input line 452.
 (pdftex.def)             Requested size: 216.81pt x 315.62962pt.
- (./position-based visual servo control.bbl [4 <./fig/FlexibleLayer.pdf> <./fig
-/execution.png> <./fig/visual_control_system.png> <./fig/trajectory.PNG>]
-[5 <./fig/Winding.pdf>]) [6
-
-] (./position-based visual servo control.aux)
+ [6 <./fig/execution.png> <./fig/visual_control_system.png> <./fig/trajectory.P
+NG> <./fig/Winding.pdf>] (./position-based visual servo control.bbl) [7]
+(./position-based visual servo control.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 17973 strings out of 492646
- 324955 string characters out of 6133325
- 359747 words of memory out of 5000000
- 21382 multiletter control sequences out of 15000+600000
- 618491 words of font info for 239 fonts, out of 8000000 for 9000
+ 18664 strings out of 492646
+ 336983 string characters out of 6133325
+ 379630 words of memory out of 5000000
+ 22078 multiletter control sequences out of 15000+600000
+ 617427 words of font info for 232 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,7n,63p,809b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,63p,961b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/s
 imkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows
 /Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:
-/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai
+/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simkai
 .ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Font
-s/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Wind
+s/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Wind
 ows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf>
-<c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/sim
-hei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/F
-onts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/W
-indows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simkai.t
-tf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
-simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Window
-s/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
+<c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sim
+kai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/F
+onts/simsun.ttc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/W
+indows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
+tc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/
+simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simsun.ttc><c:/Window
+s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
 :/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsu
 n.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fon
 ts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Win
-dows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc
-><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/si
-msun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/
-Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc>{c:/texlive/2018/texmf-dist/fonts
-/enc/dvips/base/8r.enc}<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.tt
+dows/Fonts/simsun.ttc>{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sims
+un.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fo
+nts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wi
+ndows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.tt
 c><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/s
 imsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows
 /Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:
@@ -1265,24 +1280,21 @@ sun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/F
 onts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/W
 indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
 tc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/
-simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Window
-s/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c
-:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsu
-n.ttc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/
-2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on "position-based visual servo control.pdf" (6 pages, 3859031 b
+simsun.ttc><c:/Windows/Fonts/simkai.ttf><c:/Windows/Fonts/simkai.ttf><c:/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/tex
+live/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on "position-based visual servo control.pdf" (7 pages, 3839180 b
 ytes).
 PDF statistics:
- 715 PDF objects out of 1000 (max. 8388607)
- 385 compressed objects within 4 object streams
+ 684 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 323 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 307 words of extra memory for PDF output out of 10000 (max. 10000000)
 

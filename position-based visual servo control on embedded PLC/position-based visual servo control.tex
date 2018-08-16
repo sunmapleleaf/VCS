@@ -27,8 +27,8 @@
 
 \usepackage[cmex10]{amsmath}
 
-\usepackage{algorithmic}
-
+%\usepackage{algorithmic}
+\usepackage[ruled]{algorithm2e}
 \usepackage{array}
 
 \ifCLASSOPTIONcompsoc
@@ -74,15 +74,16 @@ motion control, visual servo control, embedded PLC, multi-level architecture
 
 
 \section{Introduction}
-integration technologies 驱动着工业自动化的发展\cite{Kazmierkowski2007Integration}。对传感器，控制器，机器人，生产线以及软件工具的不断整合，催生了自省设备，智能工厂，CPS，等概念\cite{Wan2018An,Chekired2018Industrial}。最近的一些研究，\cite{Colombo2006An,Vaccaro2010An,Dean2017Integration}介绍了融合技术的发展。在工业自动化中，运动控制和视觉系统具有重要作用，且密不可分\cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}。另一方面，边缘计算，雾计算，边缘人工智能等新技术的发展\cite{Hu2017Fog,Hou2018Green,PaceAn}，也对控制系统和视觉系统等边缘设备提出了新的要求。
+Integration technologies 驱动着工业自动化的发展\cite{Kazmierkowski2007Integration}。对传感器，控制器，机器人，生产线以及软件工具的不断整合，催生了自省设备，智能工厂，CPS，等概念\cite{Wan2018An,Chekired2018Industrial}。最近的一些研究，\cite{Colombo2006An,Vaccaro2010An,Dean2017Integration}介绍了融合技术的发展。在工业自动化中，逻辑控制系统，运动控制系统和视觉系统具有重要作用，且密不可分\cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}。另一方面，边缘计算，雾计算，边缘人工智能等新技术的发展\cite{Hu2017Fog,Hou2018Green,PaceAn}，也对逻辑逻辑控制系统，运动控制系统和视觉系统等相关边缘设备提出了新的要求。
 
 \subsection{Motivations}
-在IOT时代，视觉系统作为一种重要传感器，已经无处不在。而结合了运动控制的视觉控制系统广泛运用于自动化领域，例如搬运 \cite{Xing2014Intersection},，电路检测\cite{Nian2005An},分拣系统，welding\cite{Chen2014A}，装配\cite{Wang2008Visual,Xiao2014Visual}，教育,robot\cite{Wu2013Cloud,Tsai2017A}，unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}。这些研究都很好的解决了各自领域的问题，但是这些方案都是基于视觉系统和专用控制系统完成。
-
-另一方面，PLC由于其逻辑控制简单可靠性高，广泛运用于自动化领域\cite{Hossain2014Advanced}。近年来PLC不断发展，通过程序验证提高了PLC可靠性\cite{Obermeier2015A,Adiego2015Applying}，通过算法的研究和硬件的改进提高了PLC的性能\cite{Gerk2006Advanced,Hajduk2015Architecture}，通过软件架构的设计降低了开发难度\cite{Wua}。开发方式上，PLC一直具有开发方式简单的优势，随后通过国际组织PLCopen的长期努力已经通过IEC61131-3的开发语言标准和Motion Control标准。从而实现了开发方式的标准化。
-
-
-如何将两种工业自动化领域广泛使用的系统(PLC控制系统和视觉系统)进行融合，特别是嵌入式PLC和视觉控制系统的融合，并在这基础上提出一种通用架构，来简化视觉控制系统的应用，激发了我们的研究。
+%Nowdays, visual system has been applied in various fields.
+%
+%On the other hand, according to the reliablity and \cite{Hossain2014Advanced}, Lots of papers are focusing on it, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Chang2007Adaptive,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development,Morenas2017Shop} pose methods to update PLC programs dynamically.
+%
+%Motion control is a key technology\cite{Ohnishi2002Motion} of automation. It drives various types of equipments to replace tremendous labors. Since advanced in algorithms, in
+Nowdays, visual system has been applied in various fields. The logic control on PLC has wide applications. Motion control 
+\cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion system. Simultaneously the logic program are judging the information, such as the position limitation of the every axis. Hence, how to pose a flexible structure to the integration of logic control system, servo system and visual system, guides us.
 
 
 
@@ -90,9 +91,13 @@ integration technologies 驱动着工业自动化的发展\cite{Kazmierkowski200
 
 \subsection{Related Works}
 
-早期的视觉控制系统均是由专用控制系统和视觉系统组成。例如\cite{Wu2013Cloud,Tsai2017A}中均使用机器人专用控制系统和视觉系统完成,在\cite{Guenard2010A,Serra2016Landing}中，使用无人机专用控制系统和视觉系统完成。\cite{Nian2005An}中，通过专用运动控制卡和视觉系统实现电路检测。由于PLC的高可靠性和安全性，出现了整合PLC的系统，\cite{Chen2014A}中通过视觉系统进行图像识别，将焊接误差传输PLC完成反馈控制。但是PLC和视觉系统之间并没有很好的融合，没有形成通用架构。
+视觉控制系统均是由专用控制系统和视觉系统组成。例如搬运\cite{Xing2014Intersection},，电路检测\cite{Nian2005An},分拣系统，welding\cite{Chen2014A}，装配\cite{Wang2008Visual,Xiao2014Visual}，教育,robot\cite{Wu2013Cloud,Tsai2017A}，unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}。这些研究都很好的解决了各自领域的问题，但是这些方案都是基于视觉系统和专用控制系统完成。
 
-随着研究同步深入，PLC已经在逻辑控制的基础上结合了运动控制,已经有了广泛应用\cite{Ioannides2004Design,Shi2016The,Fang2017Design},\cite{Ioannides2004Design,syaichu2011model}。在开发方式上，PLCopen也制定了相关标准\cite{S2006Advanced}，根据该标准3S等公司研发了整合的工具\cite{3S2017Logic}，我们早期的研究\cite{Wua}也提出了一种定制化语言的在线编译方法。通过这些标准的制定，工具的开发和系统结构的优化，使得PLC在运动控制的运用上变得简单,结合PLC原有的可靠性和安全性\cite{Chen2014A}，将其与视觉系统进行整合并提出一种通用架构会极大简化和推广视觉控制系统的应用。
+例如\cite{Wu2013Cloud,Tsai2017A}中均使用机器人专用控制系统和视觉系统完成,在\cite{Guenard2010A,Serra2016Landing}中，使用无人机专用控制系统和视觉系统完成。\cite{Nian2005An}中，通过专用运动控制卡和视觉系统实现电路检测。
+
+On the other hand. The integration of logic control and motion control has variously deep researches \cite{Ioannides2004Design,Shi2016The,Fang2017Design, syaichu2011model}. \cite{Ioannides2004Design,syaichu2011model} realize the motion control directly in PLC. \cite{Peng2011Linear, Qian2014A, OMRON2006CS1W} use motion control module collaborated with PLC to implement their applications. However, the development method in these papers is disordered. Therefore, in 2005, PLCopen organization has released a related standard \cite{PLCopen2005Function} which standardizes the motion control in PLC. Based on this standardization, \cite{S2006Advanced} provides an advanced implementation in distributed automation system and companies, such as 3S \cite{3S2017Logic}, provide some tools. \cite{wu2018customized} poses a customized real-time compilation method to reduce the development complexity.
+
+Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few papers discussing the integration of visual system, motion control and PLC. Most of applications are focusing on its application with three individual system, such as \cite{Chen2014A}. Hence, an integration structure of logic control system, servo system and visual system should be provided to reduce the complexity and expand the application fields.
 
 \subsection{Our Contributions}
 我们提出了一种基于VCA协议的ePLC和视觉系统的柔性架构整合方案，来实现视觉私服控制。VCA协议描述了从视觉系统中获取数据后的组帧和在ePLC中数据帧在各层中的解析，从而实现视觉系统和ePLC的整合。ePLC硬件上的一种定制化设计，软件架构上的三层设计以及融合其中的VCA协议使得整个视觉私服系统变成一种柔性结构。
@@ -125,7 +130,7 @@ integration technologies 驱动着工业自动化的发展\cite{Kazmierkowski200
 
 
 \subsection{线程结构}
-我们采用了\cite{Wua}中类似的线程结构。我们特别强调以下三个线程:
+我们采用了\cite{wu2018customized}中类似的线程结构。我们特别强调以下三个线程:
 \begin{enumerate}
 	\item Visual Thread. 视觉线程，该线程主要完成视觉层协议解析，和逻辑层数据交互和模块调用。
 	\item LC Thread. 逻辑线程，该线程主要完成逻辑程序处理，改成协议解析，和逻辑层和算法层之间数据交互和算法调用。
@@ -184,14 +189,38 @@ $\mathcal{O}(ms_i)\to\mathcal{O}(mf_i)\to send(sd_i)\to\mathcal{O}(sf_i)\to chec
 \section{视觉控制系统融合}
 \label{Integration}
 
-\subsection{VCA Protocol}
-为实现一种柔性的结构，来适应大部分视觉处理应用，我们设计了VCA 协议，来实现视觉系统和ePLC之间实现数据交互。当应用改变时，只需要从新根据设计协议规定设计对照表即可完成新的应用。VCA协议主要包括协议头根据程序间的三层对应关系，分为视觉协议，控制协议和算法协议。视觉系统中具有对数据装帧的模块，控制系统各层中有对对应数据帧解析的模块。三部分协议数据帧如图\ref{fig:Protocol}所示，介绍如下:
-\begin{enumerate}
-	\item 视觉层协议帧。该层数据帧由MID(模块唯一标识符)，MPN(模块参数数量),MSF(模块启动标志),MDS(模块数据存放地址),DATA(数据),CRC(CRC校验值)组成。
-	\item 逻辑层协议帧。该层数据帧由AID(算法唯一表示符),APN(算法参数数量),DATA(数据)组成。
-	\item 算法层协议帧。该层数据帧由PID(参数唯一表示符),PDA(参数获取地址),DATA(数据)组成。
-\end{enumerate}
+\subsection{VCA Protocol Template}
+In cater to most applications, we propose a VCA-based flexible architecture. As shown in Fig. , a protocol template ($PT$) is adopted to support various types of implementations and a $PT$ uniquely corresponds to a type of application. In the flexible architecture, users only need to redesign and reload the $PT$ and then they can reuse the visual servo system again. The $PT$ could be loaded into a stationary address of visual system and ePLC system. After restarting both systems, it will be put into a fixed area of RAM. The parsing modules form both systems will read it when parsing the protocol data.
+ 
+ The $PT$ is defined below:
+ \begin{equation}
+ \left\{
+ \begin{array}{l}
+    PT = \{HPT, VLT, CLT, ALT\}\\
+    HPT = \{CID, TDA\}\\
+    VLT = \{MID, MAN, MSF, MDA, MAS, CDATA\}\\
+    CLT = \{AID, APN, AF, ADA, APS, ADATA\}\\
+    ALT = \{PID, PDATA\}
+ \end{array}
+ \right.
+ \end{equation}
+ 
+ The $PT$ contains four parts: head of protocol template ($HPT$), visual layer template ($VLT$), control layer template ($CLT$) and algorithm layer template ($ALT$). Every part explains as follows: 
+ \begin{enumerate}
+ 	\item $HPT$: this part includes communication unique ID ($CID$), template data storage address ($TDA$). Every $PT$ only has one $HPT$.
+ 	\item $VLT$: it consists of module unique ID ($MID$), module contained algorithm number ($MAN$), module start flag ($MSF$), module data start address ($MDA$), module contained algorithm IDs ($MAS$) and control data ($CDATA$). $VLT$ is not $\emptyset$. Every $MAS$ include $MAN$ algorithm IDs. 
+ 	\item $CLT$: it is comprised of algorithm unique ID ($AID$), algorithm contained parameter number ($APN$), $AF$, algorithm data start address $ADA$, algorithm contained parameter IDs ($APS$) and algorithm data ($ADATA$). $CLT$ is not $\emptyset$.Every $APS$ include $APN$ parameter IDs.
+ 	\item $ALT$: it contains parameter unique ID ($PID$), parameter data ($PDATA$). $CLT$ is not $\emptyset$. 
+ \end{enumerate}
+ \subsection{VCA Protocol Frame}
+ The VCA protocol frame $PF$ consists of visual frame, control frame and algorithm frame as shown in \ref{fig:Protocol}. We use the same name if the $PT$ and $PF$ both have the items.
 
+ \begin{enumerate}
+	\item Visual frame: it consists items of $MID$, $MSF$, $MDA$, visual frame length $VFL$, $CDATA$ and cyclic redundancy check $CRC$.The $CDATA$ contains several control frames.
+	\item Control frame: it is comprised of $AID$, $AF$, $ADA$, control frame length ($CFL$) and $ADATA$.
+	The $ADATA$ includes several algorithm frames. 
+	\item Algorithm frame: it contains $PID$, $PDATA$. $PID$ is also the address of $PDATA$.
+\end{enumerate}
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Protocol.pdf}
@@ -199,14 +228,79 @@ $\mathcal{O}(ms_i)\to\mathcal{O}(mf_i)\to send(sd_i)\to\mathcal{O}(sf_i)\to chec
 	\label{fig:Protocol}
 \end{figure}
 \subsection{PLC Interface}
-需要先在视觉系统中设计PLC接口。该接口主要包括两部分：数据帧组帧和向PLC传递数据。
+The PLC interface is designed to transfer VCA protocol frame to PLC in $VS$. It has five steps: create data, $VL$ framing, $CL$ framing, $AL$ framing and transmission.
 
-\textbf{数据帧组帧}：包括算法层组帧，逻辑层组帧，视觉层组帧以及CRC计算。
+\textbf{Create date}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
 
-\textbf{PLC数据传递}：根据双方系统规定，使用已有协议（TCP/IP,MODBUS,CAN等）传递数据。
+\textbf{\emph{VL} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, the $VS$ can obtain the $msf$ and $mda$. According to $man$, call the next step ($VL$ Framing) to gain the $cdata$. Then calculate the length ($vfl$) and $crc$ to finish the $VL$ framing.
 
-当视觉运动系统开始运行时，视觉系统对图形不断解析，并将解析的数据按协议对照表，将数据进行算法层组帧，逻辑层组帧和视觉层组帧后，然后通过约定通信协议将数据传递给ePLC系统中的视觉接口。
+\textbf{\emph{CL} Framing}: Algorthm \ref{alg2} illustrates the process. The $VS$ seeks the $FT$ to gain the $clt_y$ which contains the $af$ and $ada$. According to $apn$, call the next step ($AL$ Framing) to obtain the $cdata$ and then calculate the length ($cfl$) to finish the $CL$ framing.  
+
+\textbf{\emph{AL} Framing}: Algorthm \ref{alg3} shows the process. The $VS$ obtains the $alt_z$ frome $FT$ and then combines the $pid$ and $pdata$.
+
+\textbf{Transmission}: transfer the $VCA$ protocol frame to $ePLC$ with the relevant communication protocol in $CID$.
+
+\begin{algorithm}
+	\label{alg1}
+	\caption{$VLFraming$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$mid$, $VED$}%输入参数
+	\KwOut{$vlf$}%输出
+	Search the $PT$ with $mid$ and get $vlt_x$\;
+	Create $vlf$ according to $vlt_x$\;
+	\If{create successfully}{
+		$vlf.mid$ = $vlt_x.mid$\;
+		$vlf.msf$ = $vlt_x.msf$\;
+		$vlf.mda$ = $vlt_x.mda$\;
+	}
+	\For{$i=0$;$i<vlt_x.man$;$i++$}{
+		ALFraming($vlt_x$.$mas$[i], $VED$,$cdata$)\;
+	}
+    $vlf.cdata$ = $cdata$\; 
+	$vlf.vfl$ = Length($vfl$)+4\;
+	$vlf.crc$ = CRC16($vlf$)\;		 
+\end{algorithm}
+
+\begin{algorithm}
+	\label{alg2}
+	\caption{$CLFraming$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$aid$, $VED$, $cdata$}%输入参数
+	\KwOut{$cdata$}%输出
+	Search the $PT$ with $aid$ and get $clt_y$\;
+	Create $clf$ according to $clt_y$\;
+	\If{create successfully}{
+		$clf.aid$ = $clt_y.aid$\;
+		$clf.af$ = $clt_y.af$\;
+		$clf.ada$ = $clt_y.ada$\;
+	}
+	\For{$i=0$;$i<clt_y.apn$;$i++$}{
+		ALFraming($clt_y$.$aps$[i], $visualData$, $pdata$)\;
+	}
+	$clf.cfl$ = Length($clf$)\;	
+	$cdata$ += $clf$\;	 
+\end{algorithm}
+\begin{algorithm}
+	\label{alg3}
+	\caption{$ALFraming$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$pid$, $VED$,$pdata$}%输入参数
+	\KwOut{$pdata$}%输出
+	Search the $PT$ with $pid$ and get $alt_z$\;
+	Create $alf$ according to $alt_z$\;
+	\If{create successfully}{
+		$alf.pid$ = $alt_z.pid$\;
+		$alf.pdata$ = $VED.pid$\;
+	}
+	$pdata$ += $alf$\;	 
+\end{algorithm}
+
 \subsection{Vision Interface}
+Vision interface is in the ePLC designed to interact with the $VS$. It includes five parts: receiving $VCA$ protocol frame, saving it, $VL$ deframing, $CL$ deframing and $AL$ deframing.
+
+\textbf{Receiving \emph{VCA} protocol frame}: according to the $CID$ in $PT$, the $ES$ chooses the communication protocol receives the frame form $VS$.
+
+\textbf{Savint \emph{VCA} protocol frame}:  
 ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部分:数据接收和视觉层数据解析。
 
 \textbf{数据接收}：包括双方系统规定，使用已有协议（TCP/IP,MODBUS,CAN等）传递数据。
@@ -218,6 +312,48 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 	\caption{ Data Interaction Based on VP Protocol.}
 	\label{fig:FlexibleLayer}
 \end{figure}
+\begin{algorithm}
+	\label{al4}
+	\caption{$VLDeframing$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$PDF$}%输入参数
+    $mid \leftarrow$ four bytes start form $PDF$\;
+    $msn \leftarrow$ four bytes start form $PDF+4$\; 
+    $mda \leftarrow$ four bytes start form $PDF+8$\;
+    $cdata \leftarrow$ $msn-12$ bytes start form $PDF+12$\;
+	$CassMemM[mda]\leftarrow$ $cdata$\;
+	$PDF\leftarrow$ $PDF+msn$\;
+\end{algorithm}
+
+\begin{algorithm}
+	\label{al5}
+	\caption{$CLDeframing$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$mid$}%输入参数
+	searchPT($mid$, $vlt_x$)\;
+	$mda\leftarrow$ $vlt_x.mda$\;
+	\For{$i=0$;$i<vlt_x.man$;$i++$}{
+		searchPT($vlt_x.mas[i]$, $clt_y$)\;
+		$CassMemS[clt_y.apa]\leftarrow$ $clt_y.apn \times 8$ bytes start form $mda$\; 
+        $mda\leftarrow$ $mda+clt_y.apn \times 8$\;
+	}
+    clean\;
+\end{algorithm}
+
+\begin{algorithm}
+	\label{al6}
+	\caption{$ALDeframing$}%算法名字
+	%\LinesNumbered %要求显示行号
+	\KwIn{$aid$}%输入参数
+	searchPT($aid$, $clt_y$)\;
+	$ada\leftarrow$ $vlt_x.ada$\;
+	\For{$i=0$;$i<clt_y.apn$;$i++$}{
+		$CassMemA[CassMemA[ada]]\leftarrow$ $CassMemA[ada+4]$\;
+		$ada\leftarrow ada+8$\;
+	}
+	clean\;
+\end{algorithm}
+
 
 \section{系统运行原理}
 \label{Execution}
@@ -291,6 +427,7 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 \end{figure}
 \subsubsection{协议设计}
 
+\subsubsection{程序设计}
 
 \subsubsection{运行效果}
 
@@ -305,6 +442,11 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 
 \subsection{Case 2 带视觉的绕线机}
 
+\subsubsection{协议设计}
+
+\subsubsection{程序设计}
+
+\subsubsection{运行效果}
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Winding.pdf}
