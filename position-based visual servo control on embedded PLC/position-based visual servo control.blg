@@ -13,6 +13,7 @@ You're missing a field name---line 553 of file reference.bib
  : %  title={Architecture of FPGA Embedded Multiprocessor Programmable Controller},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "WuA"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -22,7 +23,7 @@ Warning--empty journal in 3S2017Logic
 Done.
 You've used 32 entries,
             4087 wiz_defined-function locations,
-            1023 strings with 13761 characters,
+            1025 strings with 13767 characters,
 and the built_in function-call counts, 26034 in all, are:
 = -- 2170
 > -- 626

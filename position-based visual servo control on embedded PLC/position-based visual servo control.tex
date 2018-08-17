@@ -1,6 +1,6 @@
 
 \documentclass[journal,UTF8]{IEEEtran}
-\usepackage{ctex}
+%\usepackage{ctex}
 \usepackage{color}
 
 %
@@ -74,7 +74,7 @@ motion control, visual servo control, embedded PLC, multi-level architecture
 
 
 \section{Introduction}
-Integration technologies 驱动着工业自动化的发展\cite{Kazmierkowski2007Integration}。对传感器，控制器，机器人，生产线以及软件工具的不断整合，催生了自省设备，智能工厂，CPS，等概念\cite{Wan2018An,Chekired2018Industrial}。最近的一些研究，\cite{Colombo2006An,Vaccaro2010An,Dean2017Integration}介绍了融合技术的发展。在工业自动化中，逻辑控制系统，运动控制系统和视觉系统具有重要作用，且密不可分\cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}。另一方面，边缘计算，雾计算，边缘人工智能等新技术的发展\cite{Hu2017Fog,Hou2018Green,PaceAn}，也对逻辑逻辑控制系统，运动控制系统和视觉系统等相关边缘设备提出了新的要求。
+Integration technologies is driving the industrial automation \cite{Kazmierkowski2007Integration}. The continuously integrations of sensors, controllers, robots, tools, etc. bring the concepts of self-aware equipment, intelligent factory and CPS, etc. \cite{Wan2018An,Chekired2018Industrial}.  Recent researches \cite{Colombo2006An,Vaccaro2010An,Dean2017Integration} introduce the development of integration technologies. In industrial automation, logic control system,  motion control system and visual system become more and more important and inseparable \cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}. On the other hand, the advances of edge computing, fog computing and edge artificial\cite{Hu2017Fog,Hou2018Green,PaceAn} put forward new challenges on edge equipment.
 
 \subsection{Motivations}
 %Nowdays, visual system has been applied in various fields.
@@ -91,32 +91,34 @@ Nowdays, visual system has been applied in various fields. The logic control on 
 
 \subsection{Related Works}
 
-视觉控制系统均是由专用控制系统和视觉系统组成。例如搬运\cite{Xing2014Intersection},，电路检测\cite{Nian2005An},分拣系统，welding\cite{Chen2014A}，装配\cite{Wang2008Visual,Xiao2014Visual}，教育,robot\cite{Wu2013Cloud,Tsai2017A}，unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}。这些研究都很好的解决了各自领域的问题，但是这些方案都是基于视觉系统和专用控制系统完成。
+Visual control system is combined of special motion control system and visual system. Such as transport \cite{Xing2014Intersection}, circuit detection\cite{Nian2005An}, sorting system, welding\cite{Chen2014A}, assembling\cite{Wang2008Visual,Xiao2014Visual}, robot\cite{Wu2013Cloud,Tsai2017A}, unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}. These works address their problems in relevant fields. However, all these solutions are based on special motion control system and visual system.
 
-例如\cite{Wu2013Cloud,Tsai2017A}中均使用机器人专用控制系统和视觉系统完成,在\cite{Guenard2010A,Serra2016Landing}中，使用无人机专用控制系统和视觉系统完成。\cite{Nian2005An}中，通过专用运动控制卡和视觉系统实现电路检测。
+%例如\cite{Wu2013Cloud,Tsai2017A}中均使用机器人专用控制系统和视觉系统完成,在\cite{Guenard2010A,Serra2016Landing}中，使用无人机专用控制系统和视觉系统完成。\cite{Nian2005An}中，通过专用运动控制卡和视觉系统实现电路检测。
 
 On the other hand. The integration of logic control and motion control has variously deep researches \cite{Ioannides2004Design,Shi2016The,Fang2017Design, syaichu2011model}. \cite{Ioannides2004Design,syaichu2011model} realize the motion control directly in PLC. \cite{Peng2011Linear, Qian2014A, OMRON2006CS1W} use motion control module collaborated with PLC to implement their applications. However, the development method in these papers is disordered. Therefore, in 2005, PLCopen organization has released a related standard \cite{PLCopen2005Function} which standardizes the motion control in PLC. Based on this standardization, \cite{S2006Advanced} provides an advanced implementation in distributed automation system and companies, such as 3S \cite{3S2017Logic}, provide some tools. \cite{wu2018customized} poses a customized real-time compilation method to reduce the development complexity.
 
 Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few papers discussing the integration of visual system, motion control and PLC. Most of applications are focusing on its application with three individual system, such as \cite{Chen2014A}. Hence, an integration structure of logic control system, servo system and visual system should be provided to reduce the complexity and expand the application fields.
 
 \subsection{Our Contributions}
-我们提出了一种基于VCA协议的ePLC和视觉系统的柔性架构整合方案，来实现视觉私服控制。VCA协议描述了从视觉系统中获取数据后的组帧和在ePLC中数据帧在各层中的解析，从而实现视觉系统和ePLC的整合。ePLC硬件上的一种定制化设计，软件架构上的三层设计以及融合其中的VCA协议使得整个视觉私服系统变成一种柔性结构。
+.
+%我们提出了一种基于VCA协议的ePLC和视觉系统的柔性架构整合方案，来实现视觉私服控制。VCA协议描述了从视觉系统中获取数据后的组帧和在ePLC中数据帧在各层中的解析，从而实现视觉系统和ePLC的整合。ePLC硬件上的一种定制化设计，软件架构上的三层设计以及融合其中的VCA协议使得整个视觉私服系统变成一种柔性结构。
+%
+%在接下来的部分中，\ref{SystemStructure}会介绍系统组成，包括硬件结构，软件结构，线程结构和内存设计。\ref{Integration}会介绍ePLC如何与视觉系统融合，包括VCA协议，PLC接口和视觉接口介绍。\ref{Execution}介绍系统执行过程，包括视觉层执行过程，逻辑层执行过程，算法层执行过程和多线程执行。\ref{Case}中介绍了两个例子，带视觉检测的绕线机和双目接球机器人。
 
-在接下来的部分中，\ref{SystemStructure}会介绍系统组成，包括硬件结构，软件结构，线程结构和内存设计。\ref{Integration}会介绍ePLC如何与视觉系统融合，包括VCA协议，PLC接口和视觉接口介绍。\ref{Execution}介绍系统执行过程，包括视觉层执行过程，逻辑层执行过程，算法层执行过程和多线程执行。\ref{Case}中介绍了两个例子，带视觉检测的绕线机和双目接球机器人。
-
-\section{系统结构}
+\section{System Architecture}
 \label{SystemStructure}
-\subsection{硬件结构}
-硬件架构由嵌入式PLC系统和视觉系统组成。嵌入式PLC采用定制化结构，处理器以及外部资源例如数字量输入输出，模拟量输入输出和私服系统控制数量可根据需要定制等。图\ref{fig:Hardware}显示了一种典型的ePLC系统，采用双处理器架构，主从处理器之间通过共享内存通信。ePLC系统和视觉系统之间可以采用合适的已有通信方式，例如TCP/IP，Modbus,CAN等。图示采用了CAN通信。
+\subsection{Hardware Structure}
+The hardware is comprised of ePLC system ($ES$)and visual system ($VS$). The $ES$ is a customized structure. The number of DI/DO, AI/AO and controlled servo system could be increased according to applications. Fig. \ref{fig:Hardware} shows a typical $ES$ which adopts two processor architecture. The shared memory is used to transfer data between master and slave processors. The communication between $ES$ and $VS$ could adopt multiple protocols, such as TCP, modbus, CAN, etc. In the shown Fig. \ref{fig:Hardware}, we adopt the CAN Bus.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=3.5in]{fig/Hardware.pdf}
-	\caption{ePLC 和视觉系统融合的硬件架构，ePLC采用双处理器的主从结构并和视觉系统通过CAN总线通信。}
+	\caption{A typical $ES$ which adopts two processor architecture. The shared memory is used to transfer data between master and slave processors. The communication between $ES$ and $VS$ adopt the CAN Bus.}
 	\label{fig:Hardware}
 \end{figure}
-\subsection{软件结构}
-通常我们要实现视觉控制系统的典型软件架构如图\ref{fig:Software}左侧所示，通过逻辑程序连接各控制算法组成模块，在通过逻辑关系根据视觉系统的获取信息来连接各模块执行。这种设计通常会将视觉处理，逻辑处理和控制算法混在一起编程，造成混乱。我们通过VCA协议实现算法层，逻辑层和视觉层的三层架构。软件结构设计成图\ref{fig:Software}右侧所示结构。算法程序完成相关算法。逻辑程序处理算法间逻辑关系并调用相关算法。视觉程序解析视觉数据，调用模块执行。
+\subsection{Software Structure}
+In normal visual control system, the typical software structure is seen as in the left of Fig. \ref{fig:Software}.
+%通常我们要实现视觉控制系统的典型软件架构如图\ref{fig:Software}左侧所示，通过逻辑程序连接各控制算法组成模块，在通过逻辑关系根据视觉系统的获取信息来连接各模块执行。这种设计通常会将视觉处理，逻辑处理和控制算法混在一起编程，造成混乱。我们通过VCA协议实现算法层，逻辑层和视觉层的三层架构。软件结构设计成图\ref{fig:Software}右侧所示结构。算法程序完成相关算法。逻辑程序处理算法间逻辑关系并调用相关算法。视觉程序解析视觉数据，调用模块执行。
 
 
 \begin{figure}
@@ -129,12 +131,12 @@ Above works provide impressive integrations on visual servo control system and P
 
 
 
-\subsection{线程结构}
-我们采用了\cite{wu2018customized}中类似的线程结构。我们特别强调以下三个线程:
+\subsection{Thread Structure}
+We adopt the analogous thread structure in \cite{wu2018customized}. There special threads introduced below:
 \begin{enumerate}
-	\item Visual Thread. 视觉线程，该线程主要完成视觉层协议解析，和逻辑层数据交互和模块调用。
-	\item LC Thread. 逻辑线程，该线程主要完成逻辑程序处理，改成协议解析，和逻辑层和算法层之间数据交互和算法调用。
-	\item Algorithm Thread. 算法线程，主要完成和逻辑层之间的数据交互和算法执行。
+	\item Visual Thread. This thread is responsible for interaction with $VS$. It will receive the protocol frame from the $VS$ and save it to relevant address. 
+	\item LC Thread. Logic control thread mainly execute logic program, deframe the protocol frame and interaction data with algorithm thread.
+	\item Algorithm Thread. Algorithm thread runs in slave processors. It is used to implement data interaction between processors and execution of algorithms.
 \end{enumerate}
 
 
@@ -145,48 +147,79 @@ Above works provide impressive integrations on visual servo control system and P
 	\caption{ The process of the three type threads}
 	\label{fig:Threads}
 \end{figure}
-\subsection{内存设计}
-在内存的PLC专用存储空间主要由位数据区（M区）和字节数据区(D区)组成。整个系统的PLC专用区分布在三个内存中：主控制器内存，主从共享内存和从控制器内存中。在我们的系统中规定了集合的两个属性如下：
+\subsection{Memory Allocation}
+\textcolor{blue}{The dedicated storage area of PLC in memory is made up of bit data area ($M$ area) and byte data area ($D$ area). Meanwhile, we regard $M$ area and $D$ area as set $M$ of bit and set $D$ of byte. Henceforth, we have three definitions below.}
 
-\textbf{Definition 1} 集合 $S$ 具有 $\mathcal{B}$ 属性：$\exists (S=\{s_1,s_2,...,s_i,...s_n\}) \subset M$ and $(\forall s_{i} \in S) \in \{\mathcal{F}(s_i) = 0,\mathcal{O}(s_i) = 1\} $
+\textcolor{blue}{\textbf{Definition 1} If $\exists$ set $S$, we define its subscripted lowercase letter $s_i$ as an element of $S$ and the subscripted $i$ is used to distinguish the elements.}
 
-\textbf{Definition 2} 集合 $S$ 具有 $\mathcal{D}$ 属性：$\exists (S=\{s_1,s_2,...,s_i,...s_n\}) \subset D$ and $\forall s_{i} \in S$ has 4 Byte。
+\textcolor{blue}{\textbf{Definition 2} If $\exists S \subseteq M$ and $(\forall s_{i} \in S) \in \{0, 1\} $. Meanwhile, each element $s_i$ has four operators: $\mathcal{S}_0(s_i)$ assigns $0$ to $s_i$, $\mathcal{S}_1(s_i)$ assigns $1$ to $s_i$, $\mathcal{J}_0(s_i)$ represents that the value of $s_i$ is $0$, $\mathcal{J}_1(s_i)$ means that the value of $s_i$ is $1$. Then we define the set $S$ has $\mathcal{B}$ attribute.}
 
-其中$\mathcal{F}(s_i)$表示$s_i$中数据为0，$\mathcal{O}(s_i)$表示$s_i$中数据为1。
+\textcolor{blue}{\textbf{Definition 3} If $\exists S \subseteq D$ and $\forall s_{i} \in S$ has 4 byte. We define the set $S$ has $\mathcal{D}$ attribute:}
 
-内存结构如图\ref{fig:RAM}所示。主要分三个部分，主处理器内存分配，共享内存分配，从处理器内存分配。各个分区作用介绍如下:
-\begin{enumerate}
-	\item LCF。该区域表示逻辑控制区。
-	\item MPF。主到从数据传递标志区。
-	\item LCD。逻辑数据存放区。
-	\item VD。视觉数据存放区。存放从视觉系统传输过来的数据。
-	\item MtoS。主到从数据存放区。
-	\item StoM。从到主数据存放区。
-	\item AF。算法标志区。
-	\item AD。算法数据区。
-	\item SPF。从到主传递标志区。
-\end{enumerate}
 
- 我们定义了主从处理器之间的数据交互方法为$\mathcal{P}$，如下：
-\begin{equation}
-\left\{
-\begin{array}{l}
-\mathcal{P}_{mts} =\mathcal{I} (ms_i,mc_i,mf_i,sa_i,sf_i,sd_i)\\
-\mathcal{P}_{stm} =\mathcal{I} (ss_i,sd_i,sf_i,ma_i,mf_i,md_i)
-\end{array}
-\right.
-\end{equation}
-$\mathcal{P}_{mts}$和$\mathcal{P}_{mts}$具有相同执行函数$\mathcal{I}$，且执行过程如下:
-$\mathcal{O}(ms_i)\to\mathcal{O}(mf_i)\to send(sd_i)\to\mathcal{O}(sf_i)\to check(sd_i)\to\mathcal{O}(sa_i)\to\mathcal{O}(mc_i)\to\mathcal{F}(ms_i)\to\mathcal{F}(mf_i)\to\mathcal{F}(mc_i)\to\mathcal{F}(sf_i)\to\mathcal{F}(sa_i)$
-\begin{figure}
-	\centering
-	\includegraphics[width=3in]{fig/RAM.pdf}
-	\caption{ The process of the three type threads}
-	\label{fig:RAM}
-\end{figure}
+
+
+
+Fig. \ref{fig:Memory} shows the memory allocation of master and slave processors. All slave processors have the same storage structure.
+
+\textbf{$LCF$} (Logic Control Flag Area): the flag are used to start the modules. It has $\mathcal{B}$ attribute.
+
+\textbf{$LCD$} (Logic Control Data Area): these data will be used to delivery to algorithm. It has $\mathcal{D}$ attribute.
+
+\textbf{$AF$} (Algorithm Flag Area): it includes algorithm flag of execution ($AFE$) and algorithm flag of state ($AFS$).
+Both of them have $\mathcal{B}$ attribute.
+
+\textbf{$AD$} (Algorithm Data Area): these data help specified algorithm executing. It has $\mathcal{D}$ attribute.
+
+\textbf{$MF$} (Message Flag Area): it includes defined message flag ($DMF$) and user customized message flag ($UMF$). $DMF$ is the neccesary message for system execution including start module flag, alarm flag, etc. $UMF$ could be defined by users. Both of them have $\mathcal{B}$ attribute.
+
+\textbf{$MD$} (Message Data Area): it is used to transfer message information which includes system message data area ($DMD$) and usr message data area ($UMD$). It is defined in $D$ area.
+
+\textbf{$MPDIF$} (Master Processor Data Interaction Flag Area): it contains begin data transfer flag from master to slave ($MSB$), transfer state of master from master to slave ($MSF$), acknowledge flag of master from master to slave ($MSA$) and transfer state of master from slave to master ($MSS$). All of them have $\mathcal{B}$ attribute.
+
+\textbf{$MSD$} (Master Processor Data Interaction Data Area): an area stores the data delivered from slave processors and it has $\mathcal{D}$ attribute.
+
+\textbf{$SPDIF$} (Slave Processor Data Interaction Flag Area): this area includes the begin data transfer flag from slave to master ($SMB$), transfer state of slave from slave to master ($SMF$), acknowledge flag of slave from slave to master ($SMA$) and transfer state of slave from master to slave ($SMS$). All of them have $\mathcal{B}$ attribute.
+
+\textbf{$SMD$} (Slave Processor Data Interaction Data Area): an area stores the data delivered from master processor and it has $\mathcal{D}$ attribute.
+
+ As shown in Fig. \ref{fig:Interaction}, we define the LPM data interaction with three parts: $\mathcal{L}$ (layer data interaction), $\mathcal{P}$ (processor data interaction) and $\mathcal{M}$ (module data interaction). $\mathcal{L}$ seen in \cite{WuA} is the process to exchange the data between application customized layer and control layer.
+ 
+ $\mathcal{P}$ is used to interact data between master processor and slave processors, hence it has transferring data from master to slave ($\mathcal{P}_{mts}$) and transferring data from slave to master ($\mathcal{P}_{stm}$) and it is defined below:
+ \begin{equation}
+ \left\{
+ \begin{array}{l}
+ \mathcal{P}_{mts} = \mathcal{U} (msb_i,msf_i,sma_i,sms_i,smd_i)\\
+ \mathcal{P}_{stm} = \mathcal{U} (smb_i,smf_i,msa_i,mss_i,msd_i)
+ \end{array}
+ \right.
+ \end{equation}
+ \textcolor{blue}{Where $\mathcal{U}$ is the function to implement the process of data interaction between master and slave processors. $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$ use the same function $\mathcal{U}$.}
+ 
+ \textcolor{blue}{The process of $\mathcal{P}_{mts}$ is seen below:
+ 	$\mathcal{S}_1(msb_i)\to\mathcal{S}_1(msf_i)\to send(smd_i)\to\mathcal{S}_0(msb_i)\to\mathcal{S}_1(sms_i)\to check(smd_i)\to\mathcal{S}_1(sma_i)\to\mathcal{S}_0(sms_i)\to\mathcal{S}_0(sma_i)\to\mathcal{S}_0(msf_i)$.}
+ 
+ Where $send(msd_i)$ means sending data to $msd_i$ in slave processor. $check(msd_i)$ means to check data of $msd_i$.
+ 
+ $\mathcal{M}$ is used to interact data among modules. It includes two types message: system defined message interaction $\mathcal{M}_{d}$ and user message interaction $\mathcal{M}_{u}$. The process is defined below:
+ \begin{equation}
+ \left\{
+ \begin{array}{l}
+ \mathcal{M}_{d} = \mathcal{V} (dmf_i,dmd_i,\mathcal{E})\\
+ \mathcal{M}_{u} = \mathcal{V} (umf_i,umd_i\,\mathcal{E})
+ \end{array}
+ \right.
+ \end{equation}
+ \textcolor{blue}{Where $\mathcal{V}$ is the function to broadcast message and transfer data. $\mathcal{E}$ is the collection of all execution functions after getting related message, $\mathcal{M}_{s}$ and $\mathcal{M}_{u}$ have the same function $\mathcal{V}$.}
+ 
+ One module receives a system defined message shown below:
+ $\mathcal{J}_1(smf_i)\to GetMessage_{j}(dmf_i)\to GetData(dmd_i)\to\mathcal{E}_j$.
+ 
+ Where $GetMessage_{j}(dmf_i)$ represents the $i$th module getting a message $dmf_i$ and $GetData(dmd_i)$ represents the $i$th module getting the message information.
+ 
 
 %%%Fig.6. Distribution of dedicated public data area.
-\section{视觉控制系统融合}
+\section{Integration of $VS$ and $ES$}
 \label{Integration}
 
 \subsection{VCA Protocol Template}
@@ -208,29 +241,31 @@ In cater to most applications, we propose a VCA-based flexible architecture. As 
  The $PT$ contains four parts: head of protocol template ($HPT$), visual layer template ($VLT$), control layer template ($CLT$) and algorithm layer template ($ALT$). Every part explains as follows: 
  \begin{enumerate}
  	\item $HPT$: this part includes communication unique ID ($CID$), template data storage address ($TDA$). Every $PT$ only has one $HPT$.
- 	\item $VLT$: it consists of module unique ID ($MID$), module contained algorithm number ($MAN$), module start flag ($MSF$), module data start address ($MDA$), module contained algorithm IDs ($MAS$) and control data ($CDATA$). $VLT$ is not $\emptyset$. Every $MAS$ include $MAN$ algorithm IDs. 
- 	\item $CLT$: it is comprised of algorithm unique ID ($AID$), algorithm contained parameter number ($APN$), $AF$, algorithm data start address $ADA$, algorithm contained parameter IDs ($APS$) and algorithm data ($ADATA$). $CLT$ is not $\emptyset$.Every $APS$ include $APN$ parameter IDs.
- 	\item $ALT$: it contains parameter unique ID ($PID$), parameter data ($PDATA$). $CLT$ is not $\emptyset$. 
+ 	\item $VLT$: it consists of module unique ID ($MID$), module contained algorithm number ($MAN$), module start flag ($MSF$), module data start address ($MDA$), module contained algorithm IDs ($MAS$) . $VLT$ is not $\emptyset$. Every $MAS$ include $MAN$ algorithm IDs. 
+ 	\item $CLT$: it is comprised of algorithm unique ID ($AID$), algorithm contained parameter number ($APN$), $AF$, algorithm data start address $ADA$, algorithm contained parameter IDs ($APS$). $CLT$ is not $\emptyset$. Every $APS$ include $APN$ parameter IDs.
+ 	\item $ALT$: it contains parameter unique ID ($PID$). $ALT$ is not $\emptyset$. 
  \end{enumerate}
  \subsection{VCA Protocol Frame}
- The VCA protocol frame $PF$ consists of visual frame, control frame and algorithm frame as shown in \ref{fig:Protocol}. We use the same name if the $PT$ and $PF$ both have the items.
+ The VCA protocol frame ($PF$) contains control frame and algorithm frame as shown in \ref{fig:Protocol}. 
 
  \begin{enumerate}
-	\item Visual frame: it consists items of $MID$, $MSF$, $MDA$, visual frame length $VFL$, $CDATA$ and cyclic redundancy check $CRC$.The $CDATA$ contains several control frames.
-	\item Control frame: it is comprised of $AID$, $AF$, $ADA$, control frame length ($CFL$) and $ADATA$.
-	The $ADATA$ includes several algorithm frames. 
-	\item Algorithm frame: it contains $PID$, $PDATA$. $PID$ is also the address of $PDATA$.
+	\item $PF$: it consists items of $MID$, visual frame length $VFL$, $CDATA$ and cyclic redundancy check $CRC$.The $CDATA$ contains several control frames. The $MID$s both in $PT$ and $PF$ need one-to-one correspondence.
+	\item Control frame: it is comprised of $AID$, control frame length ($CFL$) and $ADATA$.
+	The $ADATA$ includes several algorithm frames. The $AID$s both in control frame and $PF$ need one-to-one correspondence.
+	\item Algorithm frame: it contains $PID$, $PDATA$. $PID$ is also the address of $PDATA$. The $PID$s both in algorithm frame and $PF$ need one-to-one correspondence.
 \end{enumerate}
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Protocol.pdf}
 	\caption{ VCA Protocol.}
 	\label{fig:Protocol}
 \end{figure}
-\subsection{PLC Interface}
-The PLC interface is designed to transfer VCA protocol frame to PLC in $VS$. It has five steps: create data, $VL$ framing, $CL$ framing, $AL$ framing and transmission.
+\subsection{Framing of $PF$}
+In $VS$, the $PLC$ interface is designed to transfer $PF$ to $PLC$ . It has five steps: create data, $VL$ framing, $CL$ framing, $AL$ framing and transmission.
 
-\textbf{Create date}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
+\textbf{Create data}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
 
 \textbf{\emph{VL} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, the $VS$ can obtain the $msf$ and $mda$. According to $man$, call the next step ($VL$ Framing) to gain the $cdata$. Then calculate the length ($vfl$) and $crc$ to finish the $VL$ framing.
 
@@ -245,20 +280,15 @@ The PLC interface is designed to transfer VCA protocol frame to PLC in $VS$. It 
 	\caption{$VLFraming$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$mid$, $VED$}%输入参数
-	\KwOut{$vlf$}%输出
-	Search the $PT$ with $mid$ and get $vlt_x$\;
-	Create $vlf$ according to $vlt_x$\;
-	\If{create successfully}{
-		$vlf.mid$ = $vlt_x.mid$\;
-		$vlf.msf$ = $vlt_x.msf$\;
-		$vlf.mda$ = $vlt_x.mda$\;
-	}
+	\KwOut{$PF$}%输出
+	SearchPT ($mid$, $vlt_x$)\;
+	$PF.mid\leftarrow mid$\; 
 	\For{$i=0$;$i<vlt_x.man$;$i++$}{
-		ALFraming($vlt_x$.$mas$[i], $VED$,$cdata$)\;
+		ALFraming ($vlt_x$.$mas$[i], $VED$,$cdata$)\;
 	}
-    $vlf.cdata$ = $cdata$\; 
-	$vlf.vfl$ = Length($vfl$)+4\;
-	$vlf.crc$ = CRC16($vlf$)\;		 
+    $PF.cdata\leftarrow$ $cdata$\; 
+	$PF.vfl\leftarrow$ Length ($cdata$) + 8\;
+	$PF.crc\leftarrow$ CRC16 ($PF$)\;		 
 \end{algorithm}
 
 \begin{algorithm}
@@ -267,18 +297,15 @@ The PLC interface is designed to transfer VCA protocol frame to PLC in $VS$. It 
 	%\LinesNumbered %要求显示行号
 	\KwIn{$aid$, $VED$, $cdata$}%输入参数
 	\KwOut{$cdata$}%输出
-	Search the $PT$ with $aid$ and get $clt_y$\;
-	Create $clf$ according to $clt_y$\;
-	\If{create successfully}{
-		$clf.aid$ = $clt_y.aid$\;
-		$clf.af$ = $clt_y.af$\;
-		$clf.ada$ = $clt_y.ada$\;
-	}
+	SearchPT ($aid$, $clt_y$)\;
+	Create $clf$\;
+	$clf.aid\leftarrow$ $aid$\;
 	\For{$i=0$;$i<clt_y.apn$;$i++$}{
-		ALFraming($clt_y$.$aps$[i], $visualData$, $pdata$)\;
+		ALFraming($clt_y$.$aps$[i], $visualData$, $adata$)\;
 	}
-	$clf.cfl$ = Length($clf$)\;	
-	$cdata$ += $clf$\;	 
+	$clf.cfl \leftarrow$ Length($adata$) + 8\;
+	$clf.adata \leftarrow$ $adata$\;	
+	$cdata\leftarrow$ $cdata$ + $clf$\;	 
 \end{algorithm}
 \begin{algorithm}
 	\label{alg3}
@@ -287,25 +314,21 @@ The PLC interface is designed to transfer VCA protocol frame to PLC in $VS$. It 
 	\KwIn{$pid$, $VED$,$pdata$}%输入参数
 	\KwOut{$pdata$}%输出
 	Search the $PT$ with $pid$ and get $alt_z$\;
-	Create $alf$ according to $alt_z$\;
-	\If{create successfully}{
-		$alf.pid$ = $alt_z.pid$\;
-		$alf.pdata$ = $VED.pid$\;
-	}
-	$pdata$ += $alf$\;	 
+	Create $alf$\;
+	$alf.pid\leftarrow$ $pid$\; %How to address the problem of id is same with address.
+	$alf.pdata \leftarrow$ $VED[pid]$\;
+	$pdata\leftarrow$ $pdata$ + $alf$\;	 
 \end{algorithm}
 
-\subsection{Vision Interface}
-Vision interface is in the ePLC designed to interact with the $VS$. It includes five parts: receiving $VCA$ protocol frame, saving it, $VL$ deframing, $CL$ deframing and $AL$ deframing.
+\subsection{Deframing of $PF$}
+ $VL$ deframing, $CL$ deframing and $AL$ deframing.
 
-\textbf{Receiving \emph{VCA} protocol frame}: according to the $CID$ in $PT$, the $ES$ chooses the communication protocol receives the frame form $VS$.
+\textbf{Receiving \emph{PF}}: according to the $CID$ in $PT$, the $ES$ chooses the communication protocol receives the $PF$ form $VS$ and then check the $CRC$. If correct, prepare to save.
 
-\textbf{Savint \emph{VCA} protocol frame}:  
-ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部分:数据接收和视觉层数据解析。
+\textbf{Saving \emph{PF}}: there exists a pointer pointing to the address where could save the next $PF$. After saved the $PF$, the pointer point to the next new address according the $vfl$ of $PF$.
 
-\textbf{数据接收}：包括双方系统规定，使用已有协议（TCP/IP,MODBUS,CAN等）传递数据。
+\textbf{\emph{VL} Deframing}: there exits a pointer $PDF$ pointing to the $PF$ which needs to be parsed.    
 
-\textbf{视觉层数据解析}：先对数据进行CRC校验，如果数据错误则丢弃数据并通知视觉系统。如果数据正确，根据VLA协议对接收到的数据进行视觉层协议解析，获取数据后通知。
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/FlexibleLayer.pdf}
@@ -313,20 +336,20 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 	\label{fig:FlexibleLayer}
 \end{figure}
 \begin{algorithm}
-	\label{al4}
+	\label{alg4}
 	\caption{$VLDeframing$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$PDF$}%输入参数
     $mid \leftarrow$ four bytes start form $PDF$\;
     $msn \leftarrow$ four bytes start form $PDF+4$\; 
-    $mda \leftarrow$ four bytes start form $PDF+8$\;
-    $cdata \leftarrow$ $msn-12$ bytes start form $PDF+12$\;
-	$CassMemM[mda]\leftarrow$ $cdata$\;
+    searchPT ($mid$, $vlt_x$);
+    $cdata \leftarrow$ $msn-8$ bytes start form $PDF+8$\;
+	$CassMemM[vlt_x.mda]\leftarrow$ $cdata$\;
 	$PDF\leftarrow$ $PDF+msn$\;
 \end{algorithm}
 
 \begin{algorithm}
-	\label{al5}
+	\label{alg5}
 	\caption{$CLDeframing$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$mid$}%输入参数
@@ -334,14 +357,14 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 	$mda\leftarrow$ $vlt_x.mda$\;
 	\For{$i=0$;$i<vlt_x.man$;$i++$}{
 		searchPT($vlt_x.mas[i]$, $clt_y$)\;
-		$CassMemS[clt_y.apa]\leftarrow$ $clt_y.apn \times 8$ bytes start form $mda$\; 
-        $mda\leftarrow$ $mda+clt_y.apn \times 8$\;
+		$CassMemS[clt_y.apa]\leftarrow$ $clt_y.vfl - 8$ bytes start form $mda+8$\; 
+        $mda\leftarrow$ $mda+clt_y.vfl$\;
 	}
     clean\;
 \end{algorithm}
 
 \begin{algorithm}
-	\label{al6}
+	\label{alg6}
 	\caption{$ALDeframing$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$aid$}%输入参数
@@ -355,10 +378,26 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 \end{algorithm}
 
 
-\section{系统运行原理}
+\section{System Operation Mechanism}
 \label{Execution}
-\subsection{视觉层的执行}
-视觉层通过视觉接口和视觉执行模块两部分实现。通过视觉接口，从视觉系统中获取数据。视觉执行模块，通过执行顺序依次执行模块，并将视觉系统的数据不断反馈给逻辑层。
+\subsection{Implementation of Flexible Program and Execution}
+The $FL$ contains two parts: $PLC$ interface and visual interface. They interact with each other with the agreed communication protocol.
+
+The $PLC$ interface is responsible for get parameters of motion control form $VS$ and interact with $ES$. It includes three steps blew.
+
+\textbf{Step 1}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
+
+\textbf{Step 2}: frame them into $PF$ with the Algorithm \ref{alg1}, \ref{alg2} and \ref{alg3}.
+
+\textbf{Step 3}: transfer the $VCA$ protocol frame to $ePLC$ with the relevant communication protocol in $CID$.
+
+Visual interface is in the $ePLC$ designed to interact with $VS$ and it contains two steps below. 
+
+\textbf{Step 1}: receive $PF$s from $VS$ according the $CID$ in $HPT$.
+
+\textbf{Step 2}: save them in the $ES$. There are two pointers: $PDF$ and $PSP$. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. The $PDF$ will point to the next address of $PF$ if a $PF$ is deframed. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$. 
+
+
 
 
 
@@ -371,10 +410,21 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 %%%Fig.11. Using bit data in M area to control program module¡¯s execution.
 
 
-\subsection{逻辑层执行}
-逻辑层由模块数据初始化，逻辑程序，协议解析程序和数据交互程序组成。
+\subsection{Implementation of Control Program and Execution}
+Control program $CP$ is responsible for organizing the modules, executing the logic program, deframing the $PF$ and interacting the data with algorithm program. $CP=\{VLDP,CLDP, IP, LP, PIP\}$, where $CLP$ is the control layer deframe program. $IP$ is the initial program which is used to initialize the data and state. $LP$ is the logic program. $PIP$ is the processor interaction program implemented to transfer and receive data between processors. The implementation of control program is described below.
 
-当视觉层控制模块调用逻辑层模块执行时，先启动初始化程序初始化模块，运行逻辑程序，通过对视觉层给出的数据解析协议后，通过$\mathcal{P}_{mts}$方法将数据传递给引擎层，并一直获取从引擎层反馈的数据，如果算法执行完毕则清除所有标志位和状态。
+\textbf{Step 1}: if $PDF!=PSP$, execute the $VLDP$ which means to call Algorithm \ref{alg4}
+
+\textbf{Step 2}: traverse the $LCF$ to check whether there is a module needed to execute. If $\exists$ $\forall$ $lcf_i \in LCF$ is 1, go to step 2.
+
+\textbf{Step 3}: execute the $IP$ to initialize the data and state and then execute the $LP$ to find the called algorithm. If $\exists$ $\forall$ $af_i \in AF$ is 1, go to step 4. 
+
+\textbf{Step 4}: execute the $CLDP$ to call Algorithm \ref{alg5}. 
+
+\textbf{Step 5}: the $\mathcal{P}_{mts}$ is used in $PIP$ to inform the slave processor to receive parameters and start algorithms and clear the relevant $af_i$.   
+
+\textbf{Step 6}: read and process the feedback data form the slave processor. 
+
 
 %\begin{figure}
 %\centering
@@ -410,26 +460,64 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 	\label{fig:execution}
 \end{figure}
 
-\subsection{算法层执行}
-算法层包含算法层协议解析模块，不断执行解析从控制层传递数据，选择更新算法模块或者执行新的模块。
-\subsection{线程运行机制}
-通过驱动模块，线程间交互和数据交互实现整个系统的运行。
+\subsection{Implementation and Execution of Algorithm Program }
+The Algorithm Program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, where $\mathcal{P}_{stm}$ feeds back data to master processor, $AS$ contains all algorithms and $ALDP$ deframe the $AL$ frame. The execution of algorithm program is introduced below.
 
+\textbf{Step 1}: traverse the $LCF$ to check whether there is a algorithm needed to execute. If $\exists$ $\forall$ $af_i \in AF$ is 1, go to step 2.
+
+\textbf{Step 2}: ALDP is executed to call Algorithm \ref{alg5}. The parameters are transfered to correlative $as_i$.
+
+\textbf{Step 3}: $as_i$ is executed and uses the $\mathcal{P}_{stm}$ to feed back data to the master processor. 
+
+\subsection{Execution of Threads}
+ Commonly, threads in master processor and in slave processors execute separately according to their priority and the interaction between control thread and algorithm threads occurs when using $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$. Basic execution units of control thread are shown as follows:
+
+\textbf{$C_{1}$} Start the module.
+
+\textbf{$C_{2}$} Transfer data to motion thread by $\mathcal{P}_{mts}$.
+
+\textbf{$C_{3}$} Seal with the feedback data.
+
+\textbf{$C_{4}$} Broadcast a message.
+
+\textbf{$C_{5}$} Handle the message.
+
+Motion thread contains the following basic execution units:
+
+\textbf{$M_{1}$} Start the algorithm.
+
+\textbf{$M_{2}$} Execute the algorithm.
+
+\textbf{$M_{3}$} Feedback the data to control thread by $\mathcal{P}_{stm}$.
+
+\textbf{$M_{4}$} End algorithm.
+
+Two cases shown in Fig. \ref{fig:threadFlow} are explained below:
+
+\textbf{Case one}: execution of control thread and two algorithm threads among three processors. The $CT$ (Control Thread) traverses $LCF$, finds $ms_i$ to be executed , runs $lcp_i$, finds $ap_j$, executes $C_1$ unit, executes $C_2$ unit and then transfers data from $LCD$ to $SMD$ of processor 1. $AT$ (Algorithm Thread) 1 executes $M_1$ unit, executes $M_2$ after transferring data from $SMD$ to $AD$, runs $M_3$ unit, feedbacks data to $CT$. When the $ap_j$ finishes, $AT$ 1 executes $M_4$ and informs $CT$ the end of $ap_j$. $CT$ executes $C_3$ to end the process and then finds $ap_{j+1}$, executes $C_1$ and $C_2$, transfers the data from $LCD$ to $SMD$ of processor 2, $AT$ 2 executes $M_1$ unit, executes $M_2$ after transferring data from $SMD$ to $AD$. When the $ap_{j+1}$ finishes, $AT$ 2 executes $M_4$ unit and informs $CT$ the end of $ap_{j+1}$. $CT$ executes $C_3$ to finish the process.
+\begin{figure}
+	\centering
+	\includegraphics[width=3in]{fig/threadflow.pdf}
+	\caption{ Visual servo control system}
+	\label{fig:threadFlow}
+\end{figure}
 
 \section{Case Analysis}
 \label{Case}
-\subsection{Case 1 双目抛球机器人}
+In this section, we introduce two scenarios of the proposed $VCA$ protocol based integration method in ePLC. With the $VCA$ protocol, users only need to code additional algorithms and change the $PT$ when the scenario of visual servo system is changed. 
+\subsection{Case 1 Binocular Catching Robot}
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/visual_control_system.png}
 	\caption{ Visual servo control system}
-	\label{fig:VIsualServoControlSystem}
+	\label{fig:catchRobot}
 \end{figure}
-\subsubsection{协议设计}
+As shown in Fig. \ref{fig:catchRobot}, the binocular catching robot adopts two cameras to judge the position of the ball. Through sending the continuously parameters to $ePLC$ to adjust the position of the robot. Finally, the robot will catch the ball. The cameras is xxx, the visual system is xxx, and the $ePLC$ is XXX. $ePLC$ uses tht TI F28M35 chip with two cores: ARM Cortex M3 and TI C28x, which contains a shared RAM. The servo driver and motor are xxx and xxx respectively. 
+\subsubsection{Design of $PT$}
 
-\subsubsection{程序设计}
+\subsubsection{Design of Program}
 
-\subsubsection{运行效果}
+\subsubsection{Result}
 
 
 
@@ -440,13 +528,13 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 	\label{fig:settingexecutionbitinACPTD}
 \end{figure}
 
-\subsection{Case 2 带视觉的绕线机}
+\subsection{Case 2 Winding Machine with Visual System}
 
-\subsubsection{协议设计}
+\subsubsection{Design of $PT$}
 
-\subsubsection{程序设计}
+\subsubsection{Design of Program}
 
-\subsubsection{运行效果}
+\subsubsection{Result}
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Winding.pdf}
@@ -456,7 +544,7 @@ ePLC中需要接收从视觉系统获得的数据。该接口主要包括两部�
 \section{Conclusion}
 \label{conclusion}
 
-下一步我们将实现在PLC开发平台中对逻辑，视觉，运动控制的统一编程，实现支持视觉运动控制的嵌入式PLC。
+In the further research, we will implement a uniform development method of the visual servo control in ePLC.
 
 \ifCLASSOPTIONcaptionsoff
   \newpage
