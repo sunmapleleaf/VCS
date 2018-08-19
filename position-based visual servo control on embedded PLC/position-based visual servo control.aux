@@ -30,50 +30,69 @@
 \newlabel{SystemStructure}{{II}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Hardware Structure}{1}}
 \citation{wu2018customized}
-\citation{WuA}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The three-layer architecture of ePLC}}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Multi-level flexible architecture contains three layers: flexible layer, control layer and algorithm layer.}}{2}}
 \newlabel{fig:Software}{{2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  The process of the three type threads}}{2}}
-\newlabel{fig:Threads}{{3}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Software Structure}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Thread Structure}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Thread structureThe with three special threads: visual thread, Control thread, algorithm thread.}}{2}}
+\newlabel{fig:Threads}{{3}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Memory allocation of master processor, shared ram and slave processor.}}{2}}
+\newlabel{fig:RAM}{{4}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Memory Allocation}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A $PT$ uniquely corresponds to a type of application. It contains four parts: head of protocol template, visual layer template , control layer template and algorithm layer template.}}{3}}
+\newlabel{fig:PT}{{5}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Integration of $VS$ and $ES$}{3}}
 \newlabel{Integration}{{III}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}VCA Protocol Template}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  VCA Protocol.}}{3}}
-\newlabel{fig:Protocol}{{4}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}VCA Protocol Frame}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Framing of $PF$}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  $VCA$ protocol frame contains control frame and algorithm frame in its data field.}}{4}}
+\newlabel{fig:Protocol}{{6}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}$VCA$ Protocol Frame}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Framing of $PF$}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Deframing of $PF$}{4}}
 \newlabel{alg1}{{1}{4}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VLFraming$}}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VCAFraming$}}{4}}
 \newlabel{alg2}{{2}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces $CLFraming$}}{4}}
 \newlabel{alg3}{{3}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces $ALFraming$}}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Deframing of $PF$}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}System Operation Mechanism}{4}}
-\newlabel{Execution}{{IV}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Implementation of Flexible Program and Execution}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Data Interaction Based on VP Protocol.}}{4}}
-\newlabel{fig:FlexibleLayer}{{5}{4}}
 \newlabel{alg4}{{4}{4}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces $VLDeframing$}}{4}}
-\newlabel{alg5}{{5}{4}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $CLDeframing$}}{4}}
-\newlabel{alg6}{{6}{4}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $ALDeframing$}}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  The execution OF flexible program}}{5}}
-\newlabel{fig:execution}{{6}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Data Interaction Based on VP Protocol.}}{5}}
+\newlabel{fig:FlexibleLayer}{{7}{5}}
+\newlabel{alg5}{{5}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $CLDeframing$}}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}System Operation Mechanism}{5}}
+\newlabel{Execution}{{IV}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Implementation of Flexible Program and Execution}{5}}
+\newlabel{alg6}{{6}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $ALDeframing$}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  $PDF$ and $PSP$.}}{5}}
+\newlabel{fig:VisualInterface}{{8}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Implementation of Control Program and Execution}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Implementation and Execution of Algorithm Program }{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Execution of Threads}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Case Analysis}{5}}
-\newlabel{Case}{{V}{5}}
 \bibstyle{IEEEtran}
 \bibdata{reference}
 \bibcite{Kazmierkowski2007Integration}{1}
 \bibcite{Wan2018An}{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  Visual servo control system}}{6}}
+\newlabel{fig:threadExecution}{{9}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Execution of Threads}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  Visual servo control system}}{6}}
+\newlabel{fig:robot}{{10}{6}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces $PT$ of binocular catching robot}}{6}}
+\newlabel{table:PTofRobot}{{I}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Case Analysis}{6}}
+\newlabel{Case}{{V}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Case 1 Binocular Catching Robot}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}1}Design of $PT$}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}Design of Program}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}3}Result}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Case 2 Winding Machine with Visual System}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}1}Design of $PT$}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}2}Design of Program}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}3}Result}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{6}}
+\newlabel{conclusion}{{VI}{6}}
 \bibcite{Chekired2018Industrial}{3}
 \bibcite{Colombo2006An}{4}
 \bibcite{Vaccaro2010An}{5}
@@ -81,25 +100,6 @@
 \bibcite{Feng2002Integrating}{7}
 \bibcite{Chang2006Motion}{8}
 \bibcite{Feng2005Practical}{9}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Visual servo control system}}{6}}
-\newlabel{fig:threadFlow}{{7}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  Visual servo control system}}{6}}
-\newlabel{fig:catchRobot}{{8}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Case 1 Binocular Catching Robot}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}1}Design of $PT$}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}Design of Program}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}3}Result}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Case 2 Winding Machine with Visual System}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}1}Design of $PT$}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  The execution OF flexible program}}{6}}
-\newlabel{fig:settingexecutionbitinACPTD}{{9}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  Winding machine Based on Visual System}}{6}}
-\newlabel{fig:Winding}{{10}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}2}Design of Program}{6}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}3}Result}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{6}}
-\newlabel{conclusion}{{VI}{6}}
-\@writefile{toc}{\contentsline {section}{References}{6}}
 \bibcite{Hu2017Fog}{10}
 \bibcite{Hou2018Green}{11}
 \bibcite{PaceAn}{12}
@@ -113,6 +113,11 @@
 \bibcite{Guenard2010A}{20}
 \bibcite{Serra2016Landing}{21}
 \bibcite{Ioannides2004Design}{22}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  The execution OF flexible program}}{7}}
+\newlabel{fig:settingexecutionbitinACPTD}{{11}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces  Winding machine Based on Visual System}}{7}}
+\newlabel{fig:Winding}{{12}{7}}
+\@writefile{toc}{\contentsline {section}{References}{7}}
 \bibcite{Shi2016The}{23}
 \bibcite{Fang2017Design}{24}
 \bibcite{syaichu2011model}{25}

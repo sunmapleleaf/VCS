@@ -118,13 +118,22 @@ The hardware is comprised of ePLC system ($ES$)and visual system ($VS$). The $ES
 \end{figure}
 \subsection{Software Structure}
 In normal visual control system, the typical software structure is seen as in the left of Fig. \ref{fig:Software}.
-%通常我们要实现视觉控制系统的典型软件架构如图\ref{fig:Software}左侧所示，通过逻辑程序连接各控制算法组成模块，在通过逻辑关系根据视觉系统的获取信息来连接各模块执行。这种设计通常会将视觉处理，逻辑处理和控制算法混在一起编程，造成混乱。我们通过VCA协议实现算法层，逻辑层和视觉层的三层架构。软件结构设计成图\ref{fig:Software}右侧所示结构。算法程序完成相关算法。逻辑程序处理算法间逻辑关系并调用相关算法。视觉程序解析视觉数据，调用模块执行。
+To our best knowledge, the $VS$ contains several visual algorithms and every algorithm could extract some required parameters form pictures or videos. Meanwhile, the $ES$ is comprised of modules which conclude logic part and algorithms and algorithms here are main motion control algorithms. Regarding the normal development method of visual servo control, the $VS$ and $ES$ is developed individually and using the communication protocol combines this two parts. However, this method should be always redesigned the programs in both systems because of the various visual algorithms and motion control algorithms. In addition, the logic and motion control are mixed together to develop in $ES$ and there are also lots of communication protocols (EtherCat, Modbus, Can, etc.). Considering the high complexity of today’s applications, it will be a cumbersome task.
+
+Hence, we propose a multi-level flexible architecture which is based on $VCA$ protocol. As shown in Fig. \ref{fig:Software}, the architecture contains three layers: flexible layer ($FL$), control layer ($CL$) and algorithm layer ($AL$).
+
+\textbf{Flexible layer}: these layer is responsible for joint the $VS$ and $ES$ and consists of $PLC$ interface and visual interface. The parameters are framed with $VCA$ protocol frame (henceforth
+, abbreviated form of $PF$) interacted between $VS$ and $ES$. Furthermore, a special protocol template ($PT$) is saved in both systems to illustrate the protocol.
+
+\textbf{Control layer}: this is independent of algorithm layer to cope with the logic tasks. This make it possible to run the logic task and algorithm task in different processors.
+
+\textbf{Algorithm layer}: it is mainly comprised of types of algorithms which could be built in individual processors for algorithms with high performance requirement. 
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=3.5in]{fig/Software.pdf}
-	\caption{The three-layer architecture of ePLC}
+	\caption{Multi-level flexible architecture contains three layers: flexible layer, control layer and algorithm layer.}
 	\label{fig:Software}
 \end{figure}
 %%%Fig.4. The three-layer architecture of embed PLC.
@@ -132,60 +141,62 @@ In normal visual control system, the typical software structure is seen as in th
 
 
 \subsection{Thread Structure}
-We adopt the analogous thread structure in \cite{wu2018customized}. There special threads introduced below:
+We adopt the analogous thread structure in \cite{wu2018customized}. Three special threads introduced below:
 \begin{enumerate}
 	\item Visual Thread. This thread is responsible for interaction with $VS$. It will receive the protocol frame from the $VS$ and save it to relevant address. 
-	\item LC Thread. Logic control thread mainly execute logic program, deframe the protocol frame and interaction data with algorithm thread.
+	\item Control Thread. Control thread mainly execute logic program, deframe the protocol frame and interaction data with algorithm thread.
 	\item Algorithm Thread. Algorithm thread runs in slave processors. It is used to implement data interaction between processors and execution of algorithms.
 \end{enumerate}
-
-
 
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Threads.pdf}
-	\caption{ The process of the three type threads}
+	\caption{ Thread structureThe with three special threads: visual thread, Control thread, algorithm thread.}
 	\label{fig:Threads}
 \end{figure}
 \subsection{Memory Allocation}
-\textcolor{blue}{The dedicated storage area of PLC in memory is made up of bit data area ($M$ area) and byte data area ($D$ area). Meanwhile, we regard $M$ area and $D$ area as set $M$ of bit and set $D$ of byte. Henceforth, we have three definitions below.}
+\begin{figure}
+	\centering
+	\includegraphics[width=3in]{fig/RAM.pdf}
+	\caption{Memory allocation of master processor, shared ram and slave processor.}
+	\label{fig:RAM}
+\end{figure}
+The dedicated storage area of $PLC$ in memory is made up of bit data area ($M$ area) and byte data area ($D$ area). Meanwhile, we regard $M$ area and $D$ area as set $M$ of bit and set $D$ of byte. Henceforth, we have three definitions below.
 
-\textcolor{blue}{\textbf{Definition 1} If $\exists$ set $S$, we define its subscripted lowercase letter $s_i$ as an element of $S$ and the subscripted $i$ is used to distinguish the elements.}
+\textbf{Definition 1} If $\exists$ set $S$, we define its subscripted lowercase letter $s_i$ as an element of $S$ and the subscripted $i$ is used to distinguish the elements.
 
-\textcolor{blue}{\textbf{Definition 2} If $\exists S \subseteq M$ and $(\forall s_{i} \in S) \in \{0, 1\} $. Meanwhile, each element $s_i$ has four operators: $\mathcal{S}_0(s_i)$ assigns $0$ to $s_i$, $\mathcal{S}_1(s_i)$ assigns $1$ to $s_i$, $\mathcal{J}_0(s_i)$ represents that the value of $s_i$ is $0$, $\mathcal{J}_1(s_i)$ means that the value of $s_i$ is $1$. Then we define the set $S$ has $\mathcal{B}$ attribute.}
+\textbf{Definition 2} If $\exists S \subseteq M$ and $(\forall s_{i} \in S) \in \{0, 1\} $. Meanwhile, each element $s_i$ has four operators: $\mathcal{S}_0(s_i)$ assigns $0$ to $s_i$, $\mathcal{S}_1(s_i)$ assigns $1$ to $s_i$, $\mathcal{J}_0(s_i)$ represents that the value of $s_i$ is $0$, $\mathcal{J}_1(s_i)$ means that the value of $s_i$ is $1$. Then we define the set $S$ has $\mathcal{B}$ attribute.
 
-\textcolor{blue}{\textbf{Definition 3} If $\exists S \subseteq D$ and $\forall s_{i} \in S$ has 4 byte. We define the set $S$ has $\mathcal{D}$ attribute:}
+\textbf{Definition 3} If $\exists S \subseteq D$ and $\forall s_{i} \in S$ has 4 bytes. We define the set $S$ has $\mathcal{D}$ attribute.
+
+Fig. \ref{fig:RAM} shows the memory allocation of master processor, shared RAM and slave processor. The shared $RAM$ is a special structure to fast data interaction between master and slave processors. In more general cases, the $MtoS$ is located in master processor, the $StoM$ is located in slave processor and the $PT$ is in both master and slave processors. 
+
+\textbf{\emph{LCF}} (Logic Control Flag Area): the flag are used to start the modules. It has $\mathcal{B}$ attribute.
+
+\textbf{\emph{MPF}} (Master Processor Data Interaction Flag Area): it contains begin data transfer flag from master to slave ($MSB$), transfer state of master from master to slave ($MSF$), acknowledge flag of master from master to slave ($MSA$) and transfer state of master from slave to master ($MSS$). All of them have $\mathcal{B}$ attribute.
 
 
+\textbf{\emph{CDF}} (control frame saved flag area): this flags denote whether the control frame is saved. It has $\mathcal{B}$ attribute.
+
+\textbf{\emph{LCD}} (Logic Control Data Area): these data will be used to store the control frame. It has $\mathcal{D}$ attribute. Every element $lcd_i$ is associated with a specified module.
+
+\textbf{\emph{VD}} ($VCA$ protocol frame data area): all the frames received from the $VS$ are stored in this area.
+
+\textbf{\emph{MSD}} (Master Processor Data Interaction Data Area): an area stores the data delivered from slave processors and it has $\mathcal{D}$ attribute.
+
+\textbf{\emph{SMD}} (Slave Processor Data Interaction Data Area): an area stores the data delivered from master processor and it has $\mathcal{D}$ attribute.
+
+\textbf{\emph{PTD}} (Protocol Template Data Area): the protocol template is stored in this area and could be read by both processors.
 
 
-
-Fig. \ref{fig:Memory} shows the memory allocation of master and slave processors. All slave processors have the same storage structure.
-
-\textbf{$LCF$} (Logic Control Flag Area): the flag are used to start the modules. It has $\mathcal{B}$ attribute.
-
-\textbf{$LCD$} (Logic Control Data Area): these data will be used to delivery to algorithm. It has $\mathcal{D}$ attribute.
-
-\textbf{$AF$} (Algorithm Flag Area): it includes algorithm flag of execution ($AFE$) and algorithm flag of state ($AFS$).
+\textbf{\emph{AF}} (Algorithm Flag Area): it includes algorithm flag of execution ($AFE$) and algorithm flag of state ($AFS$).
 Both of them have $\mathcal{B}$ attribute.
 
-\textbf{$AD$} (Algorithm Data Area): these data help specified algorithm executing. It has $\mathcal{D}$ attribute.
+\textbf{\emph{SPF}} (Slave Processor Data Interaction Flag Area): this area includes the begin data transfer flag from slave to master ($SMB$), transfer state of slave from slave to master ($SMF$), acknowledge flag of slave from slave to master ($SMA$) and transfer state of slave from master to slave ($SMS$). All of them have $\mathcal{B}$ attribute.
 
-\textbf{$MF$} (Message Flag Area): it includes defined message flag ($DMF$) and user customized message flag ($UMF$). $DMF$ is the neccesary message for system execution including start module flag, alarm flag, etc. $UMF$ could be defined by users. Both of them have $\mathcal{B}$ attribute.
-
-\textbf{$MD$} (Message Data Area): it is used to transfer message information which includes system message data area ($DMD$) and usr message data area ($UMD$). It is defined in $D$ area.
-
-\textbf{$MPDIF$} (Master Processor Data Interaction Flag Area): it contains begin data transfer flag from master to slave ($MSB$), transfer state of master from master to slave ($MSF$), acknowledge flag of master from master to slave ($MSA$) and transfer state of master from slave to master ($MSS$). All of them have $\mathcal{B}$ attribute.
-
-\textbf{$MSD$} (Master Processor Data Interaction Data Area): an area stores the data delivered from slave processors and it has $\mathcal{D}$ attribute.
-
-\textbf{$SPDIF$} (Slave Processor Data Interaction Flag Area): this area includes the begin data transfer flag from slave to master ($SMB$), transfer state of slave from slave to master ($SMF$), acknowledge flag of slave from slave to master ($SMA$) and transfer state of slave from master to slave ($SMS$). All of them have $\mathcal{B}$ attribute.
-
-\textbf{$SMD$} (Slave Processor Data Interaction Data Area): an area stores the data delivered from master processor and it has $\mathcal{D}$ attribute.
-
- As shown in Fig. \ref{fig:Interaction}, we define the LPM data interaction with three parts: $\mathcal{L}$ (layer data interaction), $\mathcal{P}$ (processor data interaction) and $\mathcal{M}$ (module data interaction). $\mathcal{L}$ seen in \cite{WuA} is the process to exchange the data between application customized layer and control layer.
+\textbf{\emph{AD}} (Algorithm Data Area): these data help specified algorithm executing. It has $\mathcal{D}$ attribute.
  
- $\mathcal{P}$ is used to interact data between master processor and slave processors, hence it has transferring data from master to slave ($\mathcal{P}_{mts}$) and transferring data from slave to master ($\mathcal{P}_{stm}$) and it is defined below:
+ We define the $\mathcal{P}$ to interact data between master processor and slave processor. It contains transferring data from master to slave ($\mathcal{P}_{mts}$) and transferring data from slave to master ($\mathcal{P}_{stm}$) which is defined below:
  \begin{equation}
  \left\{
  \begin{array}{l}
@@ -194,28 +205,13 @@ Both of them have $\mathcal{B}$ attribute.
  \end{array}
  \right.
  \end{equation}
- \textcolor{blue}{Where $\mathcal{U}$ is the function to implement the process of data interaction between master and slave processors. $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$ use the same function $\mathcal{U}$.}
+ Where $\mathcal{U}$ is the function to implement the process of data interaction between master and slave processors. $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$ use the same function $\mathcal{U}$.
  
- \textcolor{blue}{The process of $\mathcal{P}_{mts}$ is seen below:
- 	$\mathcal{S}_1(msb_i)\to\mathcal{S}_1(msf_i)\to send(smd_i)\to\mathcal{S}_0(msb_i)\to\mathcal{S}_1(sms_i)\to check(smd_i)\to\mathcal{S}_1(sma_i)\to\mathcal{S}_0(sms_i)\to\mathcal{S}_0(sma_i)\to\mathcal{S}_0(msf_i)$.}
+ The process of $\mathcal{P}_{mts}$ is seen below:
+ 	$\mathcal{S}_1(msb_i)\to\mathcal{S}_1(msf_i)\to send(smd_i)\to\mathcal{S}_0(msb_i)\to\mathcal{S}_1(sms_i)\to check(smd_i)\to\mathcal{S}_1(sma_i)\to\mathcal{S}_0(sms_i)\to\mathcal{S}_0(sma_i)\to\mathcal{S}_0(msf_i)$.
  
  Where $send(msd_i)$ means sending data to $msd_i$ in slave processor. $check(msd_i)$ means to check data of $msd_i$.
- 
- $\mathcal{M}$ is used to interact data among modules. It includes two types message: system defined message interaction $\mathcal{M}_{d}$ and user message interaction $\mathcal{M}_{u}$. The process is defined below:
- \begin{equation}
- \left\{
- \begin{array}{l}
- \mathcal{M}_{d} = \mathcal{V} (dmf_i,dmd_i,\mathcal{E})\\
- \mathcal{M}_{u} = \mathcal{V} (umf_i,umd_i\,\mathcal{E})
- \end{array}
- \right.
- \end{equation}
- \textcolor{blue}{Where $\mathcal{V}$ is the function to broadcast message and transfer data. $\mathcal{E}$ is the collection of all execution functions after getting related message, $\mathcal{M}_{s}$ and $\mathcal{M}_{u}$ have the same function $\mathcal{V}$.}
- 
- One module receives a system defined message shown below:
- $\mathcal{J}_1(smf_i)\to GetMessage_{j}(dmf_i)\to GetData(dmd_i)\to\mathcal{E}_j$.
- 
- Where $GetMessage_{j}(dmf_i)$ represents the $i$th module getting a message $dmf_i$ and $GetData(dmd_i)$ represents the $i$th module getting the message information.
+
  
 
 %%%Fig.6. Distribution of dedicated public data area.
@@ -223,7 +219,13 @@ Both of them have $\mathcal{B}$ attribute.
 \label{Integration}
 
 \subsection{VCA Protocol Template}
-In cater to most applications, we propose a VCA-based flexible architecture. As shown in Fig. , a protocol template ($PT$) is adopted to support various types of implementations and a $PT$ uniquely corresponds to a type of application. In the flexible architecture, users only need to redesign and reload the $PT$ and then they can reuse the visual servo system again. The $PT$ could be loaded into a stationary address of visual system and ePLC system. After restarting both systems, it will be put into a fixed area of RAM. The parsing modules form both systems will read it when parsing the protocol data.
+\begin{figure}
+\centering
+\includegraphics[width=3.5in]{fig/PT.pdf}
+\caption{A $PT$ uniquely corresponds to a type of application. It contains four parts: head of protocol template, visual layer template , control layer template and algorithm layer template.}
+\label{fig:PT}
+\end{figure}
+In cater to most applications, we propose a VCA-based multi-level flexible architecture. As shown in Fig. \ref{fig:PT}, a protocol template ($PT$) is adopted to support various types of implementations and a $PT$ uniquely corresponds to a type of application. In the flexible architecture, users only need to redesign and reload the $PT$ and then they can reuse the visual servo system again. The $PT$ could be loaded into a stationary address of visual system and ePLC system. After restarting both systems, it will be put into a fixed area of $RAM$. The parsing modules form both systems will read it when parsing the protocol data.
  
  The $PT$ is defined below:
  \begin{equation}
@@ -245,8 +247,8 @@ In cater to most applications, we propose a VCA-based flexible architecture. As 
  	\item $CLT$: it is comprised of algorithm unique ID ($AID$), algorithm contained parameter number ($APN$), $AF$, algorithm data start address $ADA$, algorithm contained parameter IDs ($APS$). $CLT$ is not $\emptyset$. Every $APS$ include $APN$ parameter IDs.
  	\item $ALT$: it contains parameter unique ID ($PID$). $ALT$ is not $\emptyset$. 
  \end{enumerate}
- \subsection{VCA Protocol Frame}
- The VCA protocol frame ($PF$) contains control frame and algorithm frame as shown in \ref{fig:Protocol}. 
+ \subsection{$VCA$ Protocol Frame}
+ The $VCA$ protocol frame ($PF$) contains control frame and algorithm frame in its data field as shown in \ref{fig:Protocol}. 
 
  \begin{enumerate}
 	\item $PF$: it consists items of $MID$, visual frame length $VFL$, $CDATA$ and cyclic redundancy check $CRC$.The $CDATA$ contains several control frames. The $MID$s both in $PT$ and $PF$ need one-to-one correspondence.
@@ -259,25 +261,23 @@ In cater to most applications, we propose a VCA-based flexible architecture. As 
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/Protocol.pdf}
-	\caption{ VCA Protocol.}
+	\caption{ $VCA$ protocol frame contains control frame and algorithm frame in its data field.}
 	\label{fig:Protocol}
 \end{figure}
 \subsection{Framing of $PF$}
-In $VS$, the $PLC$ interface is designed to transfer $PF$ to $PLC$ . It has five steps: create data, $VL$ framing, $CL$ framing, $AL$ framing and transmission.
+In $VS$, the $PLC$ interface will frame the $PF$ and transfer it to $PLC$. The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing.
 
-\textbf{Create data}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
 
-\textbf{\emph{VL} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, the $VS$ can obtain the $msf$ and $mda$. According to $man$, call the next step ($VL$ Framing) to gain the $cdata$. Then calculate the length ($vfl$) and $crc$ to finish the $VL$ framing.
+\textbf{\emph{VCA} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, the $VS$ can obtain the $msf$ and $mda$. According to $man$, call the next step ($VL$ Framing) to gain the $cdata$. Then calculate the length ($vfl$) and $crc$ to finish the $VL$ framing.
 
 \textbf{\emph{CL} Framing}: Algorthm \ref{alg2} illustrates the process. The $VS$ seeks the $FT$ to gain the $clt_y$ which contains the $af$ and $ada$. According to $apn$, call the next step ($AL$ Framing) to obtain the $cdata$ and then calculate the length ($cfl$) to finish the $CL$ framing.  
 
 \textbf{\emph{AL} Framing}: Algorthm \ref{alg3} shows the process. The $VS$ obtains the $alt_z$ frome $FT$ and then combines the $pid$ and $pdata$.
 
-\textbf{Transmission}: transfer the $VCA$ protocol frame to $ePLC$ with the relevant communication protocol in $CID$.
 
 \begin{algorithm}
 	\label{alg1}
-	\caption{$VLFraming$}%算法名字
+	\caption{$VCAFraming$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$mid$, $VED$}%输入参数
 	\KwOut{$PF$}%输出
@@ -321,13 +321,13 @@ In $VS$, the $PLC$ interface is designed to transfer $PF$ to $PLC$ . It has five
 \end{algorithm}
 
 \subsection{Deframing of $PF$}
- $VL$ deframing, $CL$ deframing and $AL$ deframing.
+ The process of deframing of $PF$ is contained in $ES$ which has three parts: $VCA$ deframing, $CL$ deframing and $AL$ deframing.
 
-\textbf{Receiving \emph{PF}}: according to the $CID$ in $PT$, the $ES$ chooses the communication protocol receives the $PF$ form $VS$ and then check the $CRC$. If correct, prepare to save.
+\textbf{\emph{VCA} deframing}: as illustrated in Algorithm \ref{alg4}, at first, check the CRC. If the frame data is right, obtain the $mid$ and $msn$ form the start four and following four bytes data of $PDF$, respectively. Search the $PT$ to gain the relevant $vlt_x$. Send the $msn$ bytes start form the eighth byte of $PDF$ to the address $mda$ of $vlt_x$.
 
-\textbf{Saving \emph{PF}}: there exists a pointer pointing to the address where could save the next $PF$. After saved the $PF$, the pointer point to the next new address according the $vfl$ of $PF$.
+\textbf{\emph{CL} deframing}: according to $mid$, search $PT$ to find the relevant $vlt_x$. Loop deal with the $man$ times of the control frame. Use the $aid$ to find $clt_y$ and then send the $atata$ to correlative address of shared $RAM$. Algorithm \ref{alg6} describes the process.
 
-\textbf{\emph{VL} Deframing}: there exits a pointer $PDF$ pointing to the $PF$ which needs to be parsed.    
+\textbf{\emph{AL} deframing}: use $aid$ to get its $clt_y$. Loop cope with the algorithm frame $apn$ times. Send the parameters to the algorithm. The process is shown in Algorithm \ref{alg6}.
 
 \begin{figure}
 	\centering
@@ -341,10 +341,10 @@ In $VS$, the $PLC$ interface is designed to transfer $PF$ to $PLC$ . It has five
 	%\LinesNumbered %要求显示行号
 	\KwIn{$PDF$}%输入参数
     $mid \leftarrow$ four bytes start form $PDF$\;
-    $msn \leftarrow$ four bytes start form $PDF+4$\; 
-    searchPT ($mid$, $vlt_x$);
-    $cdata \leftarrow$ $msn-8$ bytes start form $PDF+8$\;
-	$CassMemM[vlt_x.mda]\leftarrow$ $cdata$\;
+    searchPT ($mid$, $vlt_x$)\;
+    CRC16()\;
+    $msn \leftarrow$ four bytes start form $PDF+4$\;    
+	$CassMemM[vlt_x.mda]\leftarrow$ $msn-8$ bytes start form $PDF+8$\;
 	$PDF\leftarrow$ $PDF+msn$\;
 \end{algorithm}
 
@@ -381,11 +381,11 @@ In $VS$, the $PLC$ interface is designed to transfer $PF$ to $PLC$ . It has five
 \section{System Operation Mechanism}
 \label{Execution}
 \subsection{Implementation of Flexible Program and Execution}
-The $FL$ contains two parts: $PLC$ interface and visual interface. They interact with each other with the agreed communication protocol.
+The $FL$ contains two parts: $PLC$ interface and visual interface. They interact with each other using the agreed communication protocol which is defined as $CID$ in $HPT$ of $PT$.
 
 The $PLC$ interface is responsible for get parameters of motion control form $VS$ and interact with $ES$. It includes three steps blew.
 
-\textbf{Step 1}: after image processing, the $VS$ extracts the useful data and storages into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
+\textbf{Step 1}: after image processing, the $VS$ extracts the useful data and stores into visual extracted data ($VED$) in which the parameters could be indexed by the $PID$.
 
 \textbf{Step 2}: frame them into $PF$ with the Algorithm \ref{alg1}, \ref{alg2} and \ref{alg3}.
 
@@ -397,9 +397,14 @@ Visual interface is in the $ePLC$ designed to interact with $VS$ and it contains
 
 \textbf{Step 2}: save them in the $ES$. There are two pointers: $PDF$ and $PSP$. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. The $PDF$ will point to the next address of $PF$ if a $PF$ is deframed. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$. 
 
+  
 
-
-
+\begin{figure}
+	\centering
+	\includegraphics[width=3in]{fig/VisualInterface.pdf}
+	\caption{ $PDF$ and $PSP$.}
+	\label{fig:VisualInterface}
+\end{figure}
 
 %\begin{figure}
 %	\centering
@@ -453,12 +458,12 @@ Control program $CP$ is responsible for organizing the modules, executing the lo
 %	\label{fig:DataTransfer}
 %\end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=3in]{fig/execution.png}
-	\caption{ The execution OF flexible program}
-	\label{fig:execution}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=3in]{fig/execution.png}
+%	\caption{ The execution OF flexible program}
+%	\label{fig:execution}
+%\end{figure}
 
 \subsection{Implementation and Execution of Algorithm Program }
 The Algorithm Program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, where $\mathcal{P}_{stm}$ feeds back data to master processor, $AS$ contains all algorithms and $ALDP$ deframe the $AL$ frame. The execution of algorithm program is introduced below.
@@ -470,36 +475,50 @@ The Algorithm Program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, w
 \textbf{Step 3}: $as_i$ is executed and uses the $\mathcal{P}_{stm}$ to feed back data to the master processor. 
 
 \subsection{Execution of Threads}
- Commonly, threads in master processor and in slave processors execute separately according to their priority and the interaction between control thread and algorithm threads occurs when using $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$. Basic execution units of control thread are shown as follows:
+ Commonly, threads in master processor and in slave processors execute separately according to their priority and the interaction between control thread and algorithm threads occurs when using $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$. 
+ 
+ Visual thread consists of the following units.
+ 
+ \textbf{$V_1$}}: receive $PF$ from $VS$ with the agreed communication protocol.
+ 
+ \textbf{$V_2$}: check $PF$ and store it into $VD$. 
+ 
+ \textbf{$V_3$}: call Algorithm \ref{alg4} to deframe the $PF$ and saved the $cdata$ into $LCD$.
+ 
+ Basic execution units of control thread are shown as follows:
 
-\textbf{$C_{1}$} Start the module.
+\textbf{$C_{1}$}: start a module and initial it.
 
-\textbf{$C_{2}$} Transfer data to motion thread by $\mathcal{P}_{mts}$.
+\textbf{$C_{2}$}: run logic program. 
 
-\textbf{$C_{3}$} Seal with the feedback data.
+\textbf{$C_{3}$}: call Algorithm \ref{alg5} to deframe control frame.
 
-\textbf{$C_{4}$} Broadcast a message.
+\textbf{$C_{4}$}: transfer data to slave processor by $\mathcal{P}_{mts}$.
 
-\textbf{$C_{5}$} Handle the message.
+\textbf{$C_{5}$}: deal with the feedback data.
+
+\textbf{$C_{6}$}: end the module.
 
 Motion thread contains the following basic execution units:
 
-\textbf{$M_{1}$} Start the algorithm.
+\textbf{$M_{1}$}: Start a algorithm.
 
-\textbf{$M_{2}$} Execute the algorithm.
+\textbf{$M_{2}$}: Call Algorithm \ref{alg6} to deframe the algorithm frame.
 
-\textbf{$M_{3}$} Feedback the data to control thread by $\mathcal{P}_{stm}$.
+\textbf{$M_{3}$}: Execute the algorithm.
 
-\textbf{$M_{4}$} End algorithm.
+\textbf{$M_{4}$}: Feedback the data to master processor by $\mathcal{P}_{stm}$.
 
-Two cases shown in Fig. \ref{fig:threadFlow} are explained below:
+\textbf{$M_{5}$}: End the algorithm.
 
-\textbf{Case one}: execution of control thread and two algorithm threads among three processors. The $CT$ (Control Thread) traverses $LCF$, finds $ms_i$ to be executed , runs $lcp_i$, finds $ap_j$, executes $C_1$ unit, executes $C_2$ unit and then transfers data from $LCD$ to $SMD$ of processor 1. $AT$ (Algorithm Thread) 1 executes $M_1$ unit, executes $M_2$ after transferring data from $SMD$ to $AD$, runs $M_3$ unit, feedbacks data to $CT$. When the $ap_j$ finishes, $AT$ 1 executes $M_4$ and informs $CT$ the end of $ap_j$. $CT$ executes $C_3$ to end the process and then finds $ap_{j+1}$, executes $C_1$ and $C_2$, transfers the data from $LCD$ to $SMD$ of processor 2, $AT$ 2 executes $M_1$ unit, executes $M_2$ after transferring data from $SMD$ to $AD$. When the $ap_{j+1}$ finishes, $AT$ 2 executes $M_4$ unit and informs $CT$ the end of $ap_{j+1}$. $CT$ executes $C_3$ to finish the process.
+The threads execute as shown in Fig. \ref{fig:threadExecution}. Visual thread ($VT$) continuously executes the unit $V1$ if there exits $PF$ from $VS$, executes unit $V2$ to store the $PF$ into $VD$ at the address of $PSP$ and execute $V3$ to deframe $PF$ at the address of $PDF$ and store its $cdata$ into $LCD$ and $\mathcal{S}_1 {cdf_i}$.
+The control thread ($CT$) traverses $LCF$, finds $\exists \mathcal{J}_1 {lcf_i}$ and then executes the unit $C1$, executes unit $C_2$. If find a required execution algorithm and $\exists$ its $\mathcal{J}_1 {mdf_j}$ then $CT$ starts unit $C3$ to deframe the control frame and then runs unit $C4$ and inform algorithm thread ($AT$) to execute $M_1$ unit. Next, $AT$ executes unit $M2$ transferring data from $SMD$ to $AD$. After that, the unit $M3$ is executed. During the running of algorithm, the unit $M4$ is continuously executed to feed data back to $CT$, meanwhile $CT$ will execute unit $C5$ to response it until the execution of $M5$ and no other executed algorithms neither. During the running of the module, if the $VT$ receives new $PF$ and $CT$ finds $\exists \mathcal{J}_1 {cdf_i}$, $CT$ will execute unit $C_3$ and $C_4$ again. Next, the $VT$ will run unit $M_2$ to update the parameters. If the $MT$ finished all algorithms, then $CT$ will run unit $C_6$ to finished the module and continue to traverse the $LCF$ to find another required execution module.   
+
 \begin{figure}
 	\centering
-	\includegraphics[width=3in]{fig/threadflow.pdf}
+	\includegraphics[width=3in]{fig/ThreadExecution.pdf}
 	\caption{ Visual servo control system}
-	\label{fig:threadFlow}
+	\label{fig:threadExecution}
 \end{figure}
 
 \section{Case Analysis}
@@ -508,12 +527,40 @@ In this section, we introduce two scenarios of the proposed $VCA$ protocol based
 \subsection{Case 1 Binocular Catching Robot}
 \begin{figure}
 	\centering
-	\includegraphics[width=3in]{fig/visual_control_system.png}
+	\includegraphics[width=3in]{fig/robot.pdf}
 	\caption{ Visual servo control system}
-	\label{fig:catchRobot}
+	\label{fig:robot}
 \end{figure}
-As shown in Fig. \ref{fig:catchRobot}, the binocular catching robot adopts two cameras to judge the position of the ball. Through sending the continuously parameters to $ePLC$ to adjust the position of the robot. Finally, the robot will catch the ball. The cameras is xxx, the visual system is xxx, and the $ePLC$ is XXX. $ePLC$ uses tht TI F28M35 chip with two cores: ARM Cortex M3 and TI C28x, which contains a shared RAM. The servo driver and motor are xxx and xxx respectively. 
+As shown in Fig. \ref{fig:robot}, the binocular catching robot adopts two cameras to judge the position of the ball. Through sending the continuously parameters to $ePLC$ to adjust the position of the robot. Finally, the robot will catch the ball. The cameras is xxx, the visual system is xxx, and the $ePLC$ is XXX. $ePLC$ uses tht TI F28M35 chip with two cores: ARM Cortex M3 and TI C28x, which contains a shared RAM. The servo driver and motor are xxx and xxx respectively. 
 \subsubsection{Design of $PT$}
+
+\begin{table}
+	\scriptsize \caption{$PT$ of binocular catching robot}
+	\label{table:PTofRobot}
+	\begin{center}
+		\renewcommand{\arraystretch}{1.4}
+		\setlength\tabcolsep{3pt}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			CID  & TDA   &xxx &xxx& xxx  &xxx &xxx \\
+			\hline
+			0X03000001&0x00&& &&&\\
+			\hline
+			MID   & MAN  & MSF  & MDF  &MAS1    & MAS2&xxx\\
+			\hline
+			0X02000001 & 1  & 0X400  & 0X600   &0X02000001   & &\\
+			\hline
+			AID  & APN  & AF  &ADA  &APS1   &APS2&APS3\\
+			\hline
+			0X02000001 & 0X9  & 0X14A  &0x1F4000  &0X1   &0X2 &0X3\\
+			\hline
+			APS4  & APS5  & APS6  &APS7   &APS8   &APS9&xxx\\
+			\hline
+			0X4  & 0X5  & 0X6  &0x7  &0X8  &0X9&\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
 \subsubsection{Design of Program}
 
@@ -523,7 +570,7 @@ As shown in Fig. \ref{fig:catchRobot}, the binocular catching robot adopts two c
 
 \begin{figure}
 	\centering
-	\includegraphics[width=3in]{fig/trajectory.png}
+	\includegraphics[width=3.5in]{fig/PFofRobot.pdf}
 	\caption{ The execution OF flexible program}
 	\label{fig:settingexecutionbitinACPTD}
 \end{figure}

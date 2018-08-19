@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.13)  17 AUG 2018 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.4)  18 AUG 2018 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,143 +422,158 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 116.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 116.
-<fig/Software.pdf, id=2, 444.15938pt x 202.88799pt>
-File: fig/Software.pdf Graphic file (type pdf)
-<use fig/Software.pdf>
-Package pdftex.def Info: fig/Software.pdf  used on input line 126.
-(pdftex.def)             Requested size: 252.94499pt x 115.54208pt.
-
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 126--127
- [][] 
- []
-
 [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./fig/Hardware.pdf>]
+<fig/Software.pdf, id=21, 537.88956pt x 229.23643pt>
+File: fig/Software.pdf Graphic file (type pdf)
+<use fig/Software.pdf>
+Package pdftex.def Info: fig/Software.pdf  used on input line 135.
+(pdftex.def)             Requested size: 252.94499pt x 107.8006pt.
+
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 135--136
+ [][] 
+ []
+
 <fig/Threads.pdf, id=22, 130.618pt x 145.67424pt>
 File: fig/Threads.pdf Graphic file (type pdf)
 <use fig/Threads.pdf>
-Package pdftex.def Info: fig/Threads.pdf  used on input line 146.
+Package pdftex.def Info: fig/Threads.pdf  used on input line 153.
 (pdftex.def)             Requested size: 216.81pt x 241.81471pt.
-
-
-LaTeX Warning: Reference `fig:Memory' on page 2 undefined on input line 163.
-
-
-LaTeX Warning: Reference `fig:Interaction' on page 2 undefined on input line 18
-6.
-
-
-LaTeX Warning: Citation `WuA' on page 2 undefined on input line 186.
-
+<fig/RAM.pdf, id=23, 324.0908pt x 196.11269pt>
+File: fig/RAM.pdf Graphic file (type pdf)
+<use fig/RAM.pdf>
+Package pdftex.def Info: fig/RAM.pdf  used on input line 160.
+(pdftex.def)             Requested size: 216.81pt x 131.19731pt.
 [2 <./fig/Software.pdf> <./fig/Threads.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/Threads.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
+> <./fig/RAM.pdf
+
+pdfTeX warning: pdflatex.exe (file ./fig/RAM.pdf): PDF inclusion: multiple pdfs
+ with page group included in a single page
 >]
-Underfull \hbox (badness 2469) in paragraph at lines 200--201
-[][]\OT1/ptm/m/n/10 The pro-cess of $\OMS/cmsy/m/n/10 P[]$ \OT1/ptm/m/n/10 is s
-een be-low: $\OMS/cmsy/m/n/10 S[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 msb[]\OT1/cm
-r/m/n/10 ) \OMS/cmsy/m/n/10 !
+Underfull \hbox (badness 2469) in paragraph at lines 210--212
+[]\OT1/ptm/m/n/10 The pro-cess of $\OMS/cmsy/m/n/10 P[]$ \OT1/ptm/m/n/10 is see
+n be-low: $\OMS/cmsy/m/n/10 S[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 msb[]\OT1/cmr/
+m/n/10 ) \OMS/cmsy/m/n/10 !
+ []
+
+<fig/PT.pdf, id=72, 456.20438pt x 256.70906pt>
+File: fig/PT.pdf Graphic file (type pdf)
+<use fig/PT.pdf>
+Package pdftex.def Info: fig/PT.pdf  used on input line 224.
+(pdftex.def)             Requested size: 252.94499pt x 142.33028pt.
+
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 224--225
+ [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--217
-[]\OT1/ptm/m/n/10 One mod-ule re-ceives a sys-tem de-fined mes-sage
- []
-
-
-Underfull \hbox (badness 2435) in paragraph at lines 215--217
-\OT1/ptm/m/n/10 shown be-low: $\OMS/cmsy/m/n/10 J[]\OT1/cmr/m/n/10 (\OML/cmm/m/
-it/10 smf[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 GetMessage[]\O
-T1/cmr/m/n/10 (\OML/cmm/m/it/10 dmf[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 !
- []
-
-
-Overfull \hbox (1.2817pt too wide) detected at line 239
+Overfull \hbox (1.2817pt too wide) detected at line 241
 []
  []
 
-<fig/Protocol.pdf, id=75, 393.72093pt x 147.55125pt>
+[3 <./fig/PT.pdf>]
+<fig/Protocol.pdf, id=85, 300.00081pt x 147.55125pt>
 File: fig/Protocol.pdf Graphic file (type pdf)
 <use fig/Protocol.pdf>
-Package pdftex.def Info: fig/Protocol.pdf  used on input line 261.
-(pdftex.def)             Requested size: 216.81pt x 81.25023pt.
-[3 <./fig/Protocol.pdf>]
-<fig/FlexibleLayer.pdf, id=112, 248.42813pt x 158.47206pt>
+Package pdftex.def Info: fig/Protocol.pdf  used on input line 263.
+(pdftex.def)             Requested size: 216.81pt x 106.63306pt.
+<fig/FlexibleLayer.pdf, id=86, 248.42813pt x 158.47206pt>
 File: fig/FlexibleLayer.pdf Graphic file (type pdf)
 <use fig/FlexibleLayer.pdf>
 Package pdftex.def Info: fig/FlexibleLayer.pdf  used on input line 334.
 (pdftex.def)             Requested size: 216.81pt x 138.30482pt.
- [4 <./fig/FlexibleLayer.pdf>]
-<fig/execution.png, id=184, 578.16pt x 306.4248pt>
-File: fig/execution.png Graphic file (type png)
-<use fig/execution.png>
-Package pdftex.def Info: fig/execution.png  used on input line 458.
-(pdftex.def)             Requested size: 216.81pt x 114.90901pt.
+ [4 <./fig/Protocol.pdf>]
+<fig/VisualInterface.pdf, id=116, 254.07924pt x 83.18578pt>
+File: fig/VisualInterface.pdf Graphic file (type pdf)
+<use fig/VisualInterface.pdf>
+Package pdftex.def Info: fig/VisualInterface.pdf  used on input line 404.
+(pdftex.def)             Requested size: 216.81pt x 70.98367pt.
 
-Underfull \hbox (badness 4229) in paragraph at lines 464--465
+Underfull \hbox (badness 4229) in paragraph at lines 469--470
 []\OT1/ptm/m/n/10 The Al-go-rithm Pro-gram ($\OML/cmm/m/it/10 AP$\OT1/ptm/m/n/1
 0 ) is in $\OML/cmm/m/it/10 EL$\OT1/ptm/m/n/10 . $\OML/cmm/m/it/10 AP \OT1/cmr/
 m/n/10 =
  []
 
-<fig/threadflow.pdf, id=185, 890.20581pt x 709.5308pt>
-File: fig/threadflow.pdf Graphic file (type pdf)
-<use fig/threadflow.pdf>
-Package pdftex.def Info: fig/threadflow.pdf  used on input line 500.
-(pdftex.def)             Requested size: 216.81pt x 172.80263pt.
-<fig/visual_control_system.png, id=186, 884.5848pt x 524.6802pt>
-File: fig/visual_control_system.png Graphic file (type png)
-<use fig/visual_control_system.png>
-Package pdftex.def Info: fig/visual_control_system.png  used on input line 511.
+[5 <./fig/FlexibleLayer.pdf> <./fig/VisualInterface.pdf
 
-(pdftex.def)             Requested size: 216.81pt x 128.5918pt.
-[5 <./fig/execution.png>]
-<fig/trajectory.png, id=192, 597.432pt x 243.309pt>
-File: fig/trajectory.png Graphic file (type png)
-<use fig/trajectory.png>
-Package pdftex.def Info: fig/trajectory.png  used on input line 526.
-(pdftex.def)             Requested size: 216.81pt x 88.29655pt.
-<fig/Winding.pdf, id=193, 464.11394pt x 675.65424pt>
+pdfTeX warning: pdflatex.exe (file ./fig/VisualInterface.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>]
+! Too many }'s.
+<recently read> }
+                 
+l.482  \textbf{$V_1$}}
+                      : receive $PF$ from $VS$ with the agreed communication...
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+<fig/ThreadExecution.pdf, id=211, 890.20581pt x 339.89987pt>
+File: fig/ThreadExecution.pdf Graphic file (type pdf)
+<use fig/ThreadExecution.pdf>
+Package pdftex.def Info: fig/ThreadExecution.pdf  used on input line 519.
+(pdftex.def)             Requested size: 216.81pt x 82.78088pt.
+<fig/robot.pdf, id=212, 843.53143pt x 467.49657pt>
+File: fig/robot.pdf Graphic file (type pdf)
+<use fig/robot.pdf>
+Package pdftex.def Info: fig/robot.pdf  used on input line 530.
+(pdftex.def)             Requested size: 216.81pt x 120.15521pt.
+<fig/PFofRobot.pdf, id=213, 350.43924pt x 270.64111pt>
+File: fig/PFofRobot.pdf Graphic file (type pdf)
+<use fig/PFofRobot.pdf>
+Package pdftex.def Info: fig/PFofRobot.pdf  used on input line 573.
+(pdftex.def)             Requested size: 252.94499pt x 195.3446pt.
+
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 573--574
+ [][] 
+ []
+
+<fig/Winding.pdf, id=214, 464.11394pt x 675.65424pt>
 File: fig/Winding.pdf Graphic file (type pdf)
 <use fig/Winding.pdf>
-Package pdftex.def Info: fig/Winding.pdf  used on input line 540.
+Package pdftex.def Info: fig/Winding.pdf  used on input line 587.
 (pdftex.def)             Requested size: 216.81pt x 315.62962pt.
- (./position-based visual servo control.bbl [6 <./fig/threadFlow.pdf> <./fig/vi
-sual_control_system.png> <./fig/trajectory.PNG> <./fig/Winding.pdf
+(./position-based visual servo control.bbl [6 <./fig/ThreadExecution.pdf> <./fi
+g/robot.pdf
+
+pdfTeX warning: pdflatex.exe (file ./fig/robot.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>] [7 <./fig/PFofRobot.pdf> <./fig/Winding.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/Winding.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->]) [7] (./position-based visual servo control.aux)
+>]) [8
 
-LaTeX Warning: There were undefined references.
-
- ) 
+] (./position-based visual servo control.aux) ) 
 Here is how much of TeX's memory you used:
- 4917 strings out of 492646
- 78611 string characters out of 6133325
- 168190 words of memory out of 5000000
- 8733 multiletter control sequences out of 15000+600000
- 38169 words of font info for 71 fonts, out of 8000000 for 9000
+ 4928 strings out of 492642
+ 78858 string characters out of 6133163
+ 167246 words of memory out of 5000000
+ 8743 multiletter control sequences out of 15000+600000
+ 39893 words of font info for 73 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,10n,38p,963b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texliv
-e/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2018/texmf-dist/
-fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/t
-imes/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "position-based visual servo control.pdf" (7 pages, 3690937 b
+ 41i,10n,38p,1119b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/font
+s/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb>
+<c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "position-based visual servo control.pdf" (8 pages, 2623901 b
 ytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 343 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
