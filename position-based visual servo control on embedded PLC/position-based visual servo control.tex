@@ -52,8 +52,7 @@
 
 
 \begin{abstract}
-
-% ^.
+We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system and visual system in ePLCs. The multi-level includes flexible layer, control layer and algorithm layer. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -74,16 +73,20 @@ motion control, visual servo control, embedded PLC, multi-level architecture
 
 
 \section{Introduction}
-Integration technologies is driving the industrial automation \cite{Kazmierkowski2007Integration}. The continuously integrations of sensors, controllers, robots, tools, etc. bring the concepts of self-aware equipment, intelligent factory and CPS, etc. \cite{Wan2018An,Chekired2018Industrial}.  Recent researches \cite{Colombo2006An,Vaccaro2010An,Dean2017Integration} introduce the development of integration technologies. In industrial automation, logic control system,  motion control system and visual system become more and more important and inseparable \cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}. On the other hand, the advances of edge computing, fog computing and edge artificial\cite{Hu2017Fog,Hou2018Green,PaceAn} put forward new challenges on edge equipment.
+Integration technologies is driving the industrial automation \cite{Kazmierkowski2007Integration}. The continuously integrations of sensors, controllers, robots, tools, etc. bring the concepts of self-aware equipment, intelligent factory and CPS, etc. \cite{Wan2018An,Chekired2018Industrial}.  Recent researches \cite{Colombo2006An,Vaccaro2010An,Dean2017Integration} introduce the development of integration technologies. In industrial automation, PLC system,  motion control system and visual system become more and more important and inseparable \cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}. On the other hand, the advances of edge computing, fog computing and edge artificial\cite{Hu2017Fog,Hou2018Green,PaceAn} put forward new challenges on edge equipment of these systems.
 
 \subsection{Motivations}
-%Nowdays, visual system has been applied in various fields.
-%
-%On the other hand, according to the reliablity and \cite{Hossain2014Advanced}, Lots of papers are focusing on it, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Chang2007Adaptive,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development,Morenas2017Shop} pose methods to update PLC programs dynamically.
-%
+Recent advances in image processing and pattern recognition contribute to the thriving of visual system which has been applied in various fields. By extracting features from the image, the visual system could obtain parameters to replace human visual system to address lots of tasks. Specially, the requirements are ever-growing in industrial applications, e.g. works should be finished in dangerous environment, human vision is difficult to satisfy or numerous visual systems are needed in some large scale industrial production. 
+
+After the visual processing, in most cases, the motion control system as the power of automation is constantly needed to drive some actuators to finished some severe tasks which remarkably benefit of the replacement of large labor force. 
+
+On the other hand, PLCs have become a base of automation, owning to its high reliability and easy programming\cite{Hossain2014Advanced}. Furthermore, Lots of researches are focusing on it to extremely extend its applied field. For instance, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development} pose methods to update PLC programs dynamically.
+
 %Motion control is a key technology\cite{Ohnishi2002Motion} of automation. It drives various types of equipments to replace tremendous labors. Since advanced in algorithms, in
-Nowdays, visual system has been applied in various fields. The logic control on PLC has wide applications. Motion control 
-\cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion system. Simultaneously the logic program are judging the information, such as the position limitation of the every axis. Hence, how to pose a flexible structure to the integration of logic control system, servo system and visual system, guides us.
+
+In addition, the visual system, motion control system and PLC system are becoming increasingly inseparable. \cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion control system. Simultaneously the PLC is judging the information, such as the position limitation of the every axis, to make some logical judgments accordingly. 
+
+Hence, how to pose a flexible structure to the integration of visual system, motion control system and  PLC system attracts us.
 
 
 
@@ -91,16 +94,17 @@ Nowdays, visual system has been applied in various fields. The logic control on 
 
 \subsection{Related Works}
 
-Visual control system is combined of special motion control system and visual system. Such as transport \cite{Xing2014Intersection}, circuit detection\cite{Nian2005An}, sorting system, welding\cite{Chen2014A}, assembling\cite{Wang2008Visual,Xiao2014Visual}, robot\cite{Wu2013Cloud,Tsai2017A}, unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}. These works address their problems in relevant fields. However, all these solutions are based on special motion control system and visual system.
+Visual control system is combined of special motion control system and visual system which is applied in various field, such as transport \cite{Xing2014Intersection}, circuit detection\cite{Nian2005An}, sorting system, welding\cite{Chen2014A}, assembling\cite{Wang2008Visual,Xiao2014Visual}, robot\cite{Wu2013Cloud,Tsai2017A}, unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing} and sorting\cite{Sun2013Automatic}. These works address their problems in relevant fields. However, all these solutions are based on special motion control system and visual system.
 
 %例如\cite{Wu2013Cloud,Tsai2017A}中均使用机器人专用控制系统和视觉系统完成,在\cite{Guenard2010A,Serra2016Landing}中，使用无人机专用控制系统和视觉系统完成。\cite{Nian2005An}中，通过专用运动控制卡和视觉系统实现电路检测。
 
 On the other hand. The integration of logic control and motion control has variously deep researches \cite{Ioannides2004Design,Shi2016The,Fang2017Design, syaichu2011model}. \cite{Ioannides2004Design,syaichu2011model} realize the motion control directly in PLC. \cite{Peng2011Linear, Qian2014A, OMRON2006CS1W} use motion control module collaborated with PLC to implement their applications. However, the development method in these papers is disordered. Therefore, in 2005, PLCopen organization has released a related standard \cite{PLCopen2005Function} which standardizes the motion control in PLC. Based on this standardization, \cite{S2006Advanced} provides an advanced implementation in distributed automation system and companies, such as 3S \cite{3S2017Logic}, provide some tools. \cite{wu2018customized} poses a customized real-time compilation method to reduce the development complexity.
 
-Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few papers discussing the integration of visual system, motion control and PLC. Most of applications are focusing on its application with three individual system, such as \cite{Chen2014A}. Hence, an integration structure of logic control system, servo system and visual system should be provided to reduce the complexity and expand the application fields.
+Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few papers discussing the integration of visual system, motion control and PLC. Most of applications are focusing on their applications with three individual systems, such as \cite{Chen2014A}. Hence, an integration structure of PLC system, motion control system and visual system should be provided to reduce the complexity and expand the application fields.
 
 \subsection{Our Contributions}
-.
+We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system and visual system in ePLCs. The multi-level includes flexible layer, control layer and algorithm layer. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture.
+In the remaining paper, in Section \ref{SystemStructure}, the hardware ans software structure, memory allocation and thread structure are introduced. In Section \ref{Integration}, the mechanism of $VCA$ protocol is addressed in detail. In Section \ref{Execution}, we illustrate the execution process of the proposed system. Then, we implement two cases which are binocular catching robot and winding machine with visual system in Section \ref{Case}. In the last section, we conclude our works.
 %我们提出了一种基于VCA协议的ePLC和视觉系统的柔性架构整合方案，来实现视觉私服控制。VCA协议描述了从视觉系统中获取数据后的组帧和在ePLC中数据帧在各层中的解析，从而实现视觉系统和ePLC的整合。ePLC硬件上的一种定制化设计，软件架构上的三层设计以及融合其中的VCA协议使得整个视觉私服系统变成一种柔性结构。
 %
 %在接下来的部分中，\ref{SystemStructure}会介绍系统组成，包括硬件结构，软件结构，线程结构和内存设计。\ref{Integration}会介绍ePLC如何与视觉系统融合，包括VCA协议，PLC接口和视觉接口介绍。\ref{Execution}介绍系统执行过程，包括视觉层执行过程，逻辑层执行过程，算法层执行过程和多线程执行。\ref{Case}中介绍了两个例子，带视觉检测的绕线机和双目接球机器人。
@@ -479,7 +483,7 @@ The Algorithm Program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, w
  
  Visual thread consists of the following units.
  
- \textbf{$V_1$}}: receive $PF$ from $VS$ with the agreed communication protocol.
+ \textbf{$V_1$}: receive $PF$ from $VS$ with the agreed communication protocol.
  
  \textbf{$V_2$}: check $PF$ and store it into $VD$. 
  
@@ -590,6 +594,7 @@ As shown in Fig. \ref{fig:robot}, the binocular catching robot adopts two camera
 \end{figure}
 \section{Conclusion}
 \label{conclusion}
+We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system and visual system in ePLCs. The multi-level includes flexible layer, control layer and algorithm layer. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture.
 
 In the further research, we will implement a uniform development method of the visual servo control in ePLC.
 

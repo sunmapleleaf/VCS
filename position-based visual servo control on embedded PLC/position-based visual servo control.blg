@@ -8,12 +8,16 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: reference.bib
-You're missing a field name---line 553 of file reference.bib
+You're missing a field name---line 323 of file reference.bib
  : 
  : %  title={Architecture of FPGA Embedded Multiprocessor Programmable Controller},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "WuA"
+You're missing a field name---line 801 of file reference.bib
+ : 
+ : %  title={Motion control for advanced mechatronics},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -21,45 +25,45 @@ Warning--empty year in PaceAn
 Warning--empty journal in 3S2017Logic
 
 Done.
-You've used 32 entries,
+You've used 39 entries,
             4087 wiz_defined-function locations,
-            1025 strings with 13767 characters,
-and the built_in function-call counts, 26034 in all, are:
-= -- 2170
-> -- 626
-< -- 249
-+ -- 358
-- -- 107
-* -- 1280
-:= -- 3937
-add.period$ -- 64
-call.type$ -- 32
-change.case$ -- 31
-chr.to.int$ -- 516
-cite$ -- 34
-duplicate$ -- 1862
-empty$ -- 1901
-format.name$ -- 133
-if$ -- 6094
+            1064 strings with 15511 characters,
+and the built_in function-call counts, 32973 in all, are:
+= -- 2721
+> -- 843
+< -- 317
++ -- 480
+- -- 147
+* -- 1627
+:= -- 4912
+add.period$ -- 79
+call.type$ -- 39
+change.case$ -- 38
+chr.to.int$ -- 666
+cite$ -- 41
+duplicate$ -- 2338
+empty$ -- 2399
+format.name$ -- 180
+if$ -- 7736
 int.to.chr$ -- 0
-int.to.str$ -- 32
-missing$ -- 318
-newline$ -- 119
-num.names$ -- 32
-pop$ -- 638
+int.to.str$ -- 39
+missing$ -- 406
+newline$ -- 140
+num.names$ -- 39
+pop$ -- 830
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2030
+skip$ -- 2560
 stack$ -- 0
-substring$ -- 1237
-swap$ -- 1614
-text.length$ -- 77
+substring$ -- 1594
+swap$ -- 2047
+text.length$ -- 95
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 32
+type$ -- 39
 warning$ -- 2
-while$ -- 115
-width$ -- 34
-write$ -- 352
-(There was 1 error message)
+while$ -- 144
+width$ -- 41
+write$ -- 426
+(There were 2 error messages)

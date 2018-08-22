@@ -86,6 +86,46 @@ P.~Pace, G.~Aloi, R.~Gravina, G.~Caliciuri, G.~Fortino, and A.~Liotta, ``An
   industry 4.0,'' \emph{IEEE Transactions on Industrial Informatics}, vol.~PP,
   no.~99, pp. 1--1.
 
+\bibitem{Hossain2014Advanced}
+S.~Hossain, M.~A. Hussain, and R.~B. Omar, ``Advanced control software
+  framework for process control applications,'' \emph{International Journal of
+  Computational Intelligence Systems}, vol.~7, no.~1, pp. 37--49, 2014.
+
+\bibitem{Jiang2013System}
+Y.~Jiang, H.~Zhang, H.~Liu, X.~Song, W.~N. Hung, M.~Gu, and J.~Sun, ``System
+  reliability calculation based on the run-time analysis of ladder program,''
+  in \emph{Proceedings of the 2013 9th joint meeting on foundations of software
+  engineering}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2013, pp. 695--698.
+
+\bibitem{Jiang2013Bayesian}
+Y.~Jiang, H.~Zhang, X.~Song, X.~Jiao, W.~N.~N. Hung, M.~Gu, and J.~Sun,
+  ``Bayesian-network-based reliability analysis of plc systems,'' \emph{IEEE
+  Transactions on Industrial Electronics}, vol.~60, no.~11, pp. 5325--5336,
+  2013.
+
+\bibitem{Gerk2006Advanced}
+S.~Gerkšič, G.~Dolanc, D.~Vrančić, J.~Kocijan, S.~Strmčnik, S.~Blažič,
+  I.~Škrjanc, Z.~Marinšek, M.~Božiček, and A.~Stathaki, ``Advanced control
+  algorithms embedded in a programmable logic controller,'' \emph{Control
+  Engineering Practice}, vol.~14, no.~8, pp. 935--948, 2006.
+
+\bibitem{Dominic2016PLC}
+S.~Dominic, Y.~Lohr, A.~Schwung, and S.~X. Ding, ``Plc-based real-time
+  realization of flatness-based feedforward control for industrial compression
+  systems,'' \emph{IEEE Transactions on Industrial Electronics}, vol.~PP,
+  no.~99, pp. 1--1, 2016.
+
+\bibitem{wu2018customized}
+H.~Wu, Y.~Yan, D.~Sun, and S.~Rene, ``A customized real-time compilation for
+  motion control in embedded plcs,'' \emph{IEEE Transactions on Industrial
+  Informatics}, 2018.
+
+\bibitem{Sch2013Development}
+D.~Schütz, A.~Wannagat, C.~Legat, and B.~Vogel-Heuser, ``Development of
+  plc-based software for increasing the dependability of production automation
+  systems,'' \emph{IEEE Transactions on Industrial Informatics}, vol.~9, no.~4,
+  pp. 2397--2406, 2013.
+
 \bibitem{Chen2014A}
 H.~Chen, K.~Liu, G.~Xing, Y.~Dong, H.~Sun, and W.~Lin, ``A robust visual servo
   control system for narrow seam double head welding robot,''
@@ -136,6 +176,11 @@ P.~Serra, R.~Cunha, T.~Hamel, D.~Cabecinhas, and C.~Silvestre, ``Landing of a
   control,'' \emph{IEEE Transactions on Robotics}, vol.~32, no.~6, pp.
   1524--1535, 2016.
 
+\bibitem{Sun2013Automatic}
+L.~Y. Sun, G.~M. Yuan, J.~Zhang, Z.~Liu, and L.~X. Sun, ``Automatic button cell
+  sorting manipulator system research based on visual servo control,''
+  \emph{Advanced Materials Research}, vol. 712-715, pp. 2285--2289, 2013.
+
 \bibitem{Ioannides2004Design}
 M.~G. Ioannides, ``Design and implementation of plc-based monitoring control
   system for induction motor,'' \emph{IEEE Transactions on Energy Conversion},
@@ -185,10 +230,5 @@ C.~Sünder, A.~Zoitl, F.~Mehofer, and B.~Favre-Bulle, ``Advanced use of plcopen
 S.~S.~S. GmbH, ``Logic and motion control integrated in one iec 61131-3
   system:development kit for convenient engineering of motion, cnc and robot
   applications.'' 2017.
-
-\bibitem{wu2018customized}
-H.~Wu, Y.~Yan, D.~Sun, and S.~Rene, ``A customized real-time compilation for
-  motion control in embedded plcs,'' \emph{IEEE Transactions on Industrial
-  Informatics}, 2018.
 
 \end{thebibliography}
