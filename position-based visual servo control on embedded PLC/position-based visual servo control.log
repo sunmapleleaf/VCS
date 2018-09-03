@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.7.13)  23 AUG 2018 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.8.4)  2 SEP 2018 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,73 +405,68 @@ LaTeX Warning: No \author given.
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 55.
+(Font)              <9> on input line 54.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 55.
+(Font)              <6> on input line 54.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 55.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 103.
+(Font)              <5> on input line 54.
 [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-<fig/Hardware.pdf, id=12, 368.50674pt x 277.41643pt>
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 98.
+<fig/Hardware.pdf, id=11, 349.68643pt x 208.91049pt>
 File: fig/Hardware.pdf Graphic file (type pdf)
 <use fig/Hardware.pdf>
-Package pdftex.def Info: fig/Hardware.pdf  used on input line 113.
-(pdftex.def)             Requested size: 252.94499pt x 190.42276pt.
+Package pdftex.def Info: fig/Hardware.pdf  used on input line 108.
+(pdftex.def)             Requested size: 252.94499pt x 151.1199pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 113--114
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 108--109
  [][] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 114.
-<fig/Software.pdf, id=13, 537.88956pt x 229.23643pt>
+(Font)              <8> on input line 109.
+<fig/Software.pdf, id=12, 537.88956pt x 229.23643pt>
 File: fig/Software.pdf Graphic file (type pdf)
 <use fig/Software.pdf>
-Package pdftex.def Info: fig/Software.pdf  used on input line 133.
+Package pdftex.def Info: fig/Software.pdf  used on input line 126.
 (pdftex.def)             Requested size: 252.94499pt x 107.8006pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 133--134
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 126--127
  [][] 
  []
 
-<fig/Threads.pdf, id=14, 130.618pt x 145.67424pt>
+<fig/Threads.pdf, id=13, 130.618pt x 145.67424pt>
 File: fig/Threads.pdf Graphic file (type pdf)
 <use fig/Threads.pdf>
-Package pdftex.def Info: fig/Threads.pdf  used on input line 151.
+Package pdftex.def Info: fig/Threads.pdf  used on input line 144.
 (pdftex.def)             Requested size: 216.81pt x 241.81471pt.
-<fig/RAM.pdf, id=15, 324.0908pt x 196.11269pt>
+<fig/RAM.pdf, id=14, 324.0908pt x 196.11269pt>
 File: fig/RAM.pdf Graphic file (type pdf)
 <use fig/RAM.pdf>
-Package pdftex.def Info: fig/RAM.pdf  used on input line 158.
+Package pdftex.def Info: fig/RAM.pdf  used on input line 151.
 (pdftex.def)             Requested size: 216.81pt x 131.19731pt.
 [2 <./fig/Hardware.pdf> <./fig/Software.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/Software.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 2469) in paragraph at lines 208--210
+Underfull \hbox (badness 2469) in paragraph at lines 203--205
 []\OT1/ptm/m/n/10 The pro-cess of $\OMS/cmsy/m/n/10 P[]$ \OT1/ptm/m/n/10 is see
 n be-low: $\OMS/cmsy/m/n/10 S[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 msb[]\OT1/cmr/
 m/n/10 ) \OMS/cmsy/m/n/10 !
  []
 
-<fig/PT.pdf, id=47, 456.20438pt x 256.70906pt>
+<fig/PT.pdf, id=43, 456.20438pt x 256.70906pt>
 File: fig/PT.pdf Graphic file (type pdf)
 <use fig/PT.pdf>
-Package pdftex.def Info: fig/PT.pdf  used on input line 222.
+Package pdftex.def Info: fig/PT.pdf  used on input line 217.
 (pdftex.def)             Requested size: 252.94499pt x 142.33028pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 222--223
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 217--218
  [][] 
- []
-
-
-Overfull \hbox (1.2817pt too wide) detected at line 239
-[]
  []
 
 [3 <./fig/Threads.pdf> <./fig/RAM.pdf
@@ -479,101 +474,115 @@ Overfull \hbox (1.2817pt too wide) detected at line 239
 pdfTeX warning: pdflatex.exe (file ./fig/RAM.pdf): PDF inclusion: multiple pdfs
  with page group included in a single page
 >]
-<fig/Protocol.pdf, id=78, 300.00081pt x 147.55125pt>
+Underfull \hbox (badness 2503) in paragraph at lines 249--250
+\OT1/ptm/m/n/10 ($\OML/cmm/m/it/10 VFL$\OT1/ptm/m/n/10 ), data from pa-ram-e-te
+r frames ($\OML/cmm/m/it/10 PFDATA$\OT1/ptm/m/n/10 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
+\OT1/ptm/m/n/10 and data form al-go-rithm frames($\OML/cmm/m/it/10 AFDATA$\OT1/
+ptm/m/n/10 ).The
+ []
+
+<fig/Protocol.pdf, id=79, 300.00081pt x 147.55125pt>
 File: fig/Protocol.pdf Graphic file (type pdf)
 <use fig/Protocol.pdf>
-Package pdftex.def Info: fig/Protocol.pdf  used on input line 261.
+Package pdftex.def Info: fig/Protocol.pdf  used on input line 257.
 (pdftex.def)             Requested size: 216.81pt x 106.63306pt.
- [4 <./fig/PT.pdf> <./fig/Protocol.pdf
+[4 <./fig/PT.pdf> <./fig/Protocol.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig/Protocol.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-<fig/FlexibleLayer.pdf, id=115, 248.42813pt x 158.47206pt>
+<fig/FlexibleLayer.pdf, id=98, 248.42813pt x 158.47206pt>
 File: fig/FlexibleLayer.pdf Graphic file (type pdf)
 <use fig/FlexibleLayer.pdf>
-Package pdftex.def Info: fig/FlexibleLayer.pdf  used on input line 332.
+Package pdftex.def Info: fig/FlexibleLayer.pdf  used on input line 331.
 (pdftex.def)             Requested size: 216.81pt x 138.30482pt.
-
-Underfull \vbox (badness 1533) has occurred while \output is active []
-
-<fig/VisualInterface.pdf, id=116, 254.07924pt x 83.18578pt>
+ [5 <./fig/FlexibleLayer.pdf>]
+<fig/VisualInterface.pdf, id=158, 254.07924pt x 83.18578pt>
 File: fig/VisualInterface.pdf Graphic file (type pdf)
 <use fig/VisualInterface.pdf>
-Package pdftex.def Info: fig/VisualInterface.pdf  used on input line 402.
+Package pdftex.def Info: fig/VisualInterface.pdf  used on input line 404.
 (pdftex.def)             Requested size: 216.81pt x 70.98367pt.
- [5 <./fig/FlexibleLayer.pdf>]
-Underfull \hbox (badness 4229) in paragraph at lines 467--468
+
+Underfull \hbox (badness 4229) in paragraph at lines 469--470
 []\OT1/ptm/m/n/10 The Al-go-rithm Pro-gram ($\OML/cmm/m/it/10 AP$\OT1/ptm/m/n/1
 0 ) is in $\OML/cmm/m/it/10 EL$\OT1/ptm/m/n/10 . $\OML/cmm/m/it/10 AP \OT1/cmr/
 m/n/10 =
  []
 
-<fig/ThreadExecution.pdf, id=188, 890.20581pt x 339.89987pt>
+[6 <./fig/VisualInterface.pdf>]
+<fig/ThreadExecution.pdf, id=186, 890.20581pt x 339.89987pt>
 File: fig/ThreadExecution.pdf Graphic file (type pdf)
 <use fig/ThreadExecution.pdf>
-Package pdftex.def Info: fig/ThreadExecution.pdf  used on input line 517.
+Package pdftex.def Info: fig/ThreadExecution.pdf  used on input line 521.
 (pdftex.def)             Requested size: 216.81pt x 82.78088pt.
+<fig/Winding.pdf, id=187, 753.94675pt x 939.51pt>
+File: fig/Winding.pdf Graphic file (type pdf)
+<use fig/Winding.pdf>
+Package pdftex.def Info: fig/Winding.pdf  used on input line 589.
+(pdftex.def)             Requested size: 216.81pt x 270.17154pt.
+<fig/WindingSystem.pdf, id=188, 507.39563pt x 369.25955pt>
+File: fig/WindingSystem.pdf Graphic file (type pdf)
+<use fig/WindingSystem.pdf>
+Package pdftex.def Info: fig/WindingSystem.pdf  used on input line 595.
+(pdftex.def)             Requested size: 216.81pt x 157.7812pt.
 <fig/robot.pdf, id=189, 843.53143pt x 467.49657pt>
 File: fig/robot.pdf Graphic file (type pdf)
 <use fig/robot.pdf>
-Package pdftex.def Info: fig/robot.pdf  used on input line 528.
+Package pdftex.def Info: fig/robot.pdf  used on input line 602.
 (pdftex.def)             Requested size: 216.81pt x 120.15521pt.
-[6 <./fig/VisualInterface.pdf> <./fig/ThreadExecution.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig/ThreadExecution.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->]
-<fig/PFofRobot.pdf, id=268, 350.43924pt x 270.64111pt>
+ [7 <./fig/ThreadExecution.pdf>]
+<fig/PFofRobot.pdf, id=247, 347.428pt x 274.40518pt>
 File: fig/PFofRobot.pdf Graphic file (type pdf)
 <use fig/PFofRobot.pdf>
-Package pdftex.def Info: fig/PFofRobot.pdf  used on input line 571.
-(pdftex.def)             Requested size: 252.94499pt x 195.3446pt.
+Package pdftex.def Info: fig/PFofRobot.pdf  used on input line 701.
+(pdftex.def)             Requested size: 252.94499pt x 199.78235pt.
 
-Overfull \hbox (0.94499pt too wide) in paragraph at lines 571--572
+Overfull \hbox (0.94499pt too wide) in paragraph at lines 701--702
  [][] 
  []
 
-<fig/Winding.pdf, id=269, 464.11394pt x 675.65424pt>
-File: fig/Winding.pdf Graphic file (type pdf)
-<use fig/Winding.pdf>
-Package pdftex.def Info: fig/Winding.pdf  used on input line 585.
-(pdftex.def)             Requested size: 216.81pt x 315.62962pt.
-(./position-based visual servo control.bbl [7 <./fig/robot.pdf> <./fig/PFofRobo
-t.pdf
+(./position-based visual servo control.bbl [8 <./fig/Winding.pdf> <./fig/Windin
+gSystem.pdf
 
-pdfTeX warning: pdflatex.exe (file ./fig/PFofRobot.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
-> <./fig/Winding.pdf
+pdfTeX warning: pdflatex.exe (file ./fig/WindingSystem.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+> <./fig/robot.pdf
 
-pdfTeX warning: pdflatex.exe (file ./fig/Winding.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
->]) [8] (./position-based visual servo control.aux) ) 
+pdfTeX warning: pdflatex.exe (file ./fig/robot.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>] [9 <./fig/PFofRobot.pdf>]) [10
+
+] (./position-based visual servo control.aux) ) 
 Here is how much of TeX's memory you used:
- 4943 strings out of 492646
- 79064 string characters out of 6133325
- 169244 words of memory out of 5000000
- 8754 multiletter control sequences out of 15000+600000
+ 4952 strings out of 492642
+ 79266 string characters out of 6133163
+ 180311 words of memory out of 5000000
+ 8763 multiletter control sequences out of 15000+600000
  40805 words of font info for 76 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,10n,38p,1119b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dis
-t/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
-b><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texl
-ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/
-texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "position-based visual servo control.pdf" (8 pages, 2636775 b
-ytes).
+ 41i,12n,38p,1318b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/font
+s/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmex10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/20
+18/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2018/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2018/texm
+f-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1
+/urw/times/utmri8a.pfb>
+Output written on "position-based visual servo control.pdf" (10 pages, 2924518 
+bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
+ 343 PDF objects out of 1000 (max. 8388607)
+ 144 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
