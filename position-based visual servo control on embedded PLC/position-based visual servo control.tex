@@ -51,12 +51,12 @@
 \maketitle
 
 \begin{abstract}
-The visual system, motion control system and programmable logic controller (PLC) system are becoming increasingly inseparable, however there are few papers discussing the integration of these three systems. Most of papers are focusing on their applications individually. We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the integration problem. The multi-level includes flexible layer, control layer and algorithm layer. The flexible layer is adopted to seamlessly integrate visual system and embedded PLC ($ePLC$) system. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture. At last, we implement two cases using the proposed $VCA$ protocol based flexible architecture in which the generality of the proposed flexible architecture is verified. In first case, the winding machine with visual system implements regular winding effect by the correction of $\theta$. In second case, the binocular catching robot uses the camera to track the trajectory and send to $ePLC$. By adjusting the speed and position, the robot can catch the ball finally.
+The visual system, motion control system, and programmable logic controller ($PLC$) system are becoming increasingly inseparable and \textcolor{blue}{complex, however there are few works researching the integration of these three systems to ease the complexity.} Most of them are focusing on their applications individually. We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the integration problem. The multi-level includes flexible layer, control layer, and algorithm layer. The flexible layer is adopted to seamlessly integrate visual system and embedded PLC ($ePLC$) system. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible architecture. At last, we implement two cases using the proposed $VCA$ protocol based flexible architecture in which the generality of the proposed flexible architecture is verified. In first case, the winding machine with visual system implements regular winding effect by the correction of $\theta$. In the second case, the binocular catching robot uses the cameras to track the trajectory and send to $ePLC$. By adjusting the speed and position, the robot can catch the ball successfully.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-motion control, visual servo control, embedded PLC, multi-level architecture
+motion control, visual servo control, embedded PLC, multi-level architecture, Petri Net
 \end{IEEEkeywords}
 
 % For peer review papers, you can put extra information on the cover
@@ -72,53 +72,52 @@ motion control, visual servo control, embedded PLC, multi-level architecture
 
 
 \section{Introduction}
-Integration technologies are driving the industrial automation \cite{Kazmierkowski2007Integration}. The continuously integrations of sensors, controllers, robots, tools, etc. bring the concepts of self-aware equipment, intelligent factory and CPS, etc. \cite{Wan2018An,Chekired2018Industrial}. Recent researches \cite{Colombo2006An,Vaccaro2010An,Dean2017Integration} introduce the development of integration technologies. In industrial automation, PLC system,  motion control system and visual system become more and more important and inseparable \cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}. On the other hand, the advances of edge computing, fog computing and edge artificial intelligence \cite{Hu2017Fog,Hou2018Green,PaceAn} put forward new challenges on edge equipment of these systems.
+Integration technologies are driving the industrial automation \cite{Kazmierkowski2007Integration}. The continuously integrations of sensors, controllers, robots, tools, etc., bring the concepts of self-aware equipment, intelligent factory, CPS, etc. \cite{Wan2018An,Chekired2018Industrial}. Recent researches \cite{Colombo2006An,Vaccaro2010An,Dean2017Integration} introduce the development of integration technologies. In industrial automation, PLC system,  motion control system, and visual system become more and more important and inseparable \cite{Feng2002Integrating,Chang2006Motion,Feng2005Practical}. In addition, the advances of edge computing, fog computing, and edge artificial intelligence \cite{Hu2017Fog,Hou2018Green,PaceAn} put forward new challenges on edge equipment of these systems.
 
 \subsection{Motivations}
-Recent advances in image processing and pattern recognition contribute to the thriving of visual system which has been applied in various fields. By extracting features from the image, the visual system could obtain parameters to replace human visual system to address lots of tasks, specially, the ever-growing requirements in industrial scenarios, e.g. works should be finished in dangerous environment, human vision is difficult to satisfy or numerous visual systems are needed in some large scale industrial production. 
+Recently, advances in image processing and pattern recognition contribute to the thriving of visual system which has been applied in various fields. By extracting features from the image, the visual system could obtain parameters to replace human visual system to address lots of tasks; specially, the ever-growing requirements in industrial scenarios; e.g., works that should be finished in dangerous environment, tasks that human vision is difficult to satisfy, or applications in some large scale industrial production that numerous visual systems are needed. 
 
-After the visual processing, in most cases, the motion control system as the power of automation is constantly needed to drive some actuators to finished some severe tasks which remarkably benefit of the replacement of large labor force. 
+After the visual processing, in most cases, the motion control system as the power of automation is constantly needed to drive some actuators to finished some severe tasks, which remarkably benefits the replacement of labor force. 
 
-On the other hand, PLCs have become a base of automation owning to its high reliability and easy programming\cite{Hossain2014Advanced}. Furthermore, Lots of researches are focusing on it to extremely extend its applied field. For instance, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development} pose methods to update PLC programs dynamically.
+Furthermore, PLCs have become a base of automation owning to its high reliability and easy programming\cite{Hossain2014Advanced}. Lots of researches are focusing on it to extremely extend its applied field; for instance, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development} pose methods to update PLC programs dynamically.
 
 
-In addition, the visual system, motion control system and PLC system are becoming increasingly inseparable. \cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion control system. Simultaneously the PLC is judging the information, such as the position limitation of the every axis, to make some logical judgments accordingly. 
+In addition, the visual system, motion control system, and PLC system are becoming increasingly inseparable. \cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion control system. Simultaneously the PLC is analyzing the information, such as the position limitation of every axis, to make some logical judgments accordingly. \textcolor{blue}{Regarding the normal development of these applications, the three systems are developed individually and using the communication protocol combines them. However, this method should be always redesigned the programs in these systems because of the difference of visual algorithms, motion control algorithms and their organized logic programs. In addition, the logic and motion control are always mixed together to develop in motion-control-supported PLC, and there are also lots of communication protocols (e.g., EtherCat, Modbus, CAN, etc.). Considering the high requirements of today’s applications, this becomes a cumbersome task.}
 
-Hence, how to pose a flexible structure to the integration of visual system, motion control system and  PLC system attracts us.
+\textcolor{blue}{Hence, how to pose a flexible structure to the integration of visual system, motion control system, and PLC system which will ease the complexity and satisfy the ever-growing requirements attracts our interest.}
 
 \subsection{Related Works}
 
-Visual control system is combined of special motion control system and visual system which is applied in various field, such as transport \cite{Xing2014Intersection}, circuit detection\cite{Nian2005An}, sorting system, welding\cite{Chen2014A}, assembling\cite{Wang2008Visual,Xiao2014Visual}, robot\cite{Wu2013Cloud,Tsai2017A}, unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing} and sorting\cite{Sun2013Automatic}. These works address their problems in relevant fields. However, all these solutions are based on special motion control system and visual system.
+Visual control system is combined of special motion control system and visual system which has been applied in various fields, such as transport \cite{Xing2014Intersection}, circuit detection\cite{Nian2005An}, sorting system, welding\cite{Chen2014A}, assembling\cite{Wang2008Visual,Xiao2014Visual}, robot\cite{Wu2013Cloud,Tsai2017A}, unmanned aerial vehicles\cite{Guenard2010A,Serra2016Landing}, and sorting\cite{Sun2013Automatic}. These works address their problems in relevant fields. However, all these solutions are based on special motion control system and visual system.
 
-On the other hand. The integration of logic control and motion control has variously deep researches \cite{Ioannides2004Design,Shi2016The,Fang2017Design, syaichu2011model}. \cite{Ioannides2004Design,syaichu2011model} realize the motion control directly in PLC. \cite{Peng2011Linear, Qian2014A, OMRON2006CS1W} use motion control module collaborated with PLC to implement their applications. However, the development method in these papers is disordered. Therefore, in 2005, PLCopen organization has released a related standard \cite{PLCopen2005Function} which standardizes the motion control in PLC. Based on this standardization, \cite{S2006Advanced} provides an advanced implementation in distributed automation system and companies, such as 3S \cite{3S2017Logic}, provide some tools. \cite{wu2018customized} poses a customized real-time compilation method to reduce the development complexity.
+Additionally, the integration of logic control and motion control has variously deep researches \cite{Ioannides2004Design,Shi2016The,Fang2017Design, syaichu2011model}. \cite{Ioannides2004Design,syaichu2011model} realize the motion control directly in PLC. \cite{Peng2011Linear, Qian2014A, OMRON2006CS1W} use motion control module collaborated with PLC to implement their applications. However, owing to the confusion of the development method in these works, PLCopen organization released a related standard \cite{PLCopen2005Function} which standardizes the motion control in PLC. Based on this standardization, \cite{S2006Advanced} provides an advanced implementation in distributed automation system, and companies, such as 3S \cite{3S2017Logic}, provide some tools for users. \cite{wu2018customized} also poses a customized real-time compilation method to reduce the development complexity.
 
-Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few papers discussing the integration of visual system, motion control and PLC. Most of applications are focusing on their applications with three individual systems, such as \cite{Chen2014A}. Hence, an integration structure of PLC system, motion control system and visual system should be provided to reduce the complexity and expand the application fields.
+Above works provide impressive integrations on visual servo control system and PLC with motion control functions, however there are few works researching the integration of visual system, motion control, and PLC. Most of applications are focusing on their applications with three individual systems, such as \cite{Chen2014A}. Hence, an integration structure of PLC system, motion control system, and visual system should be provided to reduce the complexity and expand the application fields.
 
 \subsection{Our Contributions}
-We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system and visual system in ePLCs. The multi-level includes flexible layer, control layer and algorithm layer. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture.
-In the remaining paper, in Section \ref{SystemStructure}, the hardware ans software structure, memory allocation and thread structure are introduced. In Section \ref{Integration}, the mechanism of $VCA$ protocol is addressed in detail. In Section \ref{Execution}, we illustrate the execution process of the proposed system. Then, we implement two cases which are binocular catching robot and winding machine with visual system in Section \ref{Case}. In the last section, we conclude our works.
+We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system, and visual system. The multi-level includes flexible layer, control layer, and algorithm layer. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, customized hardware, memory allocation, and Petri-Net based multithreading structure are described to support the proposed flexible software architecture.
+
+In the remaining paper, in Section \ref{SystemStructure}, the hardware and software structure and memory allocation are introduced. In Section \ref{Integration}, the mechanism of $VCA$ protocol is addressed in detail. In Section \ref{Execution}, we illustrate the execution process of the proposed system. Then, we implement two cases which are binocular catching robot and winding machine with visual system in Section \ref{Case}. In the last section, we conclude our works.
 
 \section{System Architecture}
 \label{SystemStructure}
 \subsection{Hardware Structure}
-The hardware is comprised of ePLC system ($ES$)and visual system ($VS$). The $ES$ is a customized structure. The number of DI/DO, AI/AO and controlled servo system could be increased according to applications. Fig. \ref{fig:Hardware} shows a typical $ES$ which adopts two processor architecture. The shared memory is used to transfer data between master and slave processors. The communication between $ES$ and $VS$ could adopt multiple protocols, such as TCP, modbus, CAN, etc. In the shown Fig. \ref{fig:Hardware}, we adopt the CAN Bus.
+The hardware is comprised of ePLC system ($ES$) and visual system ($VS$). The $ES$ is a customized structure. The number of digital input/output, analog input/output and controlled servo system could be increased according to requirements. Fig. \ref{fig:Hardware} shows a typical $ES$ which adopts two processor architecture. The shared memory is used to interact data between master and slave processor. The $VS$ normally contains one or more cameras, and a CPU for visual tasks. The communication between $ES$ and $VS$ could adopt multiple protocols, such as TCP, modbus, and CAN.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=3.5in]{fig/Hardware.pdf}
-	\caption{A typical $ES$ which adopts two processor architecture. The shared memory is used to transfer data between master and slave processors. The communication between $ES$ and $VS$ adopt the CAN Bus.}
+	\caption{Hardware architecture of typical $ES$ and $VS$. The $ES$ adopts two processor architecture and the $VS$ contains one camera and a CUP. The communication between $ES$ and $VS$ adopt the CAN Bus.}
 	\label{fig:Hardware}
 \end{figure}
 \subsection{Software Structure}
-The typical software structure is seen as in Fig. \ref{fig:Software}. To our best knowledge, the $VS$ commonly contains several visual algorithms and every algorithm could extract some required parameters form pictures or videos. Meanwhile, the $ES$ is comprised of modules which conclude logic part and algorithms. The algorithms here are main motion control algorithms. Regarding the normal development method of visual servo control, the $VS$ and $ES$ is developed individually and using the communication protocol combines this two parts. However, this method should be always redesigned the programs in both systems because of the various visual algorithms and motion control algorithms. In addition, the logic and motion control are mixed together to develop in $ES$ and there are also lots of communication protocols (EtherCat, Modbus, Can, etc.). Considering the high complexity of today’s applications, it will be a cumbersome task.
+The software of the proposed multi-level flexible structure is shown as in Fig. \ref{fig:Software}. To our best knowledge, the $VS$ commonly contains several visual algorithms and every algorithm could extract some required parameters form pictures or videos. Meanwhile, the $ES$ is comprised of modules which conclude logic part and algorithms. The algorithms here mainly donate motion control algorithms. The structure contains three layers: flexible layer ($FL$), control layer ($CL$), and algorithm layer ($AL$).
 
-Hence, we propose a multi-level flexible architecture which is based on $VCA$ protocol to address the problem of lack of generic method to integrate the $VS$ and $ES$. As shown in Fig. \ref{fig:Software}, the architecture contains three layers: flexible layer ($FL$), control layer ($CL$) and algorithm layer ($AL$).
+\textbf{Flexible layer}: these layer is responsible for joint the $VS$ and $ES$, which consists of $PLC$ interface and visual interface. The parameters are framed with $VCA$ protocol frame (henceforth, $VCA$ protocol frame is abbreviated form of $PF$) interacted between $VS$ and $ES$. Furthermore, a special protocol template ($PT$) is saved in both systems to illustrate the protocol.
 
-\textbf{Flexible layer}: these layer is responsible for joint the $VS$ and $ES$ and consists of $PLC$ interface and visual interface. The parameters are framed with $VCA$ protocol frame (henceforth, abbreviated form of $PF$) interacted between $VS$ and $ES$. Furthermore, a special protocol template ($PT$) is saved in both systems to illustrate the protocol.
+\textbf{Control layer}: this is independent form algorithm layer to cope with the logic tasks. This make it possible to run the logic task and algorithm task in different processors.
 
-\textbf{Control layer}: this is independent of algorithm layer to cope with the logic tasks. This make it possible to run the logic task and algorithm task in different processors.
-
-\textbf{Algorithm layer}: it is mainly comprised of types of algorithms which could be built in individual processors for algorithms with high performance requirement. 
+\textbf{Algorithm layer}: it is mainly comprised of various types of algorithms. The independent algorithm layer makes the algorithms with high performance requirement that could be built in individual processors. 
 
 
 \begin{figure}
@@ -127,24 +126,8 @@ Hence, we propose a multi-level flexible architecture which is based on $VCA$ pr
 	\caption{Multi-level flexible architecture contains three layers: flexible layer, control layer and algorithm layer.}
 	\label{fig:Software}
 \end{figure}
-%%%Fig.4. The three-layer architecture of embed PLC.
 
 
-
-\subsection{Thread Structure}
-We adopt the analogous thread structure in \cite{wu2018customized}. Three special threads introduced below:
-\begin{enumerate}
-	\item Visual Thread. This thread is responsible for interaction with $VS$. It will receive the protocol frame from the $VS$ and save it to relevant address. 
-	\item Control Thread. Control thread mainly execute logic program, deframe the protocol frame and interaction data with algorithm thread.
-	\item Algorithm Thread. Algorithm thread runs in slave processors. It is used to implement data interaction between processors and execution of algorithms.
-\end{enumerate}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=3in]{fig/Threads.pdf}
-	\caption{ Thread structureThe with three special threads: visual thread, Control thread, algorithm thread.}
-	\label{fig:Threads}
-\end{figure}
 \subsection{Memory Allocation}
 \begin{figure}
 	\centering
@@ -152,59 +135,25 @@ We adopt the analogous thread structure in \cite{wu2018customized}. Three specia
 	\caption{Memory allocation of master processor, shared ram and slave processor.}
 	\label{fig:RAM}
 \end{figure}
-The dedicated storage area of $PLC$ in memory is made up of bit data area ($M$ area) and byte data area ($D$ area). Meanwhile, we regard $M$ area and $D$ area as set $M$ of bit and set $D$ of byte. Henceforth, we have three definitions below.
+The dedicated storage area of $PLC$ in memory is made up of bit data area ($M$ area) and byte data area ($D$ area). Meanwhile, we regard $M$ area and $D$ area as set $M$ of bit and set $D$ of byte. Henceforth, if $\exists$ set $S$, we define its subscripted lowercase letter $s_i$ as an element of $S$ and the subscripted $i$ is used to distinguish the elements.Fig. \ref{fig:RAM} shows the memory allocation of master processor, shared RAM and slave processor. The shared $RAM$ is a special structure to fast data interaction between master and slave processors. In more general cases, the $MSD$ is located in master processor, the $SMD$ and $ADF$ are located in slave processor and the $PT$ is in both master and slave processors. 
 
-\textbf{Definition 1} If $\exists$ set $S$, we define its subscripted lowercase letter $s_i$ as an element of $S$ and the subscripted $i$ is used to distinguish the elements.
+In master processor, its RAM contains the special areas: 1) Module control flag area ($MCF$) are used to start the modules. 2) Master processor data interaction flag area ($MPF$) contains begin data transfer flag from master to slave ($MSB$), transfer state of master from master to slave ($MSF$), acknowledge flag of master from master to slave ($MSA$) ,and transfer state of master from slave to master ($MSS$). 3) Module data saved flag area ($MDF$) denotes whether the module data are saved. 4) Logic control data area ($LCD$) are used to store the control frame. Every element $lcd_i$ is associated with a specified module. 5) $VCA$ protocol frame data area ($VD$) stores all the frames received form the $VS$.  
 
-\textbf{Definition 2} If $\exists S \subseteq M$ and $(\forall s_{i} \in S) \in \{0, 1\} $. Meanwhile, each element $s_i$ has four operators: $\mathcal{S}_0(s_i)$ assigns $0$ to $s_i$, $\mathcal{S}_1(s_i)$ assigns $1$ to $s_i$, $\mathcal{J}_0(s_i)$ represents that the value of $s_i$ is $0$, $\mathcal{J}_1(s_i)$ means that the value of $s_i$ is $1$. Then we define the set $S$ has $\mathcal{B}$ attribute.
-
-\textbf{Definition 3} If $\exists S \subseteq D$ and $\forall s_{i} \in S$ has 4 bytes. We define the set $S$ has $\mathcal{D}$ attribute.
-
-Fig. \ref{fig:RAM} shows the memory allocation of master processor, shared RAM and slave processor. The shared $RAM$ is a special structure to fast data interaction between master and slave processors. In more general cases, the $MtoS$ is located in master processor, the $StoM$ is located in slave processor and the $PT$ is in both master and slave processors. 
-
-\textbf{\emph{MCF}} (Module Control Flag Area): the flag are used to start the modules. It has $\mathcal{B}$ attribute.
-
-\textbf{\emph{MPF}} (Master Processor Data Interaction Flag Area): it contains begin data transfer flag from master to slave ($MSB$), transfer state of master from master to slave ($MSF$), acknowledge flag of master from master to slave ($MSA$) and transfer state of master from slave to master ($MSS$). All of them have $\mathcal{B}$ attribute.
+In shared RAM, it could be read by both of master and slave processors and consists of the special areas: 1) Master processor data interaction data area ($MSD$) stores the data delivered from slave processors. 2) Slave processor data interaction data area ($SMD$) stores the data delivered from master processor. 3) Algorithm data saved flag area ($ADF$) denotes whether the algorithm data are saved. 4) Protocol template data area ($PTD$) stores the protocol template which contains $PT$s from $VS$ to $ES$ and from $ES$ to $VS$.
 
 
-\textbf{\emph{MDF}} (Module data saved flag area): this flags denote whether the module data are saved. It has $\mathcal{B}$ attribute.
+In slave processor, the RAM is comprised of the special areas: 1) Algorithm flag area ($AF$) includes algorithm flag of execution ($AFE$) and algorithm flag of state ($AFS$). 2) Slave processor data interaction flag area ($SPF$) includes the begin data transfer flag from slave to master ($SMB$), transfer state of slave from slave to master ($SMF$), acknowledge flag of slave from slave to master ($SMA$), and transfer state of slave from master to slave ($SMS$). 3) Algorithm data area ($AD$) saves data which help specified algorithm executing.
 
-\textbf{\emph{LCD}} (Logic Control Data Area): these data will be used to store the control frame. It has $\mathcal{D}$ attribute. Every element $lcd_i$ is associated with a specified module.
-
-\textbf{\emph{VD}} ($VCA$ protocol frame data area): all the frames received from the $VS$ are stored in this area.
-
-\textbf{\emph{MSD}} (Master Processor Data Interaction Data Area): an area stores the data delivered from slave processors and it has $\mathcal{D}$ attribute.
-
-\textbf{\emph{SMD}} (Slave Processor Data Interaction Data Area): an area stores the data delivered from master processor and it has $\mathcal{D}$ attribute.
-
-\textbf{\emph{ADF}} (Algorithm data saved flag Area): the flags denote whether the algorithm data are saved. It has $\mathcal{B}$ attribute.
-
-\textbf{\emph{PTD}} (Protocol Template Data Area): the protocol template is stored in this area and could be read by both processors.
-
-
-\textbf{\emph{AF}} (Algorithm Flag Area): it includes algorithm flag of execution ($AFE$) and algorithm flag of state ($AFS$).
-Both of them have $\mathcal{B}$ attribute.
-
-\textbf{\emph{SPF}} (Slave Processor Data Interaction Flag Area): this area includes the begin data transfer flag from slave to master ($SMB$), transfer state of slave from slave to master ($SMF$), acknowledge flag of slave from slave to master ($SMA$) and transfer state of slave from master to slave ($SMS$). All of them have $\mathcal{B}$ attribute.
-
-\textbf{\emph{AD}} (Algorithm Data Area): these data help specified algorithm executing. It has $\mathcal{D}$ attribute.
- 
- We define the $\mathcal{P}$ to interact data between master processor and slave processor. It contains transferring data from master to slave ($\mathcal{P}_{mts}$) and transferring data from slave to master ($\mathcal{P}_{stm}$) which is defined below:
+ We define the $\mathcal{I}$ to interact data between master processor and slave processor. It contains two parts: transferring data from master to slave ($\mathcal{I}_{mts}$) and transferring data from slave to master ($\mathcal{I}_{stm}$), which is defined below:
  \begin{equation}
  \left\{
  \begin{array}{l}
- \mathcal{P}_{mts} = \mathcal{U} (msb_i,msf_i,sma_i,sms_i,smd_i)\\
- \mathcal{P}_{stm} = \mathcal{U} (smb_i,smf_i,msa_i,mss_i,msd_i)
+ \mathcal{I}_{mts} = \mathcal{L} (msb_i,msf_i,sma_i,sms_i,smd_i)\\
+ \mathcal{I}_{stm} = \mathcal{L} (smb_i,smf_i,msa_i,mss_i,msd_i)
  \end{array}
  \right.
  \end{equation}
- Where $\mathcal{U}$ is the function to implement the process of data interaction between master and slave processors. $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$ use the same function $\mathcal{U}$.
- 
- The process of $\mathcal{P}_{mts}$ is seen below:
- 	$\mathcal{S}_1(msb_i)\to\mathcal{S}_1(msf_i)\to send(smd_i)\to\mathcal{S}_0(msb_i)\to\mathcal{S}_1(sms_i)\to check(smd_i)\to\mathcal{S}_1(sma_i)\to\mathcal{S}_0(sms_i)\to\mathcal{S}_0(sma_i)\to\mathcal{S}_0(msf_i)$.
- 
- Where $send(msd_i)$ means sending data to $msd_i$ in slave processor. $check(msd_i)$ means to check data of $msd_i$.
-
+ Where $\mathcal{L}$ is the function to implement the process of data interaction between master and slave processors. $\mathcal{I}_{mts}$ and $\mathcal{I}_{mts}$ use the same function $\mathcal{L}$. The process of $\mathcal{I}_{mts}$ is described as follows: the master processor sets $msb_i$ one, sets $msf_i$ one, sends data to $smd_i$,  recovers $msb_i$ to zero, and informs slave processor to get the data; the slave processor sets $sms_i$ one, checks the data of $msd_i$, sets $sma_i$ one, feeds back the master processor to end the transferring, recovers $sms_i$ zero, and recovers $sma_i$ zero; at last, the master processor recovers $msf_i$ zero.     
  
 
 %%%Fig.6. Distribution of dedicated public data area.
@@ -259,14 +208,14 @@ In cater to most applications, we propose a $VCA$ protocol based multi-level fle
 	\label{fig:Protocol}
 \end{figure}
 \subsection{Framing of $PF$}
-The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Transfer data ($TD$) save the data to be transferred and it is indexed by the $PID$. In the $VS$, it represents the parameters obtained form the visual algorithms. In the $ES$, the data come from the $RAM$.   
+The framing contains three steps: $VCA$ framing, $CL$ framing, and $AL$ framing. Transfer data area ($TD$) saves the data to be transferred and it is indexed by the $PID$. In the $VS$, it represents the parameters obtained form the visual algorithms. In the $ES$, the data come from the $RAM$.   
 
 
-\textbf{\emph{VCA} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, we can obtain the $man$ and $mdn$. According to $man$ and $mdn$, call the Algorithm \ref{alg3} and Algorithm \ref{alg2} to gain the $pfdata$ and $afdata$. Then calculate the length ($vfl$) to finish the $VCA$ framing.
+\textbf{\emph{VCA} Framing}: the process is realized as the Algorthm \ref{alg1}. It searches the $PT$ with $mid$ to find the relevant $vlt_x$. Through it, we can obtain the $man$ and $mdn$. According to $man$ and $mdn$, the Algorithm \ref{alg3} and Algorithm \ref{alg2} are called to gain the $pfdata$ and $afdata$. Then, it is finished after calculating the length ($vfl$).
 
 \textbf{\emph{CL} Framing}: Algorthm \ref{alg2} illustrates the process. It seeks the $PT$ to gain the $alt_y$ which contains the $apn$. According to $apn$, call the Algorithm \ref{alg3} to obtain the $pfdata$ and then calculate the length ($cfl$) to finish the $AL$ framing.  
 
-\textbf{\emph{P} Framing}: Algorthm \ref{alg3} shows the process. The $VS$ obtains the $alt_z$ frome $FT$ and then combines the $pid$ and $pdata$.
+\textbf{\emph{P} Framing}: Algorthm \ref{alg3} shows the process. The $VS$ obtains the $alt_z$ from $FT$ and then combines the $pid$ and $pdata$.
 
 
 \begin{algorithm}
@@ -318,13 +267,13 @@ The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Tra
 \end{algorithm}
 
 \subsection{Deframing of $PF$}
- The process of deframing of $PF$ has three parts: $VCA$ deframing, $CL$ deframing and $AL$ deframing. Received Data ($RD$) are used to save the deframing parameters. the $RD1$, $RD2$ and $RD3$ are different temporarily storing data area. In the $VS$,  $RD3$ are the data fed back to visual algorithms. In the $ES$, the $RD1$, $RD2$ and $RD3$ donate $LCD$, $MSD$ and $AD$, respectively.
+ The process of deframing of $PF$ divided into $VCA$ deframing, $CL$ deframing, and $AL$ deframing. Received Data ($RD$) area are used to save the deframing parameters. the $RD1$, $RD2$ and $RD3$ are different temporarily data stored area. In the $VS$, $RD3$ are the data fed back to visual algorithms. In the $ES$, the $RD1$, $RD2$ and $RD3$ donate $LCD$, $MSD$ and $AD$, respectively.
 
-\textbf{\emph{VCA} deframing}: as illustrated in Algorithm \ref{alg4}, obtain the $mid$ and $pfl$ form the start four and following four bytes data of $PDF$, respectively. Search the $PT$ to gain the relevant $vpt_x$. Send the $pfl-8$ bytes start form the eighth byte of $PDF+8$ to the address $mda$ of $vlt_x$.
+\textbf{\emph{VCA} deframing}: As illustrated in Algorithm \ref{alg4}, obtain the $mid$ and $pfl$ form the start four and following four bytes data of $PDF$, respectively. Search the $PT$ to gain the relevant $vpt_x$. Send the $pfl-8$ bytes start form the eighth byte of $PDF+8$ to the address $mda$ of $vlt_x$.
 
-\textbf{\emph{CL} deframing}: according to $mid$, search $PT$ to find the relevant $vpt_x$. Loop deal with the $mda$ times of the parameter frame. In each loop, the data are sent to $RD3$ with the relevant $pid$. Loop deal with the $man$ times of the algorithm frame. In each loop, use the $aid$ to find $apt_y$ and then send the $afdata$ to correlative address of $RD2$. Algorithm \ref{alg5} is described the process.
+\textbf{\emph{CL} deframing}: According to $mid$, search $PT$ to find the relevant $vpt_x$. Loop deal with the $mda$ times of the parameter frame. In each loop, the data are sent to $RD3$ with the relevant $pid$. Loop deal with the $man$ times of the algorithm frame. In each loop, use the $aid$ to find $apt_y$ and then send the $afdata$ to correlative address of $RD2$. Algorithm \ref{alg5} is described the process.
 
-\textbf{\emph{AL} deframing}: use $aid$ to get its $apt_y$. Loop cope with the algorithm frame $apn$ times. Send the parameters to $RD3$ with the correlative $pid$. The process is shown in Algorithm \ref{alg6}.
+\textbf{\emph{AL} deframing}: Use $aid$ to get its $apt_y$. Loop cope with the algorithm frame $apn$ times. Send the parameters to $RD3$ with the correlative $pid$. The process is shown in Algorithm \ref{alg6}.
 
 \begin{figure}
 	\centering
@@ -337,11 +286,12 @@ The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Tra
 	\caption{$VLDeframing$}%算法名字
 	%\LinesNumbered %要求显示行号
 	\KwIn{$PDF$}%输入参数
-    $mid \leftarrow$ four bytes start form $PDF$\;
+    $mid \leftarrow$ four bytes form $PDF$\;
     searchPT ($mid$, $vpt_x$)\;
-    $pfl \leftarrow$ four bytes start form $PDF+4$\; 
-    $RD1[vpt_x.mda]\leftarrow$ $pfl-8$ bytes start form $PDF+8$\;     	
+    $pfl \leftarrow$ four bytes form $PDF+4$\; 
+    $RD1[vpt_x.mda]\leftarrow$ $pfl-8$ bytes form $PDF+8$\;     	
 	$PDF\leftarrow$ $PDF+pfl$\;
+	value of $vpt_x.mdf\leftarrow 1$\;
 \end{algorithm}
 
 \begin{algorithm}
@@ -352,13 +302,15 @@ The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Tra
 	searchPT($mid$, $vpt_x$)\;
 	$mda\leftarrow$ $vpt_x.mda$\;	
 	\For{$i=0$;$i<vpt_x.mdn$;$i++$}{
-		$RD3[RD1[mda]]\leftarrow$ 4 bytes start form $mda+4$\;
+		$RD3[RD1[mda]]\leftarrow$ 4 bytes form $mda+4$\;
 		$mda\leftarrow mda+8$\;
 	}
 	\For{$i=0$;$i<vpt_x.man$;$i++$}{
 		searchPT($vpt_x.mas[i]$, $apt_y$)\;
-		$RD2[apt_y.apa]\leftarrow$ $apt_y.vfl - 8$ bytes start form $mda+8$\; 
-        $mda\leftarrow$ $mda+apt_y.vfl$\;
+		$cfl\leftarrow$ 4 bytes form $mda+4$\;
+		$RD2[apt_y.apa]\leftarrow$ $cfl - 8$ bytes form $mda+8$\; 
+        $mda\leftarrow$ $mda+cfl$\;
+        value of $apt_y.adf\leftarrow$ 1\; 
 	}
 \end{algorithm}
 
@@ -370,7 +322,7 @@ The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Tra
 	searchPT($aid$, $apt_y$)\;
 	$ada\leftarrow$ $apt_y.ada$\;
 	\For{$i=0$;$i<apt_y.apn$;$i++$}{
-		$RD3[RD2[ada]]\leftarrow$ 4 bytes start form $ada+4$\;
+		$RD3[RD2[ada]]\leftarrow$ 4 bytes form $ada+4$\;
 		$ada\leftarrow ada+8$\;
 	}
 \end{algorithm}
@@ -379,26 +331,21 @@ The framing contains three steps: $VCA$ framing, $CL$ framing, $AL$ framing. Tra
 \section{System Operation Mechanism}
 \label{Execution}
 \subsection{Implementation of Flexible Program and Execution}
-The $FL$ contains two parts: $PLC$ interface and visual interface, shown in Fig. \ref{fig:FlexibleLayer}. They interact with each other using the agreed communication protocol which is defined as $CID$ in $HPT$ of $PT$. The execution from PLC interface to visual interface is comprised of five steps.  
+The $FL$ contains PLC interface and visual interface, shown in Fig. \ref{fig:FlexibleLayer}. They interact with each other using the agreed communication protocol which is defined as $CID$ in $HPT$ of $PT$. 
 
-The $PLC$ interface is responsible for get parameters of motion control form $VS$ and interact with $ES$. It includes three steps blew.
+In the $ES$, the visual interface includes the following parts.
 
-\textbf{Step 1}: after image processing, the $VS$ extracts the useful data and stores into data required to be transfered ($TD$) in which the parameters could be indexed by the $PID$.
+\textbf{V1}: communicates with $VS$, according to the $CID$ in $HPT$. It has three transitions. \textbf(V1.1) donates no communication and other operations; \textbf(V1.2) donates receiving $PF$s from $VS$, and \textbf{V1.3} donates sending $PF$s to $VS$. In $V1.3$, the $PF$s will be saved in the $VD$ of $ES$ and there are two pointers: $PDF$ and $PSP$, shown in Fig. \ref{fig:VisualInterface}. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$. In $V1.3$, visual interface frames $TD$ into $PF$ with the Algorithm \ref{alg1}, \ref{alg2} and \ref{alg3}. Here, the $TD$ is in $RAM$ of $ePLC$.
 
-\textbf{Step 2}: frame $TD$ into $PF$ with the Algorithm \ref{alg1}, \ref{alg2} and \ref{alg3}. Here, the $TD$ is an array in $VS$.
+\textbf{V2}: Algorithm \ref{alg4} will be called. The $PDF$ will point to the next $PF$, if a $PF$ is deframed.
 
-\textbf{Step 3}: transfer the $PF$s to $ePLC$ with the relevant communication protocol in $CID$.
 
-\textbf{Step 4}: visual interface receives $PF$s from $VS$ according the $CID$ in $HPT$.
+In the $VS$, there are following parts.  
 
-\textbf{Step 5}: visual interface saves them in the $ES$. There are two pointers: $PDF$ and $PSP$, shown in Fig. \ref{fig:VisualInterface}. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. The $PDF$ will point to the next address of $PF$ if a $PF$ is deframed. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$. 
+\textbf{V1}: visual algorithms extracts the useful data and stores into array of data required to be transfered ($TD$) in which the parameters could be indexed by the $PID$.
 
-The execution from visual interface to PLC interface consists of the following steps.
-\textbf{Step 1}: visual interface frames $TD$ into $PF$ with the Algorithm \ref{alg1}, \ref{alg2} and \ref{alg3}. Here, the $TD$ is in $RAM$ of $ePLC$.
+\textbf{V2}: communicates with $ES$. It also contains three transitions. \textbf{V2.1} is no communication and other operations; \textbf{V2.1} frames $TD$ into $PF$s with the Algorithm \ref{alg1}, \ref{alg2}, and \ref{alg3} and sends the $PF$s to $ES$. Here, the $TD$ is an array in $VS$; \textbf{V2.3} receives the $PF$s form $ES$ and deframes the $PF$s with the Algorithm \ref{alg4}, \ref{alg5}, and \ref{alg6}.
 
-\textbf{Step 2}: visual interface transfers the $PF$s to $VS$ with the relevant communication protocol in $CID$.
-
-\textbf{Step 3}: PLC interface deframes the $PF$s with the Algorithm \ref{alg4}, \ref{alg5} and \ref{alg6}.
 \begin{figure}
 	\centering
 	\includegraphics[width=3in]{fig/VisualInterface.pdf}
@@ -406,120 +353,103 @@ The execution from visual interface to PLC interface consists of the following s
 	\label{fig:VisualInterface}
 \end{figure}
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=3.5in]{fig/bitdatainM.eps}
-%	\caption{Using bit data in the M area to control program module$\textquoteright$s execution}
-%	\label{fig:bitdatainM}
-%\end{figure}
-%%%Fig.11. Using bit data in M area to control program module¡¯s execution.
 
 
 \subsection{Implementation of Control Program and Execution}
-Control program $CP$ is responsible for organizing the modules, executing the logic program, deframing the $PF$ and interacting the data with algorithm program. $CP=\{VLDP,CLDP, IP, LP, PIP\}$, where $CLP$ is the control layer deframe program. $IP$ is the initial program which is used to initialize the data and state. $LP$ is the logic program. $PIP$ is the processor interaction program implemented to transfer and receive data between processors. The implementation of control program is described below.
+Control program ($CP$) is responsible for organizing the modules, executing the logic program, deframing the $PF$ and interacting the data with algorithm program. The implementation of control program is described below.
 
-\textbf{Step 1}: if the pointer $PDF!=PSP$, execute the $VLDP$ which means to call Algorithm \ref{alg4}.
+\textbf{C1}: traverse the $MCF$ and $MDF$. Its contains three transitions. \textbf{C1.1} donates that every $mcf\in MCF$ and $mdf \in MDF$ is recovered to zero. \textbf{C1.2} means that both $mcf_i$ and $mdf_i$ are checked one. \textbf{C1.3} means that $mcf_i$ are checked one while $mdf_i$ is zero.
 
-\textbf{Step 2}: traverse the $LCF$ to check whether there is a module needed to execute. If $\exists$ $\forall$ $lcf_i \in LCF$ is 1, go to step 3.
+\textbf{C2}: executes Algorithm \ref{alg5}. 
 
-\textbf{Step 3}: execute the $IP$ to initialize the data and state and then execute the $LP$ to find the called algorithm. If $\exists$ $\forall$ $af_i \in AF$ is 1, go to step 4. 
+\textbf{C3}: executes logic program and checks whether there is any data required to transfer.  
 
-\textbf{Step 4}: if $\exists$ $\forall$ $adf_i \in ADF$ is 1, execute the $CLDP$ to call Algorithm \ref{alg5}, go to step 5. 
+\textbf{C4}: the $\mathcal{P}_{mts}$ is used to send data and inform the slave processor to receive parameters and start algorithms.   
 
-\textbf{Step 5}: the $\mathcal{P}_{mts}$ is used in $PIP$ to inform the slave processor to receive parameters and start algorithms and clear the relevant $af_i$.   
-
-\textbf{Step 6}: read and process the feedback data form the slave processor. 
-
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=3in]{fig/formatofCNCprogram.eps}
-%\caption{The format of ACP program frame after compiling}
-%\label{fig:formatofCNCprogram}
-%\end{figure}
-%%%Fig.8. The format of ACP program frame after compiling.
-
-
-
-
-%%%Fig.9. The schematic of delivering ACP instruction parameters from ACPDD to ACPPSD
-
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=2.5in]{fig/compilation.png}
-%	\caption{ The compilation from flexible program to control program}
-%	\label{fig:compilation}
-%\end{figure}
-
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=2.5in]{fig/DataTransfer.png}
-%	\caption{ The compilation from flexible program to control program}
-%	\label{fig:DataTransfer}
-%\end{figure}
-
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=3in]{fig/execution.png}
-%	\caption{ The execution OF flexible program}
-%	\label{fig:execution}
-%\end{figure}
+\textbf{C5}: checks the end of this module. $C5.1$ donates that this module executes one time. $C5.2$ donates that the logic program still requires to run.  
 
 \subsection{Implementation and Execution of Algorithm Program }
-The Algorithm Program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, where $\mathcal{P}_{stm}$ feeds back data to master processor, $AS$ contains all algorithms and $ALDP$ deframe the $AL$ frame. The execution of algorithm program is introduced below.
+The algorithm program ($AP$) is in $EL$. $AP=\{\mathcal{P}_{stm}, AS, ALDP\}$, where $\mathcal{P}_{stm}$ feeds back data to master processor, $AS$ contains all algorithms and $ALDP$ deframe the $AL$ frame. The execution of algorithm program is introduced below.
 
-\textbf{Step 1}: traverse the $LCF$ to check whether there is a algorithm needed to execute. If $\exists$ $\forall$ $af_i \in AF$ is 1, go to step 2.
+\textbf{A1}: traverse the $AFS$, $ADF$, and $SMB$. $A1.1$ is no program required to execute. $A1.2$ donates that $PF$s needed to be deframed is checked. $A1.3$ donates that data needed to feed back to master processor. $A1.4$ donates that a algorithm needed to be executed is checked. $A1.5$ donates that parameters of a algorithm needed to be updated is checked.  
 
-\textbf{Step 2}: if $\exists$ $\forall$ $adf_i \in ADF$ is 1, $ALDP$ is executed to call Algorithm \ref{alg5}, go to step 3. 
+\textbf{A2}: $ALDP$ is executed to call Algorithm \ref{alg5}. 
 
-\textbf{Step 3}: execute the motion algorithm.
+\textbf{A3}: the $\mathcal{P}_{stm}$ is used to feed back data to the master processor. 
 
-\textbf{Step 4}: the $\mathcal{P}_{stm}$ is used to feed back data to the master processor. 
+\textbf{A4}: starts a algorithm.
 
-\subsection{Execution of Threads}
- Commonly, threads in master processor and in slave processors execute separately according to their priority and the interaction between control thread and algorithm threads occurs when using $\mathcal{P}_{mts}$ and $\mathcal{P}_{mts}$. 
- 
- Visual thread consists of the following units.
- 
- \textbf{$V_1$}: receive $PF$ from $VS$ with the agreed communication protocol.
- 
- \textbf{$V_2$}: check $PF$ and store it into $VD$. 
- 
- \textbf{$V_3$}: call Algorithm \ref{alg4} to deframe the $PF$ and saved the $cdata$ into $LCD$.
- 
- Basic execution units of control thread are shown as follows:
+\textbf{A5}: executes the algorithm until the end. 
 
-\textbf{$C_{1}$}: start a module and initial it.
-
-\textbf{$C_{2}$}: run logic program. 
-
-\textbf{$C_{3}$}: call Algorithm \ref{alg5} to deframe control frame.
-
-\textbf{$C_{4}$}: transfer data to slave processor by $\mathcal{P}_{mts}$.
-
-\textbf{$C_{5}$}: deal with the feedback data.
-
-\textbf{$C_{6}$}: end the module.
-
-Motion thread contains the following basic execution units:
-
-\textbf{$M_{1}$}: Start a algorithm.
-
-\textbf{$M_{2}$}: Call Algorithm \ref{alg6} to deframe the algorithm frame.
-
-\textbf{$M_{3}$}: Execute the algorithm.
-
-\textbf{$M_{4}$}: Feedback the data to master processor by $\mathcal{P}_{stm}$.
-
-\textbf{$M_{5}$}: End the algorithm.
-
-The threads execute as shown in Fig. \ref{fig:threadExecution}. Visual thread ($VT$) continuously executes the unit $V1$ if there exits $PF$ from $VS$, executes unit $V2$ to store the $PF$ into $VD$ at the address of $PSP$ and execute $V3$ to deframe $PF$ at the address of $PDF$ and store its $cdata$ into $LCD$ and $\mathcal{S}_1 {cdf_i}$.
-The control thread ($CT$) traverses $LCF$, finds $\exists \mathcal{J}_1 {lcf_i}$ and then executes the unit $C1$, executes unit $C_2$. If find a required execution algorithm and $\exists$ its $\mathcal{J}_1 {mdf_j}$ then $CT$ starts unit $C3$ to deframe the control frame and then runs unit $C4$ and inform algorithm thread ($AT$) to execute $M_1$ unit. Next, $AT$ executes unit $M2$ transferring data from $SMD$ to $AD$. After that, the unit $M3$ is executed. During the running of algorithm, the unit $M4$ is continuously executed to feed data back to $CT$, meanwhile $CT$ will execute unit $C5$ to response it until the execution of $M5$ and no other executed algorithms neither. During the running of the module, if the $VT$ receives new $PF$ and $CT$ finds $\exists \mathcal{J}_1 {cdf_i}$, $CT$ will execute unit $C_3$ and $C_4$ again. Next, the $VT$ will run unit $M_2$ to update the parameters. If the $MT$ finished all algorithms, then $CT$ will run unit $C_6$ to finished the module and continue to traverse the $LCF$ to find another required execution module.   
+\subsection{Petri-Net Based Execution of Threads}
+We adopt the analogous thread structure in \cite{wu2018customized}. Three special threads are illustrated as follows: 1) visual thread is responsible for interaction with $VS$ and drives the flexible layer; 2) control thread is mainly responsible for organizing the whole program and drives the control layer; 3) algorithm thread is used to drive the algorithm layer.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=3in]{fig/ThreadExecution.pdf}
-	\caption{ Process of thread execution.}
+	\includegraphics[width=3in]{fig/Threads.pdf}
+	\caption{ Thread structure with three special threads: visual thread, Control thread, algorithm thread.}
+	\label{fig:Threads}
+\end{figure}
+
+  In our works, Petri Net is adopted to describe the execution of the three threads. Every thread is a Petri-Net. We define the Petri Net as three tuple:
+ 
+ \begin{equation}
+PN = \{P,T,F\},
+ \end{equation} 
+ where $P$ is the finite set of places, $T$ is the finite set of transitions, and $F$ is the set of arcs. Here, $F \subset P\times T \cup T\times P$ which donates that the arcs contain form $P$ to $T$ and from $T$ to $P$.
+ 
+ Then, we can define the execution of threads ($ET$) as follows.
+ \begin{equation}
+ET = \{PN_V,PN_C,PN_A\},
+\end{equation} 
+where $PN_V,PN_C,PN_A$ are the Petri Net of visual thread, control thread, and algorithm thread, respectively.
+
+The $PN_V$ is donated as follows:
+ \begin{equation}
+\left\{
+\begin{array}{l}
+PN_V= \{P_V,T_V,F_V\},\\
+P_V=\{P_{V1}, P_{V2}, P_{V3}\},\\
+T_V=\{V_1,V_2\},\\
+\end{array}
+\right.
+\end{equation} 
+where $P_{V1}$ is idle; $P_{V2}$ is $PDF != PSP$; $P_{V3}$ is that a relevant $mdf$ is set.
+
+The $PN_C$ is donated as follows:
+\begin{equation}
+\left\{
+\begin{array}{l}
+PN_C= \{P_C,T_C,F_C\},\\
+P_C=\{P_{C1}, P_{C2}, P_{C3}, P_{C4}, P_{C5}, P_{C6}\},\\
+T_C=\{C_1,C_2,C_3,C_4,C_5\},\\
+\end{array}
+\right.
+\end{equation} 
+where $P_{C1}$ is idle; $P_{C2}$ donates that a model is started and the $mdf_i$ is one; $P_{C3}$ donates that a model is started and $mdf_i$ is zero; $P_{C4}$ donates that any $msb_i$ is one; $P_{C5}$ means the end of the data interaction in which the  correlative $msf$ is zero; $P_{C6}$ donates that a module finishes one time execution.
+
+The $PN_V$ is illustrated as follows:
+\begin{equation}
+\left\{
+\begin{array}{l}
+PN_A= \{P_A,T_A,F_A\},\\
+P_A=\{P_{A1}, P_{A2}, P_{A3}, P_{A4}, P_{A5}, P_{A6}, P_{A7}, P_{A8}\},\\
+T_A=\{A_1,A_2,A_3,A_4,A_5\},\\
+\end{array}
+\right.
+\end{equation} 
+where $P_{A1}$ is idle; $P_{A2}$ donates that an $adf_i$ is one; $P_{A3}$ donates that any $adf_i$ is zero; $P_{A4}$ donates that an $smb_i$ is one; $P_{A5}$ is that any $smf_i$ is zero; $P_{A6}$ is that an $afe_i$ is one; $P_{A7}$ is that an $afs_i$ is one; $P_{A8}$ is that any $afe_i$ is zero.   
+
+The $ET$ is described in Fig. \ref{fig:threadExecution}. In the Petri Net of visual thread, if $V1.2$ executes and receives a $PF$ from $VS$, it transits from the initial position of $P_{V1}$ to $P_{v2}$. After finished deframing of a $PF$, the state transits to $P_{V3}$ and then visual thread back to execute $V1$. If there is any $FS$ which should be sent to $VS$, it will execute $V1.2$. Apart from that, ie will execute $V1.1$ and back to the position of $P_{V1}$.
+
+In the Petri Net of control thread, the control thread executes the $C1$. The difference between $P_{C1.2}$ and $P_{C1.3}$ is that after $P_{1.2}$, the control thread transits to $P_{C2}$ and executes $C2$. Except that, it will back to $P_{C1}$. Then, the control thread runs into a module and $C3$ is run. If find any data needed to transfer to slave processor, it transits to $P_{C4}$ and executes $C4$. When finish transfer, it transits to $P_{C5}$. After execution of $C5$, according to $C5.1$ and $C5.2$, control thread transits to $P_{C3}$ and $P_{C6}$. The previous one is executed owing to that the logic program of this module is not finished.
+
+In the Petri Net of algorithm thread, the $A1$ is executed; if any $AF$ needed to deframe, algorithm thread transits to $P_{A2}$ and after the execution of $A2$, it transits to $P_{A2}$; if any data required to feed back to master processor, algorithm thread transits to $P_{A4}$, then transfers the data, and transits to $P_{A5}$; if any algorithm should be started, algorithm thread transits to $P_{A6}$, executes the $A4$, transits to $P_{A7}$, executes $A5$ to update the parameters, and then transits to $P_{A8}$; if there are algorithms running and needed to updates parameters, algorithm thread transits to $P_{A7}$ directly and after the execution of $A5$ transits to $P_{A8}$; and above-mentioned transitions of $V1$ are executed in sequence.               
+
+\begin{figure}
+	\centering
+	\includegraphics[width=3.5in]{fig/ThreadExecution.pdf}
+	\caption{ Process of $ET$ and it contains Petri Nets of visual thread, control thread, and algorithm thread.}
 	\label{fig:threadExecution}
 \end{figure}
 
@@ -531,11 +461,11 @@ In this section, we introduce two scenarios of the proposed $VCA$ protocol based
   
 As shown in Fig. \ref{fig:Winding}, (a) is the visual system, whose CUP is ARM9 based S3C2440 and which uses the CANIF interface to communicate with OV9650 CMOS Camera; (b) is the $ePLC$, CASS-PLCA149B; (c) is the winding machine with visual system which contains two axes: the U-axis and Q-axis; (d) is shown the Winding effect, the angle of the wire, Q-axis and U-axis. In winding process, the tension of the copper wire will change irregularly, especially for the thick ones. However, we use the same speed ratio of U-axis and Q-axis which always leads to irregularity of each layer of the coil. Hence, we can use the visual system to decrease or increase the speed of Q-axis to control the angle of wire. 
 
-Fig. \ref{fig:WindingSystem} is the structure of the winding machine system. The ePLC has two chips: a master chip and a slave chip. It uses the RS232 to receive $PF$s and could control six servo systems at most. The winding machine has two axes: the U-axis and Q-axis. The $VS$ use the CMOS camera to gain winding images and transfer the digital information to ARM CUP. The ARM CUP will extract parameters from the digital information, frame $PF$s and transfer $PF$s to $ePLC$ continuously. 
+Figure \ref{fig:WindingSystem} is the structure of the winding machine system. The ePLC has two chips: a master chip and a slave chip. It uses the RS232 to receive $PF$s and could control six servo systems at most. The winding machine has two axes: the U-axis and Q-axis. The $VS$ use the CMOS camera to gain winding images and transfer the digital information to ARM CUP. The ARM CUP will extract parameters from the digital information, frame $PF$s and transfer $PF$s to $ePLC$ continuously. 
 
 
 \subsubsection{Design of $PT$}
-In \cite{wu2018customized}, we propose the customized winding machine language which only contains 13 instructions. Here, we can use the second and third instructions to control U-axis and Q-axis, respectively.The process of winding is mainly to control the speed ratio of U-axis and Q-axis, hence we use the $VS$ to influence the speed of Q-axis only. The $PT$ of winding machine is illustrated in Table \ref{table:PTofWinding} in which the $pid_1$ is the speed of Q-axis and the 1000 of $var_1$ is used to multiply by the $\theta$.
+In \cite{wu2018customized}, we propose the customized winding machine language which only contains 13 instructions. Here, we can use the second and third instructions to control U-axis and Q-axis, respectively. In the algorithm layer, both of them use the same motion control algorithm which controls one axis with speed and position. The process of winding is mainly to control the speed ratio of U-axis and Q-axis, hence we use the $VS$ to influence the speed of Q-axis only. The $PT$ of winding machine is illustrated in Table \ref{table:PTofWinding} in which the $pid_1$ is the speed of Q-axis and the 1000 of $var_1$ is used to multiply by the $\theta$.
 \begin{table}
 	\scriptsize \caption{$PT$ of winding machine}
 	\label{table:PTofWinding}
@@ -599,7 +529,7 @@ Table \ref{table:PFofWinding} is shown the interacted $PF$ between the $VS$ and 
 \subsection{Case 2: Binocular Catching Robot}
 \begin{figure}
 	\centering
-	\includegraphics[width=3in]{fig/robot.pdf}
+	\includegraphics[width=3.7in]{fig/robot.pdf}
 	\caption{ Binocular Catching Robot consists of visual system, $ePLC$ and servo system.}
 	\label{fig:robot}
 \end{figure}
@@ -704,10 +634,10 @@ The $PF$s of a time catching the ball is shown in Table \ref{table:PFofrotot} an
 \end{figure}
 
 \subsection{Result}
-Through the analysis of two cases, the proposed $VCA$ based flexible structure provides a generic method to address the visual servo control problem in $ePLC$.  
+Through the analysis of two cases, the proposed $VCA$ based flexible structure provides a generic method to address the visual servo control problem in $ePLC$. Based on the $VCA$ protocol, the algorithms in $VS$ and $ES$ have a kind of normative correspondence and the existing modules and motion control algorithms could be reused without additional programing. 
 \section{Conclusion}
 \label{conclusion}
-We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the problem of integration of PLC system, motion control system and visual system in ePLCs. The multi-level includes flexible layer, control layer and algorithm layer. The $VCA$ protocol is designed to data interaction between the layers. Correspondingly, a customized hardware, memory allocation, multithreading structure are described to support the proposed flexible software architecture.
+\textcolor{blue}{We propose a flexible multi-level architecture which is based on a $VCA$ protocol to integrate the PLC system, motion control system, and visual system to ease the complexity of the applications.} The multi-level includes flexible layer, control layer, and algorithm layer. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible software architecture. We implements two cases, the winding machine with visual system and the binocular catching robot, to illustrate the proposed system which provides a generic method to develop different type applications of visual servo system in $ePLC$.
 
 In the further research, we will implement a uniform development method of the visual servo control in ePLC.
 

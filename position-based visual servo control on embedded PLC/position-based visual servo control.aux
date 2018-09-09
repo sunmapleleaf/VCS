@@ -24,61 +24,60 @@
 \citation{S2006Advanced}
 \citation{3S2017Logic}
 \citation{wu2018customized}
-\citation{Chen2014A}
 \providecommand \oddpage@label [2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}Motivations}{1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Related Works}{1}}
-\citation{wu2018customized}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A typical $ES$ which adopts two processor architecture. The shared memory is used to transfer data between master and slave processors. The communication between $ES$ and $VS$ adopt the CAN Bus.}}{2}}
-\newlabel{fig:Hardware}{{1}{2}}
+\citation{Chen2014A}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-C}}Our Contributions}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}System Architecture}{2}}
 \newlabel{SystemStructure}{{II}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Hardware Structure}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Software Structure}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Hardware architecture of typical $ES$ and $VS$. The $ES$ adopts two processor architecture and the $VS$ contains one camera and a CUP. The communication between $ES$ and $VS$ adopt the CAN Bus.}}{2}}
+\newlabel{fig:Hardware}{{1}{2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Multi-level flexible architecture contains three layers: flexible layer, control layer and algorithm layer.}}{2}}
 \newlabel{fig:Software}{{2}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Thread Structure}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Thread structureThe with three special threads: visual thread, Control thread, algorithm thread.}}{3}}
-\newlabel{fig:Threads}{{3}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Memory allocation of master processor, shared ram and slave processor.}}{3}}
-\newlabel{fig:RAM}{{4}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Memory Allocation}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}Memory Allocation}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Memory allocation of master processor, shared ram and slave processor.}}{3}}
+\newlabel{fig:RAM}{{3}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A $PT$ uniquely corresponds to a type of application. It contains four parts: head of protocol template, visual layer template , control layer template and algorithm layer template.}}{3}}
+\newlabel{fig:PT}{{4}{3}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Integration of $VS$ and $ES$}{3}}
 \newlabel{Integration}{{III}{3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}$VCA$ $PT$}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A $PT$ uniquely corresponds to a type of application. It contains four parts: head of protocol template, visual layer template , control layer template and algorithm layer template.}}{4}}
-\newlabel{fig:PT}{{5}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  $VCA$ protocol frame contains parameter frames and algorithm frames in its data field and the algorithm protocol frame contains several parameter frames.}}{4}}
-\newlabel{fig:Protocol}{{6}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  $VCA$ protocol frame contains parameter frames and algorithm frames in its data field and the algorithm protocol frame contains several parameter frames.}}{4}}
+\newlabel{fig:Protocol}{{5}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}$VCA$ $PF$}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Framing of $PF$}{4}}
-\newlabel{alg1}{{1}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VCAFraming$}}{5}}
-\newlabel{alg2}{{2}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces $CLFraming$}}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Deframing of $PF$}{5}}
-\newlabel{alg3}{{3}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces $ALFraming$}}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  $PF$ interaction between PLC interface and visual interface.}}{5}}
-\newlabel{fig:FlexibleLayer}{{7}{5}}
+\newlabel{alg1}{{1}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VCAFraming$}}{4}}
+\newlabel{alg2}{{2}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces $CLFraming$}}{4}}
+\newlabel{alg3}{{3}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces $ALFraming$}}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Deframing of $PF$}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  $PF$ interaction between PLC interface and visual interface.}}{5}}
+\newlabel{fig:FlexibleLayer}{{6}{5}}
 \newlabel{alg4}{{4}{5}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces $VLDeframing$}}{5}}
-\newlabel{alg5}{{5}{5}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $CLDeframing$}}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}System Operation Mechanism}{5}}
 \newlabel{Execution}{{IV}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Implementation of Flexible Program and Execution}{5}}
-\newlabel{alg6}{{6}{6}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $ALDeframing$}}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  $PDF$ and $PSP$. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. The $PDF$ will point to the next address of $PF$ if a $PF$ is deframed. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$.}}{6}}
-\newlabel{fig:VisualInterface}{{8}{6}}
+\newlabel{alg5}{{5}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $CLDeframing$}}{5}}
+\newlabel{alg6}{{6}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $ALDeframing$}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  $PDF$ and $PSP$. $PDF$ points to the address of deframing $PF$ and $PSP$ points to the address of saving $PF$. The $PDF$ will point to the next address of $PF$ if a $PF$ is deframed. After saved the $PF$, the $PSP$ will point to the next new address according the $vfl$ of $PF$.}}{5}}
+\newlabel{fig:VisualInterface}{{7}{5}}
+\citation{wu2018customized}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  Thread structure with three special threads: visual thread, Control thread, algorithm thread.}}{6}}
+\newlabel{fig:Threads}{{8}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Implementation of Control Program and Execution}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Implementation and Execution of Algorithm Program }{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Execution of Threads}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Petri-Net Based Execution of Threads}{6}}
 \citation{wu2018customized}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  Process of thread execution.}}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces  Process of $ET$ and it contains Petri Nets of visual thread, control thread, and algorithm thread.}}{7}}
 \newlabel{fig:threadExecution}{{9}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Case Analysis}{7}}
 \newlabel{Case}{{V}{7}}
@@ -91,20 +90,19 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-A}2}Process of $PF$}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Case 2: Binocular Catching Robot}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}1}Design of $PT$}{7}}
-\bibstyle{IEEEtran}
-\bibdata{reference}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  (a) is the visual system, whose CUP is ARM9 based S3C2440 and which uses the CANIF interface to communicate with OV9650 CMOS Camera; (b) is the $ePLC$, CASS-PLCA149B; (c) is the winding machine with visual system which contains two axes: the U-axis and Q-axis; (d) is shown the Winding effect, the angle of the wire, Q-axis and U-axis.}}{8}}
 \newlabel{fig:Winding}{{10}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  Structure of the winding machine system. The ePLC has two chips: a master chip and a slave chip. It uses the RS232 to receive $PF$s and could control six servo systems at most. The winding machine has two axes: the U-axis and Q-axis. The $VS$ use the CMOS camera to gain winding images and transfer the digital information to ARM CUP. The ARM CUP will extract parameters, frame $PF$s and transfer them to $ePLC$ continuously.}}{8}}
 \newlabel{fig:WindingSystem}{{11}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}2}Process of $PF$}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces  Binocular Catching Robot consists of visual system, $ePLC$ and servo system.}}{8}}
 \newlabel{fig:robot}{{12}{8}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces $PT$ of binocular catching robot}}{8}}
 \newlabel{table:PTofRobot}{{III}{8}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {V-B}2}Process of $PF$}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Result}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{8}}
-\newlabel{conclusion}{{VI}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces  Trajectory of the ball which is only shown the position of X-axis and Y-axis.}}{8}}
+\newlabel{fig:Trajectory}{{13}{8}}
+\bibstyle{IEEEtran}
+\bibdata{reference}
 \bibcite{Kazmierkowski2007Integration}{1}
 \bibcite{Wan2018An}{2}
 \bibcite{Chekired2018Industrial}{3}
@@ -130,12 +128,13 @@
 \bibcite{Wang2008Visual}{23}
 \bibcite{Xiao2014Visual}{24}
 \bibcite{Wu2013Cloud}{25}
-\bibcite{Tsai2017A}{26}
 \@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces $PF$ of binocular catching robot}}{9}}
 \newlabel{table:PFofrotot}{{IV}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces  Trajectory of the ball which is only shown the position of X-axis and Y-axis.}}{9}}
-\newlabel{fig:Trajectory}{{13}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Result}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{9}}
+\newlabel{conclusion}{{VI}{9}}
 \@writefile{toc}{\contentsline {section}{References}{9}}
+\bibcite{Tsai2017A}{26}
 \bibcite{Guenard2010A}{27}
 \bibcite{Serra2016Landing}{28}
 \bibcite{Sun2013Automatic}{29}
