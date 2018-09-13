@@ -51,7 +51,7 @@
 \maketitle
 
 \begin{abstract}
-The visual system, motion control system, and programmable logic controller ($PLC$) system are becoming increasingly inseparable and \textcolor{blue}{complex, however there are few works researching the integration of these three systems to ease the complexity.} Most of them are focusing on their applications individually. We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the integration problem. The multi-level includes flexible layer, control layer, and algorithm layer. The flexible layer is adopted to seamlessly integrate visual system and embedded PLC ($ePLC$) system. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible architecture. At last, we implement two cases using the proposed $VCA$ protocol based flexible architecture in which the generality of the proposed flexible architecture is verified. In first case, the winding machine with visual system implements regular winding effect by the correction of $\theta$. In the second case, the binocular catching robot uses the cameras to track the trajectory and send to $ePLC$. By adjusting the speed and position, the robot can catch the ball successfully.
+The visual system, motion control system, and programmable logic controller ($PLC$) system are becoming increasingly inseparable and complex, however there are few works researching the integration of these three systems to ease the complexity. Most of them are focusing on their applications individually. We propose a flexible multi-level architecture which is based on a $VCA$ protocol to address the integration problem. The multi-level includes flexible layer, control layer, and algorithm layer. The flexible layer is adopted to seamlessly integrate visual system and embedded PLC ($ePLC$) system. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible architecture. At last, we implement two cases using the proposed $VCA$ protocol based flexible architecture in which the generality of the proposed flexible architecture is verified. In first case, the winding machine with visual system implements regular winding effect by the correction of $\theta$. In the second case, the binocular catching robot uses the cameras to track the trajectory and send to $ePLC$. By adjusting the speed and position, the robot can catch the ball successfully.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -82,9 +82,9 @@ After the visual processing, in most cases, the motion control system as the pow
 Furthermore, PLCs have become a base of automation owning to its high reliability and easy programming\cite{Hossain2014Advanced}. Lots of researches are focusing on it to extremely extend its applied field; for instance, \cite{Jiang2013System,Jiang2013Bayesian} guarantee the reliability by verifying the program of PLCs, \cite{Gerk2006Advanced,Dominic2016PLC} improve the performance of PLCs using advanced algorithms, \cite{wu2018customized} alleviates the development complexity of PLCs with a special software structure, \cite{Sch2013Development} pose methods to update PLC programs dynamically.
 
 
-In addition, the visual system, motion control system, and PLC system are becoming increasingly inseparable. \cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion control system. Simultaneously the PLC is analyzing the information, such as the position limitation of every axis, to make some logical judgments accordingly. \textcolor{blue}{Regarding the normal development of these applications, the three systems are developed individually and using the communication protocol combines them. However, this method should be always redesigned the programs in these systems because of the difference of visual algorithms, motion control algorithms and their organized logic programs. In addition, the logic and motion control are always mixed together to develop in motion-control-supported PLC, and there are also lots of communication protocols (e.g., EtherCat, Modbus, CAN, etc.). Considering the high requirements of today’s applications, this becomes a cumbersome task.}
+In addition, the visual system, motion control system, and PLC system are becoming increasingly inseparable. \cite{Chen2014A} is a typical case that describes how the three parts collaborate. The visual system analyzes the context and get error put into the motion control system. Simultaneously the PLC is analyzing the information, such as the position limitation of every axis, to make some logical judgments accordingly. Regarding the normal development of these applications, the three systems are developed individually and using the communication protocol combines them. However, this method should be always redesigned the programs in these systems because of the difference of visual algorithms, motion control algorithms and their organized logic programs. In addition, the logic and motion control are always mixed together to develop in motion-control-supported PLC, and there are also lots of communication protocols (e.g., EtherCat, Modbus, CAN, etc.). Considering the high requirements of today’s applications, this becomes a cumbersome task.
 
-\textcolor{blue}{Hence, how to pose a flexible structure to the integration of visual system, motion control system, and PLC system which will ease the complexity and satisfy the ever-growing requirements attracts our interest.}
+Hence, how to pose a flexible structure to the integration of visual system, motion control system, and PLC system which will ease the complexity and satisfy the ever-growing requirements attracts our interest.
 
 \subsection{Related Works}
 
@@ -591,45 +591,35 @@ The $ePLC$ is designed to control six axes parallel. We adopt the same algorithm
 			&$aid_3$  & $cfl_3$  & $pid_5$  &$pdata_5$ & $pid_6$  &$pdata_6$  \\
 			\hline
 			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400 
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
+			&0x01  &0xE     &0x01   &0x11c2  &0x04   &0xA67AD 
+			&0x01  &0xE     &0x01   &0xECF   &0x04   &0x8AD87
+			&0x01  &0xE     &0x01   &0xC80   &0x04   &0x75300\\
 			\hline
 			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
+			&0x01  &0xE     &0x01   &0x13A5  &0x04   &0xB82A3 
+			&0x01  &0xE     &0x01   &0xE92   &0x04   &0x889CB
+			&0x01  &0xE     &0x01   &0xC80   &0x04   &0x752FF\\	
 			\hline
 			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
+			&0x01  &0xE     &0x01   &0x1997  &0x04   &0xEFE8C 
+			&0x01  &0xE     &0x01   &0xECD   &0x04   &0x8C873
+			&0x01  &0xE     &0x01   &0xC80   &0x04   &0x75300\\
 			\hline
 			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
+			&0x01  &0xE     &0x01   &0x17E0  &0x04   &0xDFD64 
+			&0x01  &0xE     &0x01   &0xE6F   &0x04   &0x874DD
+			&0x01  &0xE     &0x01   &0xC80   &0x04   &0x75300\\		
 			\hline
-			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
-			\hline
-			0x01    & 0x14  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400  
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400
-			&0x01  &0xE     &0x01   &0x400   &0x01   &0x400\\
-			\hline			
 		\end{tabular}
 	\end{center}
 \end{table*}
 \subsubsection{Process of $PF$}
-The $PF$s of a time catching the ball is shown in Table \ref{table:PFofrotot} and the trajectory of the ball is shown in Fig. \ref{fig:Trajectory} which is only shown the position of X-axis and Y-axis. The $VS$ sends the $PF$ to $ES$ to adjust the destination and speed of every axis.
+The $PF$s of a time catching the ball is shown in Table \ref{table:PFofrotot} and the trajectory of the ball is shown in Fig. \ref{fig:Trajectory} which is shown trajectory captured by the cameras. The red point is the position where the ball is thrown, the blue points are the positions where predict the catching points, and the yellow points are the predictive catch points. The $VS$ sends the $PF$ to $ES$ to adjust the destination and speed of every axis.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=3.5in]{fig/PFofRobot.pdf}
-	\caption{ Trajectory of the ball which is only shown the position of X-axis and Y-axis.}
+	\caption{ Trajectory captured by the cameras. The red point is the position where the ball is thrown, the blue points are the positions where to predict the catching points, and the yellow points are the predictive catch points.}
 	\label{fig:Trajectory}
 \end{figure}
 
@@ -637,7 +627,7 @@ The $PF$s of a time catching the ball is shown in Table \ref{table:PFofrotot} an
 Through the analysis of two cases, the proposed $VCA$ based flexible structure provides a generic method to address the visual servo control problem in $ePLC$. Based on the $VCA$ protocol, the algorithms in $VS$ and $ES$ have a kind of normative correspondence and the existing modules and motion control algorithms could be reused without additional programing. 
 \section{Conclusion}
 \label{conclusion}
-\textcolor{blue}{We propose a flexible multi-level architecture which is based on a $VCA$ protocol to integrate the PLC system, motion control system, and visual system to ease the complexity of the applications.} The multi-level includes flexible layer, control layer, and algorithm layer. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible software architecture. We implements two cases, the winding machine with visual system and the binocular catching robot, to illustrate the proposed system which provides a generic method to develop different type applications of visual servo system in $ePLC$.
+We propose a flexible multi-level architecture which is based on a $VCA$ protocol to integrate the PLC system, motion control system, and visual system to ease the complexity of the applications. The multi-level includes flexible layer, control layer, and algorithm layer. The $VCA$ protocol is designed for data interaction between the layers. Correspondingly, a customized hardware, memory allocation, Petri-Net based multithreading structure are described to support the proposed flexible software architecture. We implements two cases, the winding machine with visual system and the binocular catching robot, to illustrate the proposed system which provides a generic method to develop different type applications of visual servo system in $ePLC$.
 
 In the further research, we will implement a uniform development method of the visual servo control in ePLC.
 
