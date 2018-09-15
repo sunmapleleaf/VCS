@@ -8,62 +8,51 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: reference.bib
-You're missing a field name---line 323 of file reference.bib
- : 
- : %  title={Architecture of FPGA Embedded Multiprocessor Programmable Controller},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-You're missing a field name---line 801 of file reference.bib
- : 
- : %  title={Motion control for advanced mechatronics},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--empty year in PaceAn
 Warning--empty journal in 3S2017Logic
 
 Done.
-You've used 39 entries,
+You've used 36 entries,
             4087 wiz_defined-function locations,
-            1064 strings with 15511 characters,
-and the built_in function-call counts, 32973 in all, are:
-= -- 2721
-> -- 843
-< -- 317
-+ -- 480
-- -- 147
-* -- 1627
-:= -- 4912
-add.period$ -- 79
-call.type$ -- 39
-change.case$ -- 38
-chr.to.int$ -- 666
-cite$ -- 41
-duplicate$ -- 2338
-empty$ -- 2399
-format.name$ -- 180
-if$ -- 7736
+            1050 strings with 14971 characters,
+and the built_in function-call counts, 30384 in all, are:
+= -- 2509
+> -- 769
+< -- 293
++ -- 440
+- -- 133
+* -- 1493
+:= -- 4525
+add.period$ -- 73
+call.type$ -- 36
+change.case$ -- 35
+chr.to.int$ -- 621
+cite$ -- 37
+duplicate$ -- 2152
+empty$ -- 2216
+format.name$ -- 163
+if$ -- 7130
 int.to.chr$ -- 0
-int.to.str$ -- 39
-missing$ -- 406
-newline$ -- 140
-num.names$ -- 39
-pop$ -- 830
+int.to.str$ -- 36
+missing$ -- 371
+newline$ -- 131
+num.names$ -- 36
+pop$ -- 759
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 2560
+skip$ -- 2362
 stack$ -- 0
-substring$ -- 1594
-swap$ -- 2047
-text.length$ -- 95
+substring$ -- 1486
+swap$ -- 1883
+text.length$ -- 86
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 39
-warning$ -- 2
-while$ -- 144
-width$ -- 41
-write$ -- 426
-(There were 2 error messages)
+type$ -- 36
+warning$ -- 1
+while$ -- 132
+width$ -- 38
+write$ -- 394
+(There was 1 warning)
