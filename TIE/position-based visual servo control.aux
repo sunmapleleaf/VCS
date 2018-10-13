@@ -1,0 +1,139 @@
+\relax 
+\citation{Kazmierkowski2007Integration}
+\citation{Wan2018An,Chekired2018Industrial}
+\citation{Colombo2006An,Vaccaro2010An,Dean2017Integration}
+\citation{Chang2006Motion,Feng2005Practical}
+\citation{Hossain2014Advanced}
+\citation{Jiang2013System}
+\citation{Dominic2016PLC}
+\citation{wu2018customized}
+\citation{Sch2013Development}
+\citation{Chen2014A}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-A}}Motivations}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {I-B}}Our Contributions}{1}}
+\citation{Xing2014Intersection}
+\citation{Nian2005An}
+\citation{Chen2014A}
+\citation{Xiao2014Visual}
+\citation{Wu2013Cloud,Tsai2017A}
+\citation{Serra2016Landing}
+\citation{Sun2013Automatic}
+\citation{Ioannides2004Design,Shi2016The,Fang2017Design}
+\citation{Ioannides2004Design,syaichu2011model}
+\citation{Qian2014A,OMRON2006CS1W}
+\citation{PLCopen2005Function}
+\citation{S2006Advanced}
+\citation{3S2017Logic}
+\citation{wu2018customized}
+\citation{Chen2014A}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Works}{2}}
+\newlabel{RW}{{II}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Hardware architecture of the typical $ePLC$ and $VS$. The $ePLC$ adopts a two-processor architecture, while the $VS$ contains a camera and a processor. The communication between the $ePLC$ and the $VS$ adopts the CAN Bus.}}{2}}
+\newlabel{fig:Hardware}{{1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Architecture}{2}}
+\newlabel{SystemStructure}{{III}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Hardware Structure}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Software Structure}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Memory Allocation}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The multi-level flexible architecture contains three layers: flexible, control, and algorithm layers. The $VS$ contains several visual algorithms used to extract parameters from pictures or videos. The flexible layer consists of the PLC interface and the visual interface used to combine the $ePLC$ and the $VS$. The control layer is mainly designed for the logic program. The algorithm layer comprises many algorithms, and every algorithm has several parameters.}}{3}}
+\newlabel{fig:Software}{{2}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Memory allocation of the master processor, shared RAM, and slave processor.}}{3}}
+\newlabel{fig:RAM}{{3}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A $PT$ uniquely corresponds to a type of application and contains four parts: head of the protocol template, visual layer template, control layer template, and algorithm layer template.}}{3}}
+\newlabel{fig:PT}{{4}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Integration of $VS$ and $ePLC$}{3}}
+\newlabel{Integration}{{IV}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}$VCA$ $PT$}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}$VCA$ $PF$}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  (a) The $VCA$ protocol frame contains the parameter and algorithm frames in its data field. The algorithm protocol frame contains several parameter frames. (b) $PF$s interaction between $ePLC$ and $VS$.}}{4}}
+\newlabel{fig:Protocol}{{5}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Framing of $PF$}{4}}
+\newlabel{alg1}{{1}{4}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces $VCAF$}}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}}Deframing of $PF$}{4}}
+\newlabel{alg2}{{2}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces $AMF$}}{5}}
+\newlabel{alg3}{{3}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces $PRF$}}{5}}
+\newlabel{alg4}{{4}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces $VCAD$}}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-E}}Process of the Algorithms}{5}}
+\newlabel{alg5}{{5}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces $AMD$}}{5}}
+\newlabel{alg6}{{6}{5}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces $PRD$}}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}System Operation Mechanism}{5}}
+\newlabel{Execution}{{V}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Implementation of Flexible Program and Execution}{5}}
+\citation{wu2018customized}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Process of $PDF$ and $PSP$. }}{6}}
+\newlabel{fig:VisualInterface}{{6}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Implementation of the Control Program and Execution}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Implementation and Execution of the Algorithm Program }{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-D}}Petri-Net-based Execution of Threads}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Thread structure with three special threads: visual, control, and algorithm threads. The control and visual threads run in the master slave, while the algorithm thread runs in the slave thread.}}{6}}
+\newlabel{fig:Threads}{{7}{6}}
+\citation{wu2018customized}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces  Process of $ET$ and its contained Petri Nets of the visual, control, and algorithm threads.}}{7}}
+\newlabel{fig:threadExecution}{{8}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Case Analysis}{7}}
+\newlabel{Case}{{VI}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}Case one: Winding Machine with a Visual System}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}1}Design of $PT$}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}2}Process of $PF$}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces $PT$ of winding machine}}{7}}
+\newlabel{table:PTofWinding}{{I}{7}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces $PF$ of winding machine}}{7}}
+\newlabel{table:PFofWinding}{{II}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Results of Case One}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces (a) is the visual system, whose processor is the ARM9-based S3C2440 and uses the CAN interface to communicate with the OV9650 CMOS camera; (b) is the $ePLC$, CASS-PLCA149B; (c) is the winding machine with a visual system that contains two axes: the U-axis and the Q-axis; (d) shows the winding effect; and (e) shows the angle of $\theta $, Q-axis, and U-axis. }}{7}}
+\newlabel{fig:Winding}{{9}{7}}
+\bibstyle{IEEEtran}
+\bibdata{reference}
+\bibcite{Kazmierkowski2007Integration}{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  The binocular catching robot consists of the visual system, $ePLC$, and servo system.}}{8}}
+\newlabel{fig:robot}{{10}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Case Two: Binocular Catching Robot}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}1}Design of $PT$}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}2}Process of $PF$}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-D}}Results of Case Two}{8}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces $PT$ of binocular catching robot}}{8}}
+\newlabel{table:PTofRobot}{{III}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  Trajectory captured by the cameras. The red point denotes the position where the ball is thrown. The blue points are the positions where the catching points are predicted. The yellow points are the predictive catch points.}}{8}}
+\newlabel{fig:Trajectory}{{11}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{8}}
+\newlabel{conclusion}{{VII}{8}}
+\bibcite{Wan2018An}{2}
+\bibcite{Chekired2018Industrial}{3}
+\bibcite{Colombo2006An}{4}
+\bibcite{Vaccaro2010An}{5}
+\bibcite{Dean2017Integration}{6}
+\bibcite{Chang2006Motion}{7}
+\bibcite{Feng2005Practical}{8}
+\bibcite{Hossain2014Advanced}{9}
+\bibcite{Jiang2013System}{10}
+\bibcite{Dominic2016PLC}{11}
+\bibcite{wu2018customized}{12}
+\bibcite{Sch2013Development}{13}
+\bibcite{Chen2014A}{14}
+\bibcite{Xing2014Intersection}{15}
+\bibcite{Nian2005An}{16}
+\bibcite{Xiao2014Visual}{17}
+\bibcite{Wu2013Cloud}{18}
+\bibcite{Tsai2017A}{19}
+\bibcite{Serra2016Landing}{20}
+\bibcite{Sun2013Automatic}{21}
+\bibcite{Ioannides2004Design}{22}
+\bibcite{Shi2016The}{23}
+\bibcite{Fang2017Design}{24}
+\bibcite{syaichu2011model}{25}
+\bibcite{Qian2014A}{26}
+\bibcite{OMRON2006CS1W}{27}
+\bibcite{PLCopen2005Function}{28}
+\bibcite{S2006Advanced}{29}
+\bibcite{3S2017Logic}{30}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces $PF$ of binocular catching robot}}{9}}
+\newlabel{table:PFofrobot}{{IV}{9}}
+\@writefile{toc}{\contentsline {section}{References}{9}}
